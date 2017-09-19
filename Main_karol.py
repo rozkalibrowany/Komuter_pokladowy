@@ -1,12 +1,12 @@
 # @autor: Karol Siegieda
 import os
 import sys
-import can
+#import can
 import subprocess
 from PyQt4 import QtCore, QtGui
 
-from MainWindow import Ui_MainWindow
-from BmsWindow import Ui_Form
+from src.gui.MainWindow import Ui_MainWindow
+#from src.gui.BmsWindow import Ui_Form
 
 
 systemStatus = 0
@@ -17,14 +17,14 @@ ms = 0
 timerStarted = False
 lapTimesCounter = 0
 
-class GUI_BMSWindow(QtGui.QWidget, Ui_Form):
-    def __init__(self, parent=None):
-        super(GUI_BMSWindow, self).__init__(parent) # (, QtCore.Qt.FramelessWindowHint)
-        self.setupUi(self)
-        QtCore.QObject.connect(self.closeBmsWindow, QtCore.SIGNAL("clicked()"), self.closeWindow)
-
-    def closeWindow(self):
-        self.close()
+##class GUI_BMSWindow(QtGui.QWidget, Ui_Form):
+##    def __init__(self, parent=None):
+##        super(GUI_BMSWindow, self).__init__(parent) # (, QtCore.Qt.FramelessWindowHint)
+##        self.setupUi(self)
+##        QtCore.QObject.connect(self.closeBmsWindow, QtCore.SIGNAL("clicked()"), self.closeWindow)
+##
+##    def closeWindow(self):
+##        self.close()
 
 
 class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
@@ -34,8 +34,8 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         try:
             systemStatus = 0
             self.setupUi(self)
-            self.bmsWindow = GUI_BMSWindow()
-            self.initializeCAN()
+            #self.bmsWindow = GUI_BMSWindow()
+            #self.initializeCAN()
             self.functionButtons()
             self.setConnectionStatus()
             self.laptimer = QtCore.QTimer(self)
@@ -56,9 +56,9 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 message = "CAN couldn't be initialised. Check configuration"
                 systemStatus = 0
                 self.setSystemStatus()
-        bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
-        msg = can.Message(arbitration_id=0x7de, data=[0,25,0,1], extended_id=False)
-        bus.send(msg)
+        #bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
+        #msg = can.Message(arbitration_id=0x7de, data=[0,25,0,1], extended_id=False)
+        #bus.send(msg)
 
     def lapTimer(self):
         global s, m, ms
