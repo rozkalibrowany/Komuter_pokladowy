@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'rpm_widget.ui'
 #
-# Created: Tue Sep 19 17:46:59 2017
+# Created: Tue Sep 19 18:43:37 2017
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -202,7 +202,7 @@ class Ui_rpm_widget(object):
         self.circle23.setScaledContents(True)
         self.circle23.setObjectName(_fromUtf8("circle23"))
         self.pintop = QtGui.QLabel(rpm_widget)
-        self.pintop.setGeometry(QtCore.QRect(130, 110, 41, 41))
+        self.pintop.setGeometry(QtCore.QRect(130, 130, 41, 41))
         self.pintop.setStyleSheet(_fromUtf8("background: none;"))
         self.pintop.setFrameShape(QtGui.QFrame.NoFrame)
         self.pintop.setText(_fromUtf8(""))

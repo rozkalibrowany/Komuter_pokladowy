@@ -562,7 +562,7 @@ background-color: rgba(255, 255, 255, 20)</string>
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>110</y>
+     <y>130</y>
      <width>41</width>
      <height>41</height>
     </rect>

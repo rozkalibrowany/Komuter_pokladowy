@@ -85,7 +85,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         self.isStopwatchRunning = False
         self.stopwatch = StopwatchThread()
         self.stopwatch.setTime.connect(self.timeEdit.setTime)
-
+        
     def init_temp_widget(self):
         self.scene_temp = QtGui.QGraphicsScene()
         self.tempBar.setScene(self.scene_temp)
@@ -129,17 +129,15 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
 
 
     def updateScreen(self, proc=None, clear=False):
-        print "dupa"
         if not clear:
             lineunsplitted =  str(proc.readAllStandardOutput()).strip()
-
             line =  lineunsplitted.split()
-            print (line)
             self.framesLabel.setText(lineunsplitted)
             if(line[1] == "0CF11E05"):
                 rpm_lsb = int(line[3], base=16)
                 rpm_msb = int(line[4], base=16)
                 rpm_dec = rpm_msb * 256 + rpm_lsb
+                print (rpm_dec)
             engine_temp = int(line[4], base=16)
             voltage = int(line[5], base=16)
             current = int(line[6], base=16)

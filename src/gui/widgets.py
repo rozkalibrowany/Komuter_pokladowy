@@ -61,7 +61,7 @@ class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
             for dot in self.dots[number_of_dots:]:
                 if dot.isVisible():
                     dot.setVisible(False)
-        self.rpmNumber.display(rpm)
+        self.rpmNumber.display(int(round(rpm/10.0)*10))
         self.current_num_of_dots = number_of_dots
 
         self.updateLine(rpm)
