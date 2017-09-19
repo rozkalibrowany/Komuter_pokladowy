@@ -4,6 +4,7 @@ import sys
 from PyQt4 import QtCore, QtGui
 
 from MainWindow import Ui_MainWindow
+
 from Window import Ui_MainWindow as Ui_Window
 from BmsWindow import Ui_Form
 from keyboard import *
@@ -14,6 +15,7 @@ import subprocess
 from functools import partial
 from utils import *
 import math
+from widgets import RPM_Widget
 
 
 systemStatus = 0
@@ -48,16 +50,11 @@ class StopwatchThread(QtCore.QThread):
             
             elapsedTime = datetime.now() - self.initialTime
             miliseconds = elapsedTime.microseconds/1000
-##            print miliseconds
             if miliseconds != self.prev_miliseconds:
                 time = QtCore.QTime(elapsedTime.seconds/60,elapsedTime.seconds,miliseconds)
                 self.setTime.emit(time)
                 
             self.prev_miliseconds = miliseconds
-##            
-##            self.setmiliseconds.emit(elapsedTime.microseconds/1000/10)
-##            self.setseconds.emit(elapsedTime.seconds)
-##            self.setminutes.emit(elapsedTime.seconds/60)
 
     def stop(self):
         self._isRunning = False
@@ -70,9 +67,11 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
     def __init__(self, parent=None):
         super(GUI_Window, self).__init__(parent)
         self.setupUi(self)
+##        self.w = Ui_rpm_widget()
+        self.gg = RPM_Widget(self.rpm_widget)
+##        self.gg.init_rpm_widget()
         self.activateDial = True
 
-        self.init_rpm_widget()
 
         self.init_temp_widget()
         
@@ -94,20 +93,6 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         self.tempBar.setSceneRect(0,0,self.tempBar.frameSize().width(),self.tempBar.frameSize().height())
         self.tempBar.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
         self.tempBar.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
-        
-    def init_rpm_widget(self):
-        self.dots = self.dots_widget.findChildren(QtGui.QLabel)
-        
-        for dot in self.dots:
-            dot.setVisible(False)
-
-        self.current_num_of_dots = 0
-        self.scene = QtGui.QGraphicsScene()
-        self.graphicsView.setScene(self.scene)
-        self.graphicsView.setSceneRect(0,0,self.graphicsView.frameSize().width(),self.graphicsView.frameSize().height())
-        self.graphicsView.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
-        self.graphicsView.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
-        self.updateLine(0)
     
     def toggleActive(self):
         if self.isActive:
@@ -147,8 +132,6 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
     def updateScreen(self, proc=None, clear=False):
         if not clear:
             lineunsplitted =  str(proc.readAllStandardOutput()).strip()
-            #print lineunsplitted
-            #print
 
             line =  lineunsplitted.split()
             
@@ -164,51 +147,11 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
             current = 0
             
         if self.isActive:
-            self.updateRPM(rpm)
+            self.gg.updateRPM(rpm)
             self.updateEngineTemp(engine_temp)
             self.updateVoltage(voltage)
             self.updateCurrent(current)
-
-    def updateRPM(self, rpm):
-        if self.activateDial:
-            rpm = self.dial.value()
-
-        number_of_dots = rpm/(MAX_RPM_VALUE/len(self.dots))
         
-        if number_of_dots != self.current_num_of_dots:
-            for dot in self.dots[:number_of_dots]:
-                if not dot.isVisible():
-                    dot.setVisible(True)
-            for dot in self.dots[number_of_dots:]:
-                if dot.isVisible():
-                    dot.setVisible(False)
-            self.rpmNumber.display(rpm)
-        self.current_num_of_dots = number_of_dots
-
-        self.updateLine(rpm)
-
-    def updateLine(self, value):
-        if self.activateDial:
-            value = self.dial.value()
-            
-        self.scene.clear()
-
-        pen = QtGui.QPen(QtCore.Qt.red, 5, QtCore.Qt.SolidLine, QtCore.Qt.RoundCap)
-
-        x1 = self.graphicsView.width()/2
-        y1 = self.graphicsView.height()/2
-
-        line_length = self.graphicsView.width()/2 - 10
-        angle = (math.radians(ANGLE_RANGE) * value)/255.0
-        angle_offset = (360 - ANGLE_RANGE)/2
-        x2 = line_length * math.sin(angle + math.radians(angle_offset))
-        y2 = -1 * line_length * math.cos(angle + math.radians(angle_offset))
-
-        #print line_length, '|', value, '|', math.degrees(angle), '|', x2, y2
-        
-        line = QtCore.QLineF(x1, y1 ,x1-x2,y1-y2)
-        lineItem = QtGui.QGraphicsLineItem(line, scene=self.scene)
-        lineItem.setPen(pen)
 
     def updateEngineTemp(self, temp):
         if self.activateDial:
