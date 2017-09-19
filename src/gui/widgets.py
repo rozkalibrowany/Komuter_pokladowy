@@ -2,7 +2,7 @@ from PyQt4 import QtCore, QtGui
 from rpm_widget import Ui_rpm_widget
 import math
 
-MAX_RPM_VALUE = 255
+MAX_RPM_VALUE = 6000
 MAX_TEMPERATURE_VALUE = 255
 ANGLE_RANGE = 245
 
@@ -37,7 +37,7 @@ class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
         y1 = self.graphicsView.height()/2
 
         line_length = self.graphicsView.width()/2 - 10
-        angle = (math.radians(ANGLE_RANGE) * value)/255.0
+        angle = (math.radians(ANGLE_RANGE) * value)/MAX_RPM_VALUE
         angle_offset = (360 - ANGLE_RANGE)/2
         x2 = line_length * math.sin(angle + math.radians(angle_offset))
         y2 = -1 * line_length * math.cos(angle + math.radians(angle_offset))

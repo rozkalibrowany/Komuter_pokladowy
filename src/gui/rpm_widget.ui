@@ -99,7 +99,7 @@ background-color: rgba(255, 255, 255, 20)</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../img/blackcircle.png</pixmap>
+    <pixmap>img/blackcircle.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -584,11 +584,11 @@ background-color: rgba(255, 255, 255, 20)</string>
    </property>
   </widget>
   <zorder>black_circle</zorder>
-  <zorder>graphicsView</zorder>
   <zorder>dots_widget</zorder>
+  <zorder>graphicsView</zorder>
+  <zorder>pintop</zorder>
   <zorder>rpmCaption</zorder>
   <zorder>rpmNumber</zorder>
-  <zorder>pintop</zorder>
  </widget>
  <resources/>
  <connections/>

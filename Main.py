@@ -3,7 +3,7 @@
 import sys
 from PyQt4 import QtCore, QtGui
 
-from src.gui.MainWindow import Ui_MainWindow
+#from src.gui.MainWindow import Ui_MainWindow
 
 from src.gui.Window import Ui_MainWindow as Ui_Window
 #from BmsWindow import Ui_Form
@@ -15,7 +15,7 @@ import subprocess
 from functools import partial
 from src.modules.utils import *
 import math
-from src.widgets.widgets import RPM_Widget
+from src.gui.widgets import RPM_Widget
 
 
 systemStatus = 0
@@ -27,7 +27,7 @@ timerStarted = False
 lapTimesCounter = 0
 
 # constant values
-MAX_RPM_VALUE = 255
+MAX_RPM_VALUE = 6000
 MAX_TEMPERATURE_VALUE = 255
 ANGLE_RANGE = 245
 
@@ -41,19 +41,19 @@ class StopwatchThread(QtCore.QThread):
     def __init__(self):
         super(StopwatchThread, self).__init__()
         self._isRunning = False
-    
+
 
     def run(self):
         self.initialTime = datetime.now()
         self. prev_miliseconds = 0
         while self._isRunning:
-            
+
             elapsedTime = datetime.now() - self.initialTime
             miliseconds = elapsedTime.microseconds/1000
             if miliseconds != self.prev_miliseconds:
                 time = QtCore.QTime(elapsedTime.seconds/60,elapsedTime.seconds,miliseconds)
                 self.setTime.emit(time)
-                
+
             self.prev_miliseconds = miliseconds
 
     def stop(self):
@@ -69,12 +69,11 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         self.setupUi(self)
 ##        self.w = Ui_rpm_widget()
         self.gg = RPM_Widget(self.rpm_widget)
-        self.gg.updateRPM(120)
         self.activateDial = True
 
 
         self.init_temp_widget()
-        
+
         self.proc = QtCore.QProcess()
         self.proc.readyReadStandardOutput.connect(partial(self.updateScreen, self.proc))
         self.isActive = False
@@ -93,7 +92,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         self.tempBar.setSceneRect(0,0,self.tempBar.frameSize().width(),self.tempBar.frameSize().height())
         self.tempBar.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
         self.tempBar.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
-    
+
     def toggleActive(self):
         if self.isActive:
             self.isActive = False
@@ -112,7 +111,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
             self.updateScreen(clear=True)
         else:
             self.proc.setProcessChannelMode(self.proc.MergedChannels)
-            self.proc.start('python genrandomframes.py')
+            self.proc.start("stdbuf -o0 candump can0")
             self.isConnected = True
             self.btnConnect.setText("Disconnect")
             self.labelStatus.setText("Connected")
@@ -127,48 +126,52 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
             self.stopwatch.start()
             self.btnStopwatch.setText("Stop")
             self.isStopwatchRunning = True
-            
-        
+
+
     def updateScreen(self, proc=None, clear=False):
+        print "dupa"
         if not clear:
             lineunsplitted =  str(proc.readAllStandardOutput()).strip()
 
             line =  lineunsplitted.split()
-            
+            print (line)
             self.framesLabel.setText(lineunsplitted)
-            rpm = int(line[0], base=16)
-            engine_temp = int(line[1], base=16)
-            voltage = int(line[2], base=16)
-            current = int(line[3], base=16)
-        else: 
+            if(line[1] == "0CF11E05"):
+                rpm_lsb = int(line[3], base=16)
+                rpm_msb = int(line[4], base=16)
+                rpm_dec = rpm_msb * 256 + rpm_lsb
+            engine_temp = int(line[4], base=16)
+            voltage = int(line[5], base=16)
+            current = int(line[6], base=16)
+        else:
             rpm = 0
             engine_temp = 0
             voltage = 0
             current = 0
-            
-        if self.isActive:
-            self.gg.updateRPM(rpm)
+
+        if self.isActive and line[1] == "0CF11E05":
+            self.gg.updateRPM(rpm_dec)
             self.updateEngineTemp(engine_temp)
             self.updateVoltage(voltage)
             self.updateCurrent(current)
-        
+
 
     def updateEngineTemp(self, temp):
         if self.activateDial:
             temp = self.dial.value()
-            
+
         max_height = self.tempBar.height()
 
         if self.prev_temp:
             avg_temp = (self.prev_temp + temp)/2
         else:
             avg_temp = temp
-            
+
         scaled_temp = temp * max_height/float(MAX_TEMPERATURE_VALUE)
         self.tempNumber.setText(format_temp(avg_temp))
         rgb = temp_to_rgb_blue(avg_temp)
         #self.tempBarWhite.setStyleSheet("QLabel {background-color: rgb" + str(rgb) + ";}")
-        
+
 ##        rect = QtCore.QRect(self.tempBarWhite.x(), self.tempBarWhite.y(), self.tempBarWhite.width(),scaled_temp)
 ##        self.tempBarWhite.setGeometry(rect)
         self.prev_temp = temp
@@ -178,7 +181,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         rectItem = QtGui.QGraphicsRectItem(0, max_height-scaled_temp, self.tempBar.width(), scaled_temp)
         rectItem.setBrush(QtGui.QBrush(QtGui.QColor(r,g,b)))
         self.scene_temp.addItem(rectItem)
-        
+
 
     def updateVoltage(self, voltage):
         self.voltageBar.setValue(voltage)
@@ -192,7 +195,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    x = GUI_Window()  
+    x = GUI_Window()
     x.show()
-    
+
     app.exec_()
