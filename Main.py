@@ -3,19 +3,19 @@
 import sys
 from PyQt4 import QtCore, QtGui
 
-from MainWindow import Ui_MainWindow
+from src.gui.MainWindow import Ui_MainWindow
 
-from Window import Ui_MainWindow as Ui_Window
-from BmsWindow import Ui_Form
-from keyboard import *
+from src.gui.Window import Ui_MainWindow as Ui_Window
+#from BmsWindow import Ui_Form
+#from keyboard import *
 import test
 from datetime import datetime
 import random
 import subprocess
 from functools import partial
-from utils import *
+from src.modules.utils import *
 import math
-from widgets import RPM_Widget
+from src.widgets.widgets import RPM_Widget
 
 
 systemStatus = 0
@@ -69,7 +69,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         self.setupUi(self)
 ##        self.w = Ui_rpm_widget()
         self.gg = RPM_Widget(self.rpm_widget)
-##        self.gg.init_rpm_widget()
+        self.gg.updateRPM(120)
         self.activateDial = True
 
 
