@@ -16,6 +16,7 @@ from functools import partial
 from src.modules.utils import *
 import math
 from src.gui.widgets import RPM_Widget
+from src.modules.settings import *
 
 
 systemStatus = 0
@@ -25,11 +26,6 @@ m = 0
 ms = 0
 timerStarted = False
 lapTimesCounter = 0
-
-# constant values
-MAX_RPM_VALUE = 6000
-MAX_TEMPERATURE_VALUE = 255
-ANGLE_RANGE = 245
 
 class StopwatchThread(QtCore.QThread):
 
@@ -111,7 +107,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
             self.updateScreen(clear=True)
         else:
             self.proc.setProcessChannelMode(self.proc.MergedChannels)
-            self.proc.start("stdbuf -o0 candump can0")
+            self.proc.start(TEST_COMMAND)
             self.isConnected = True
             self.btnConnect.setText("Disconnect")
             self.labelStatus.setText("Connected")

@@ -1,10 +1,7 @@
 from PyQt4 import QtCore, QtGui
 from rpm_widget import Ui_rpm_widget
 import math
-
-MAX_RPM_VALUE = 6000
-MAX_TEMPERATURE_VALUE = 255
-ANGLE_RANGE = 245
+from src.modules.settings import *
 
 class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
     def __init__(self, parent):
@@ -18,6 +15,7 @@ class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
         
         for dot in self.dots:
             dot.setVisible(False)
+            
 
         self.current_num_of_dots = 0
         self.scene = QtGui.QGraphicsScene()
