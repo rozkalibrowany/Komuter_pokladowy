@@ -11,5 +11,5 @@ python-CAN.
 ## Uruchamianie
 
 ```
-w konsoli: python Main_ .py 
+w konsoli: python Main.py 
 ```
