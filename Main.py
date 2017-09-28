@@ -17,7 +17,7 @@ from src.modules.utils import *
 import math
 from src.gui.widgets import RPM_Widget
 from src.modules.settings import *
-
+from collections import deque
 
 systemStatus = 0
 connectionStatus = 0
@@ -67,7 +67,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         self.gg = RPM_Widget(self.rpm_widget)
         self.activateDial = True
 
-
+        self.shift_register = deque([],REGISTER_LENGTH)
         self.init_temp_widget()
 
         self.proc = QtCore.QProcess()
@@ -134,7 +134,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
                 rpm_lsb = int(line[3], base=16)
                 rpm_msb = int(line[4], base=16)
                 rpm_dec = rpm_msb * 256 + rpm_lsb
-                #print (rpm_dec)
+                self.shift_register.append(rpm_dec)
             engine_temp = int(line[4], base=16)
             voltage = int(line[5], base=16)
             current = int(line[6], base=16)
@@ -145,7 +145,9 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
             current = 0
 
         if self.isActive and line[1] == "0CF11E05":
-            self.gg.updateRPM(rpm_dec)
+            avg = sum(self.shift_register)/len(self.shift_register)
+            self.gg.updateRPM(avg)
+            #self.gg.updateRPM(rpm_dec)
             print time.clock() - elapsed
             self.updateEngineTemp(engine_temp)
             self.updateVoltage(voltage)

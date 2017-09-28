@@ -3,4 +3,5 @@ CAN_COMMAND = 'stdbuf -o0 candump can0'
 TEST_COMMAND = 'python can_simulation.py'
 ANGLE_RANGE = 245
 MAX_TEMPERATURE_VALUE = 255
+REGISTER_LENGTH = 4
 
