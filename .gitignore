@@ -1,3 +1,4 @@
 *.pyc
-*.ink
+*.lnk
+pyuic loc.txt
 src/widgets
