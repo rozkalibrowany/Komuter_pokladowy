@@ -4,7 +4,7 @@ import sys
 from PyQt4 import QtCore, QtGui
 
 #from src.gui.MainWindow import Ui_MainWindow
-
+import time
 from src.gui.Window import Ui_MainWindow as Ui_Window
 #from BmsWindow import Ui_Form
 #from keyboard import *
@@ -26,7 +26,7 @@ m = 0
 ms = 0
 timerStarted = False
 lapTimesCounter = 0
-
+elapsed = 0
 class StopwatchThread(QtCore.QThread):
 
     setmiliseconds = QtCore.pyqtSignal([int])
@@ -125,6 +125,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
 
 
     def updateScreen(self, proc=None, clear=False):
+        elapsed = time.clock()
         if not clear:
             lineunsplitted =  str(proc.readAllStandardOutput()).strip()
             line =  lineunsplitted.split()
@@ -133,7 +134,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
                 rpm_lsb = int(line[3], base=16)
                 rpm_msb = int(line[4], base=16)
                 rpm_dec = rpm_msb * 256 + rpm_lsb
-                print (rpm_dec)
+                #print (rpm_dec)
             engine_temp = int(line[4], base=16)
             voltage = int(line[5], base=16)
             current = int(line[6], base=16)
@@ -145,6 +146,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
 
         if self.isActive and line[1] == "0CF11E05":
             self.gg.updateRPM(rpm_dec)
+            print time.clock() - elapsed
             self.updateEngineTemp(engine_temp)
             self.updateVoltage(voltage)
             self.updateCurrent(current)
