@@ -4,6 +4,11 @@ import sys
 #import can
 import subprocess
 from PyQt4 import QtCore, QtGui
+from src.modules.utils import *
+import math
+from src.gui.widgets import RPM_Widget
+from src.modules.settings import *
+
 
 from src.gui.MainWindow import Ui_MainWindow
 #from src.gui.BmsWindow import Ui_Form
@@ -31,20 +36,17 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(GUI_MainWindow, self).__init__(parent) #, , QtCore.Qt.FramelessWindowHint
         global systemStatus
-        try:
-            systemStatus = 0
-            self.setupUi(self)
-            #self.bmsWindow = GUI_BMSWindow()
-            #self.initializeCAN()
-            self.functionButtons()
-            self.setConnectionStatus()
-            self.laptimer = QtCore.QTimer(self)
-            self.laptimer.timeout.connect(self.lapTimer)
-            systemStatus = 1
-            self.setSystemStatus()
-        except Exception:
-            systemStatus = 0
-            self.setSystemStatus()
+        systemStatus = 0
+        self.setupUi(self)
+        self.gg = RPM_Widget(self.rpm_widget)
+        #self.bmsWindow = GUI_BMSWindow()
+        #self.initializeCAN()
+        self.functionButtons()
+        self.setConnectionStatus()
+        self.laptimer = QtCore.QTimer(self)
+        self.laptimer.timeout.connect(self.lapTimer)
+        systemStatus = 1
+        self.setSystemStatus()
 
     def initialiseCAN():
         if systemStatus == 0:
