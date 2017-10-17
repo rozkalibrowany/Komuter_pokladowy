@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'rpm_widget.ui'
+# Form implementation generated from reading ui file 'src/gui/rpm_widget.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -28,12 +28,18 @@ class Ui_rpm_widget(object):
         rpm_widget.resize(301, 301)
         rpm_widget.setStyleSheet(_fromUtf8("background: none;"))
         self.rpmCaption = QtGui.QLabel(rpm_widget)
-        self.rpmCaption.setGeometry(QtCore.QRect(50, 238, 191, 21))
+        self.rpmCaption.setGeometry(QtCore.QRect(120, 240, 51, 21))
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8("Levenim MT"))
-        font.setPointSize(18)
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
         self.rpmCaption.setFont(font)
-        self.rpmCaption.setStyleSheet(_fromUtf8("color: white; background:none;"))
+        self.rpmCaption.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 14pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
         self.rpmCaption.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.rpmCaption.setObjectName(_fromUtf8("rpmCaption"))
         self.graphicsView = QtGui.QGraphicsView(rpm_widget)
@@ -353,6 +359,141 @@ class Ui_rpm_widget(object):
         self.circle23_3.setPixmap(QtGui.QPixmap(_fromUtf8("img/dark_colorized_circles/circle23.png")))
         self.circle23_3.setScaledContents(True)
         self.circle23_3.setObjectName(_fromUtf8("circle23_3"))
+        self.rpmCaption_2 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_2.setGeometry(QtCore.QRect(30, 150, 20, 20))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_2.setFont(font)
+        self.rpmCaption_2.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_2.setObjectName(_fromUtf8("rpmCaption_2"))
+        self.rpmCaption_3 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_3.setGeometry(QtCore.QRect(50, 90, 20, 20))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_3.setFont(font)
+        self.rpmCaption_3.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_3.setObjectName(_fromUtf8("rpmCaption_3"))
+        self.rpmCaption_4 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_4.setGeometry(QtCore.QRect(90, 50, 16, 21))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_4.setFont(font)
+        self.rpmCaption_4.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_4.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_4.setObjectName(_fromUtf8("rpmCaption_4"))
+        self.rpmCaption_5 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_5.setGeometry(QtCore.QRect(140, 40, 20, 20))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_5.setFont(font)
+        self.rpmCaption_5.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_5.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_5.setObjectName(_fromUtf8("rpmCaption_5"))
+        self.rpmCaption_6 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_6.setGeometry(QtCore.QRect(190, 50, 20, 21))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_6.setFont(font)
+        self.rpmCaption_6.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_6.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_6.setObjectName(_fromUtf8("rpmCaption_6"))
+        self.rpmCaption_7 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_7.setGeometry(QtCore.QRect(230, 90, 20, 21))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_7.setFont(font)
+        self.rpmCaption_7.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_7.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_7.setObjectName(_fromUtf8("rpmCaption_7"))
+        self.rpmCaption_8 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_8.setGeometry(QtCore.QRect(90, 100, 121, 21))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_8.setFont(font)
+        self.rpmCaption_8.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 14pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_8.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_8.setObjectName(_fromUtf8("rpmCaption_8"))
+        self.rpmCaption_9 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_9.setGeometry(QtCore.QRect(240, 150, 20, 20))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_9.setFont(font)
+        self.rpmCaption_9.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_9.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_9.setObjectName(_fromUtf8("rpmCaption_9"))
+        self.rpmCaption_10 = QtGui.QLabel(rpm_widget)
+        self.rpmCaption_10.setGeometry(QtCore.QRect(230, 200, 21, 20))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.rpmCaption_10.setFont(font)
+        self.rpmCaption_10.setStyleSheet(_fromUtf8("color: white; \n"
+"background:none;\n"
+"font: 75 italic 12pt \"Gill Sans MT\" ;\n"
+"color: rgb(216, 216, 216);"))
+        self.rpmCaption_10.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.rpmCaption_10.setObjectName(_fromUtf8("rpmCaption_10"))
         self.black_circle.raise_()
         self.dark_dots_widget.raise_()
         self.dots_widget.raise_()
@@ -360,11 +501,29 @@ class Ui_rpm_widget(object):
         self.pintop.raise_()
         self.rpmCaption.raise_()
         self.rpmNumber.raise_()
+        self.rpmCaption_2.raise_()
+        self.rpmCaption_3.raise_()
+        self.rpmCaption_4.raise_()
+        self.rpmCaption_5.raise_()
+        self.rpmCaption_6.raise_()
+        self.rpmCaption_7.raise_()
+        self.rpmCaption_8.raise_()
+        self.rpmCaption_9.raise_()
+        self.rpmCaption_10.raise_()
 
         self.retranslateUi(rpm_widget)
         QtCore.QMetaObject.connectSlotsByName(rpm_widget)
 
     def retranslateUi(self, rpm_widget):
         rpm_widget.setWindowTitle(_translate("rpm_widget", "Form", None))
-        self.rpmCaption.setText(_translate("rpm_widget", "RPM * 1000/min", None))
+        self.rpmCaption.setText(_translate("rpm_widget", "km/h", None))
+        self.rpmCaption_2.setText(_translate("rpm_widget", "1", None))
+        self.rpmCaption_3.setText(_translate("rpm_widget", "2", None))
+        self.rpmCaption_4.setText(_translate("rpm_widget", "3", None))
+        self.rpmCaption_5.setText(_translate("rpm_widget", "4", None))
+        self.rpmCaption_6.setText(_translate("rpm_widget", "5", None))
+        self.rpmCaption_7.setText(_translate("rpm_widget", "6", None))
+        self.rpmCaption_8.setText(_translate("rpm_widget", "rpm * 1000", None))
+        self.rpmCaption_9.setText(_translate("rpm_widget", "7", None))
+        self.rpmCaption_10.setText(_translate("rpm_widget", "8", None))
 

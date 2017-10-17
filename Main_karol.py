@@ -1,9 +1,9 @@
 # @autor: Karol Siegieda
-import os
 import sys
 #import can
 import subprocess
 from PyQt4 import QtCore, QtGui
+from PyQt4.QtCore import pyqtSlot, QThreadPool
 from src.modules.utils import *
 import math
 from src.gui.widgets import RPM_Widget
@@ -12,7 +12,7 @@ from functools import partial
 import random
 from src.gui.MainWindow import Ui_MainWindow
 #from src.gui.BmsWindow import Ui_Form
-
+from collections import deque
 
 systemStatus = 0
 s = 0
@@ -34,6 +34,7 @@ lapTimesCounter = 0
 class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(GUI_MainWindow, self).__init__(parent) #, , QtCore.Qt.FramelessWindowHint
+
         self.connectionStatus = 0
         global systemStatus
         systemStatus = 0
@@ -47,6 +48,8 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         systemStatus = 1
         self.setSystemStatus()
         self.proc.readyReadStandardOutput.connect(partial(self.updateScreen, self.proc))
+        self.container_rpm = deque([], 4)
+        self.container_current = deque([], 4)
 
     def initialiseCAN(self):
         if self.connectionStatus == 0:
@@ -66,16 +69,46 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
     def updateScreen(self, proc):
         lineunsplitted = str(proc.readAllStandardOutput()).strip()
-        line = lineunsplitted.split()
-        if (line[1] == "0CF11E05"):
-            rpm_lsb = int(line[3], base=16)
-            rpm_msb = int(line[4], base=16)
-            rpm_dec = rpm_msb * 256 + rpm_lsb
-            self.gg.updateRPM(random.randrange(0,7000))
+        line = lineunsplitted.split()[1:]
+        line = line[:1] + line [2:]
+        print line
+        ##### RPM ##################
+        if (line[0] == "0CF11E05"):
+            rpm_lsb = int(line[1], base=16)
+            rpm_msb = int(line[2], base=16)
+            rpm = rpm_msb * 256 + rpm_lsb
+            self.container_rpm.append(rpm)
+            avg = sum(self.container_rpm) / len(self.container_rpm)
+            self.gg.updateRPM(avg)
+        ##### CURRENT ###############
+            current_lsb = int(line[3], base=16)
+            current_msb = int(line[4], base=16)
+            current = (current_msb * 256 + current_lsb) / 10
+            self.container_current.append(current)
+            avg = sum(self.container_current) / len(self.container_current)
+            self.currentBar.setValue(avg)
+        ##### VOLTAGE ####################
+            voltage_lsb = int(line[5], base=16)
+            voltage_msb = int(line[6], base=16)
+            voltage = (voltage_msb * 256 + voltage_lsb) / 10
+            self.voltageBar.setValue(voltage)
+        else:
+            throttle = int(line[1], base=16)
+            throttle = throttle / 51
+            self.throttleBar.setValue(throttle)
+        #######################################3
+            controller_temp = int(line[2], base=16)
+            controller_temp = controller_temp - 40
+            self.controllerTempBar.setValue(controller_temp)
+        ########################################
+            # motor_temp = int(line[3], base=16)
+            motor_temp = controller_temp + 10
+            self.motorTempBar.setValue(motor_temp)
 
 
     def test(self):
-        self.gg.updateRPM(random.randrange(0, 7000))
+        self.thread.start()
+
 
     def lapTimer(self):
         global s, m, ms
@@ -162,7 +195,7 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.lcdNumber.display(self.time)
 
     def functionButtons(self):
-        QtCore.QObject.connect(self.closeApplication, QtCore.SIGNAL("clicked()"), self.test) #self.closeWindow
+        QtCore.QObject.connect(self.closeApplication, QtCore.SIGNAL("clicked()"), self.closeWindow) #s
         QtCore.QObject.connect(self.closeApplication, QtCore.SIGNAL("pressed()"), self.startCloseTimer)
         QtCore.QObject.connect(self.batteryDetails, QtCore.SIGNAL("clicked()"), self.openBmsWindow)
         QtCore.QObject.connect(self.connectBMS, QtCore.SIGNAL("clicked()"), self.initialiseCAN)

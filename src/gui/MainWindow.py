@@ -44,20 +44,20 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setMargin(0)
         self.gridLayout_2.setVerticalSpacing(6)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
-        self.batteryTempBar = QtGui.QProgressBar(self.frame)
+        self.motorTempBar = QtGui.QProgressBar(self.frame)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.batteryTempBar.sizePolicy().hasHeightForWidth())
-        self.batteryTempBar.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.motorTempBar.sizePolicy().hasHeightForWidth())
+        self.motorTempBar.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Gill Sans MT"))
         font.setPointSize(24)
         font.setBold(False)
         font.setItalic(True)
         font.setWeight(9)
-        self.batteryTempBar.setFont(font)
-        self.batteryTempBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
+        self.motorTempBar.setFont(font)
+        self.motorTempBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
 "    border: 2px solid grey;\n"
 "    border-radius: 5px;\n"
 "    text-align: center;\n"
@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
 "border-image: url(\"img/gradient3.png\");}\n"
 "\n"
 "QProgressBar::chunk {\n"
-"    background-color: #FFFF00;\n"
+"    background-color: #FFFF66;\n"
 "    border: 0,6px solid grey;\n"
 "    border-radius: 4px;\n"
 "    width: 8px;\n"
@@ -74,50 +74,11 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 ""))
-        self.batteryTempBar.setMaximum(75)
-        self.batteryTempBar.setProperty("value", 23)
-        self.batteryTempBar.setAlignment(QtCore.Qt.AlignCenter)
-        self.batteryTempBar.setObjectName(_fromUtf8("batteryTempBar"))
-        self.gridLayout_2.addWidget(self.batteryTempBar, 2, 1, 1, 1)
-        self.voltageBar = QtGui.QProgressBar(self.frame)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.voltageBar.sizePolicy().hasHeightForWidth())
-        self.voltageBar.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily(_fromUtf8("Gill Sans MT"))
-        font.setPointSize(24)
-        font.setBold(False)
-        font.setItalic(True)
-        font.setWeight(9)
-        self.voltageBar.setFont(font)
-        self.voltageBar.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.voltageBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
-"border-image: url(\"img/gradient3.png\");    border: 3px solid white;\n"
-"    border-radius: 5px;\n"
-"    text-align: center;\n"
-"font: 75 italic 24pt \"Gill Sans MT\" ;\n"
-"    color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QProgressBar::chunk {\n"
-"    background-color: rgb(0, 175, 0);\n"
-"    border: 0,6px solid grey;\n"
-"    border-radius: 4px;\n"
-"    width: 8px;\n"
-"    margin:1px;\n"
-"\n"
-"\n"
-"}\n"
-""))
-        self.voltageBar.setMaximum(60)
-        self.voltageBar.setProperty("value", 30)
-        self.voltageBar.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.voltageBar.setInvertedAppearance(False)
-        self.voltageBar.setTextDirection(QtGui.QProgressBar.TopToBottom)
-        self.voltageBar.setObjectName(_fromUtf8("voltageBar"))
-        self.gridLayout_2.addWidget(self.voltageBar, 0, 1, 1, 1)
+        self.motorTempBar.setMaximum(75)
+        self.motorTempBar.setProperty("value", 23)
+        self.motorTempBar.setAlignment(QtCore.Qt.AlignCenter)
+        self.motorTempBar.setObjectName(_fromUtf8("motorTempBar"))
+        self.gridLayout_2.addWidget(self.motorTempBar, 2, 1, 1, 1)
         self.label_4 = QtGui.QLabel(self.frame)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -167,25 +128,25 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 ""))
-        self.currentBar.setMaximum(250)
+        self.currentBar.setMaximum(400)
         self.currentBar.setProperty("value", 100)
         self.currentBar.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.currentBar.setObjectName(_fromUtf8("currentBar"))
         self.gridLayout_2.addWidget(self.currentBar, 1, 1, 1, 1)
-        self.engineTempBar = QtGui.QProgressBar(self.frame)
+        self.controllerTempBar = QtGui.QProgressBar(self.frame)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.engineTempBar.sizePolicy().hasHeightForWidth())
-        self.engineTempBar.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.controllerTempBar.sizePolicy().hasHeightForWidth())
+        self.controllerTempBar.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Gill Sans MT"))
         font.setPointSize(24)
         font.setBold(False)
         font.setItalic(True)
         font.setWeight(9)
-        self.engineTempBar.setFont(font)
-        self.engineTempBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
+        self.controllerTempBar.setFont(font)
+        self.controllerTempBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
 "    border: 2px solid grey;\n"
 "    border-radius: 5px;\n"
 "    text-align: center;\n"
@@ -201,11 +162,11 @@ class Ui_MainWindow(object):
 "    margin:1px;\n"
 "\n"
 "}"))
-        self.engineTempBar.setMaximum(75)
-        self.engineTempBar.setProperty("value", 30)
-        self.engineTempBar.setAlignment(QtCore.Qt.AlignCenter)
-        self.engineTempBar.setObjectName(_fromUtf8("engineTempBar"))
-        self.gridLayout_2.addWidget(self.engineTempBar, 3, 1, 1, 1)
+        self.controllerTempBar.setMaximum(75)
+        self.controllerTempBar.setProperty("value", 30)
+        self.controllerTempBar.setAlignment(QtCore.Qt.AlignCenter)
+        self.controllerTempBar.setObjectName(_fromUtf8("controllerTempBar"))
+        self.gridLayout_2.addWidget(self.controllerTempBar, 3, 1, 1, 1)
         self.label_3 = QtGui.QLabel(self.frame)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -224,20 +185,20 @@ class Ui_MainWindow(object):
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.gridLayout_2.addWidget(self.label_3, 2, 0, 1, 1)
-        self.engineSpeedBar = QtGui.QProgressBar(self.frame)
+        self.throttleBar = QtGui.QProgressBar(self.frame)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.engineSpeedBar.sizePolicy().hasHeightForWidth())
-        self.engineSpeedBar.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.throttleBar.sizePolicy().hasHeightForWidth())
+        self.throttleBar.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Gill Sans MT"))
         font.setPointSize(22)
         font.setBold(False)
         font.setItalic(True)
         font.setWeight(9)
-        self.engineSpeedBar.setFont(font)
-        self.engineSpeedBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
+        self.throttleBar.setFont(font)
+        self.throttleBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
 "    border: 2px solid grey;\n"
 "    border-radius: 5px;\n"
 "    text-align: center;\n"
@@ -253,11 +214,11 @@ class Ui_MainWindow(object):
 "    margin:1px;\n"
 "\n"
 "}"))
-        self.engineSpeedBar.setMaximum(5000)
-        self.engineSpeedBar.setProperty("value", 1500)
-        self.engineSpeedBar.setAlignment(QtCore.Qt.AlignCenter)
-        self.engineSpeedBar.setObjectName(_fromUtf8("engineSpeedBar"))
-        self.gridLayout_2.addWidget(self.engineSpeedBar, 4, 1, 1, 1)
+        self.throttleBar.setMaximum(5)
+        self.throttleBar.setProperty("value", 2)
+        self.throttleBar.setAlignment(QtCore.Qt.AlignCenter)
+        self.throttleBar.setObjectName(_fromUtf8("throttleBar"))
+        self.gridLayout_2.addWidget(self.throttleBar, 4, 1, 1, 1)
         self.label_2 = QtGui.QLabel(self.frame)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -314,13 +275,49 @@ class Ui_MainWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName(_fromUtf8("label"))
         self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
-        self.batteryTempBar.raise_()
+        self.voltageBar = QtGui.QProgressBar(self.frame)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.voltageBar.sizePolicy().hasHeightForWidth())
+        self.voltageBar.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Gill Sans MT"))
+        font.setPointSize(24)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(9)
+        self.voltageBar.setFont(font)
+        self.voltageBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
+"    border: 2px solid white;\n"
+"    border-radius: 5px;\n"
+"    text-align: center;\n"
+"font: 75 italic 24pt \"Gill Sans MT\" ;\n"
+"    color: rgb(255, 255, 255);\n"
+"border-image: url(\"img/gradient3.png\");}\n"
+"\n"
+"\n"
+"QProgressBar::chunk {\n"
+"    background-color: #66FF33;\n"
+"    border: 0,6px solid grey;\n"
+"    border-radius: 4px;\n"
+"    width: 8px;\n"
+"    margin:1px;\n"
+"\n"
+"}\n"
+""))
+        self.voltageBar.setMaximum(400)
+        self.voltageBar.setProperty("value", 100)
+        self.voltageBar.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.voltageBar.setObjectName(_fromUtf8("voltageBar"))
+        self.gridLayout_2.addWidget(self.voltageBar, 0, 1, 1, 1)
+        self.motorTempBar.raise_()
         self.label_4.raise_()
         self.label.raise_()
         self.label_2.raise_()
         self.label_5.raise_()
-        self.engineTempBar.raise_()
-        self.engineSpeedBar.raise_()
+        self.controllerTempBar.raise_()
+        self.throttleBar.raise_()
         self.label_3.raise_()
         self.currentBar.raise_()
         self.voltageBar.raise_()
@@ -767,16 +764,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.batteryTempBar.setFormat(_translate("MainWindow", "%p *C", None))
-        self.voltageBar.setFormat(_translate("MainWindow", "%v V", None))
-        self.label_4.setText(_translate("MainWindow", "<html><head/><body><p>Engine </p><p>Temp. </p></body></html>", None))
+        self.motorTempBar.setFormat(_translate("MainWindow", "%p *C", None))
+        self.label_4.setText(_translate("MainWindow", "<html><head/><body><p>Controller</p><p>Temp</p></body></html>", None))
         self.currentBar.setFormat(_translate("MainWindow", "%v A", None))
-        self.engineTempBar.setFormat(_translate("MainWindow", "%p *C", None))
-        self.label_3.setText(_translate("MainWindow", "<html><head/><body><p>Battery </p><p>Temp. </p></body></html>", None))
-        self.engineSpeedBar.setFormat(_translate("MainWindow", "%v RPM", None))
+        self.controllerTempBar.setFormat(_translate("MainWindow", "%p *C", None))
+        self.label_3.setText(_translate("MainWindow", "<html><head/><body><p> Motor </p><p>Temp</p></body></html>", None))
+        self.throttleBar.setFormat(_translate("MainWindow", "%v V", None))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p>Battery<br/>Current </p></body></html>", None))
-        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:18pt;\">Engine<br/>Speed<br/></span></p></body></html>", None))
+        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:18pt;\">Throttle</span></p><p><span style=\" font-size:18pt;\">signal</span></p></body></html>", None))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p>Battery<br/>Voltage </p></body></html>", None))
+        self.voltageBar.setFormat(_translate("MainWindow", "%v V", None))
         item = self.lapTimes.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Lap Times", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Lap Times", None))
