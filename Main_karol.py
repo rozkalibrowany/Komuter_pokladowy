@@ -8,14 +8,13 @@ from src.modules.utils import *
 import math
 from src.gui.widgets import RPM_Widget
 from src.modules.settings import *
-
-
+from functools import partial
+import random
 from src.gui.MainWindow import Ui_MainWindow
 #from src.gui.BmsWindow import Ui_Form
 
 
 systemStatus = 0
-connectionStatus = 0
 s = 0
 m = 0
 ms = 0
@@ -35,32 +34,48 @@ lapTimesCounter = 0
 class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(GUI_MainWindow, self).__init__(parent) #, , QtCore.Qt.FramelessWindowHint
+        self.connectionStatus = 0
         global systemStatus
         systemStatus = 0
         self.setupUi(self)
-        self.gg = RPM_Widget(self.rpm_widget)
-        #self.bmsWindow = GUI_BMSWindow()
-        #self.initializeCAN()
+        self.gg = RPM_Widget(self.rpm_widget) #self.gg.updateRPM(100)
+        self.proc = QtCore.QProcess()
         self.functionButtons()
         self.setConnectionStatus()
         self.laptimer = QtCore.QTimer(self)
         self.laptimer.timeout.connect(self.lapTimer)
         systemStatus = 1
         self.setSystemStatus()
+        self.proc.readyReadStandardOutput.connect(partial(self.updateScreen, self.proc))
 
-    def initialiseCAN():
-        if systemStatus == 0:
+    def initialiseCAN(self):
+        if self.connectionStatus == 0:
             try:
                 system.os("sudo ip link set can0 up type can bitrate 250000")
                 message = "CAN initialized. Bitrate = 250kh/s."
-                writeConsoleMessage(message)
+                self.writeConsoleMessage(message)
             except Exception:
                 message = "CAN couldn't be initialised. Check configuration"
                 systemStatus = 0
-                self.setSystemStatus()
-        #bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
-        #msg = can.Message(arbitration_id=0x7de, data=[0,25,0,1], extended_id=False)
-        #bus.send(msg)
+        self.setSystemStatus()
+        self.proc.kill()
+        self.proc.setProcessChannelMode(self.proc.MergedChannels)
+        self.proc.start(TEST_COMMAND)
+        self.connectionStatus = 1
+
+
+    def updateScreen(self, proc):
+        lineunsplitted = str(proc.readAllStandardOutput()).strip()
+        line = lineunsplitted.split()
+        if (line[1] == "0CF11E05"):
+            rpm_lsb = int(line[3], base=16)
+            rpm_msb = int(line[4], base=16)
+            rpm_dec = rpm_msb * 256 + rpm_lsb
+            self.gg.updateRPM(random.randrange(0,7000))
+
+
+    def test(self):
+        self.gg.updateRPM(random.randrange(0, 7000))
 
     def lapTimer(self):
         global s, m, ms
@@ -147,7 +162,7 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.lcdNumber.display(self.time)
 
     def functionButtons(self):
-        QtCore.QObject.connect(self.closeApplication, QtCore.SIGNAL("clicked()"), self.closeWindow)
+        QtCore.QObject.connect(self.closeApplication, QtCore.SIGNAL("clicked()"), self.test) #self.closeWindow
         QtCore.QObject.connect(self.closeApplication, QtCore.SIGNAL("pressed()"), self.startCloseTimer)
         QtCore.QObject.connect(self.batteryDetails, QtCore.SIGNAL("clicked()"), self.openBmsWindow)
         QtCore.QObject.connect(self.connectBMS, QtCore.SIGNAL("clicked()"), self.initialiseCAN)
@@ -223,13 +238,13 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.statusBar.setText("Unknown error.")
 
     def setConnectionStatus(self):
-        if(connectionStatus == 1):
+        if(self.connectionStatus == 1):
             self.connectionBar.setStyleSheet(
                 " border-image: url('img/green-03.jpg');"
                 " font: 75 italic 16pt 'Gill Sans MT' ; "
                 " color: rgb(49, 51, 49); ")
             self.statusBar.setText("Connected")
-        elif (connectionStatus == 0):
+        elif (self.connectionStatus == 0):
             self.connectionBar.setStyleSheet(
                 " border-image: url('img/red-04.jpg');"
                 " font: 75 italic 14pt 'Gill Sans MT' ; "
