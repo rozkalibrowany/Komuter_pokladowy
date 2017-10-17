@@ -19,23 +19,29 @@
   <widget class="QLabel" name="rpmCaption">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>238</y>
-     <width>191</width>
+     <x>120</x>
+     <y>240</y>
+     <width>51</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Levenim MT</family>
-     <pointsize>18</pointsize>
+     <family>Gill Sans MT</family>
+     <pointsize>14</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: white; background:none;</string>
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
    </property>
    <property name="text">
-    <string>RPM * 1000/min</string>
+    <string>km/h</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1042,6 +1048,285 @@ background-color: rgba(255, 255, 255, 20)</string>
     </property>
    </widget>
   </widget>
+  <widget class="QLabel" name="rpmCaption_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_3">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>90</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_4">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>50</y>
+     <width>16</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>3</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_5">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>40</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>4</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_6">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>50</y>
+     <width>20</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>5</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_7">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>90</y>
+     <width>20</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>6</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_8">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>100</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>14</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>rpm * 1000</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_9">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>150</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>7</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rpmCaption_10">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>200</y>
+     <width>21</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white; 
+background:none;
+font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+   </property>
+   <property name="text">
+    <string>8</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
   <zorder>black_circle</zorder>
   <zorder>dark_dots_widget</zorder>
   <zorder>dots_widget</zorder>
@@ -1049,6 +1334,15 @@ background-color: rgba(255, 255, 255, 20)</string>
   <zorder>pintop</zorder>
   <zorder>rpmCaption</zorder>
   <zorder>rpmNumber</zorder>
+  <zorder>rpmCaption_2</zorder>
+  <zorder>rpmCaption_3</zorder>
+  <zorder>rpmCaption_4</zorder>
+  <zorder>rpmCaption_5</zorder>
+  <zorder>rpmCaption_6</zorder>
+  <zorder>rpmCaption_7</zorder>
+  <zorder>rpmCaption_8</zorder>
+  <zorder>rpmCaption_9</zorder>
+  <zorder>rpmCaption_10</zorder>
  </widget>
  <resources/>
  <connections/>
