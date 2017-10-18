@@ -1052,7 +1052,7 @@ background-color: rgba(255, 255, 255, 20)</string>
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>150</y>
+     <y>130</y>
      <width>20</width>
      <height>20</height>
     </rect>
@@ -1082,8 +1082,8 @@ color: rgb(216, 216, 216);</string>
   <widget class="QLabel" name="rpmCaption_3">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>90</y>
+     <x>70</x>
+     <y>60</y>
      <width>20</width>
      <height>20</height>
     </rect>
@@ -1113,10 +1113,10 @@ color: rgb(216, 216, 216);</string>
   <widget class="QLabel" name="rpmCaption_4">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>50</y>
+     <x>140</x>
+     <y>40</y>
      <width>16</width>
-     <height>21</height>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -1144,8 +1144,8 @@ color: rgb(216, 216, 216);</string>
   <widget class="QLabel" name="rpmCaption_5">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>40</y>
+     <x>200</x>
+     <y>60</y>
      <width>20</width>
      <height>20</height>
     </rect>
@@ -1175,8 +1175,8 @@ color: rgb(216, 216, 216);</string>
   <widget class="QLabel" name="rpmCaption_6">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>50</y>
+     <x>240</x>
+     <y>130</y>
      <width>20</width>
      <height>21</height>
     </rect>
@@ -1207,7 +1207,7 @@ color: rgb(216, 216, 216);</string>
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>90</y>
+     <y>200</y>
      <width>20</width>
      <height>21</height>
     </rect>
@@ -1237,91 +1237,31 @@ color: rgb(216, 216, 216);</string>
   <widget class="QLabel" name="rpmCaption_8">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>110</x>
      <y>100</y>
-     <width>121</width>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Gill Sans MT</family>
+     <family>Ubuntu</family>
      <pointsize>14</pointsize>
-     <weight>9</weight>
+     <weight>50</weight>
      <italic>true</italic>
      <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color: white; 
+font: 14pt &quot;Ubuntu Mono&quot;;
 background:none;
-font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+font: 63 italic 14pt &quot;Ubuntu&quot;;
+color: rgb(216, 216, 216);
+font: italic 14pt &quot;Ubuntu&quot;;</string>
    </property>
    <property name="text">
     <string>rpm * 1000</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="rpmCaption_9">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>150</y>
-     <width>20</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Gill Sans MT</family>
-     <pointsize>12</pointsize>
-     <weight>9</weight>
-     <italic>true</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: white; 
-background:none;
-font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
-   </property>
-   <property name="text">
-    <string>7</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="rpmCaption_10">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>200</y>
-     <width>21</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Gill Sans MT</family>
-     <pointsize>12</pointsize>
-     <weight>9</weight>
-     <italic>true</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: white; 
-background:none;
-font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
-   </property>
-   <property name="text">
-    <string>8</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1341,8 +1281,6 @@ color: rgb(216, 216, 216);</string>
   <zorder>rpmCaption_6</zorder>
   <zorder>rpmCaption_7</zorder>
   <zorder>rpmCaption_8</zorder>
-  <zorder>rpmCaption_9</zorder>
-  <zorder>rpmCaption_10</zorder>
  </widget>
  <resources/>
  <connections/>

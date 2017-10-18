@@ -46,6 +46,7 @@ class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
         lineItem = QtGui.QGraphicsLineItem(line, scene=self.scene)
         lineItem.setPen(pen)
 
+
     def updateRPM(self, rpm):
 ##        if self.activateDial:
 ##            rpm = self.dial.value()
@@ -59,7 +60,8 @@ class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
             for dot in self.dots[number_of_dots:]:
                 if dot.isVisible():
                     dot.setVisible(False)
-        self.rpmNumber.display(int(round(rpm/10.0)*10))
+        self.v_gokart=int(rpm*2.754/216) # Wzor na predkosc gokarta od predkosci obrotowej
+        self.rpmNumber.display(self.v_gokart)
         self.current_num_of_dots = number_of_dots
 
         self.updateLine(rpm)

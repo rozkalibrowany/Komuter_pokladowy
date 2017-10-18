@@ -33,7 +33,7 @@ lapTimesCounter = 0
 
 class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
-        super(GUI_MainWindow, self).__init__(parent) #, , QtCore.Qt.FramelessWindowHint
+        super(GUI_MainWindow, self).__init__(parent, QtCore.Qt.FramelessWindowHint)
 
         self.connectionStatus = 0
         global systemStatus
@@ -71,7 +71,6 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         lineunsplitted = str(proc.readAllStandardOutput()).strip()
         line = lineunsplitted.split()[1:]
         line = line[:1] + line [2:]
-        print line
         ##### RPM ##################
         if (line[0] == "0CF11E05"):
             rpm_lsb = int(line[1], base=16)
