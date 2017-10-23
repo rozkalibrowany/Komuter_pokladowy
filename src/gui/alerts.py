@@ -1,0 +1,193 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'src\gui\alerts.ui'
+#
+# Created by: PyQt4 UI code generator 4.11.4
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName(_fromUtf8("Form"))
+        Form.resize(310, 560)
+        Form.setStyleSheet(_fromUtf8("QLabel {\n"
+"    color: white;\n"
+"}"))
+        self.widget = QtGui.QWidget(Form)
+        self.widget.setGeometry(QtCore.QRect(0, 0, 321, 581))
+        self.widget.setStyleSheet(_fromUtf8("#widget {\n"
+"    background-image: url(\"img/tlo.png\");\n"
+"}"))
+        self.widget.setObjectName(_fromUtf8("widget"))
+        self.verticalLayoutWidget = QtGui.QWidget(self.widget)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 60, 71, 491))
+        self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.led_slot_3 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_3.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_3.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_3.setObjectName(_fromUtf8("led_slot_3"))
+        self.verticalLayout.addWidget(self.led_slot_3)
+        self.led_slot_2 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_2.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_2.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_2.setObjectName(_fromUtf8("led_slot_2"))
+        self.verticalLayout.addWidget(self.led_slot_2)
+        self.led_slot_8 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_8.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_8.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_8.setObjectName(_fromUtf8("led_slot_8"))
+        self.verticalLayout.addWidget(self.led_slot_8)
+        self.led_slot_6 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_6.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_6.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_6.setObjectName(_fromUtf8("led_slot_6"))
+        self.verticalLayout.addWidget(self.led_slot_6)
+        self.led_slot_10 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_10.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_10.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_10.setObjectName(_fromUtf8("led_slot_10"))
+        self.verticalLayout.addWidget(self.led_slot_10)
+        self.led_slot_7 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_7.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_7.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_7.setObjectName(_fromUtf8("led_slot_7"))
+        self.verticalLayout.addWidget(self.led_slot_7)
+        self.led_slot_11 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_11.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_11.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_11.setObjectName(_fromUtf8("led_slot_11"))
+        self.verticalLayout.addWidget(self.led_slot_11)
+        self.led_slot_4 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_4.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_4.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_4.setObjectName(_fromUtf8("led_slot_4"))
+        self.verticalLayout.addWidget(self.led_slot_4)
+        self.led_slot_5 = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot_5.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot_5.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot_5.setObjectName(_fromUtf8("led_slot_5"))
+        self.verticalLayout.addWidget(self.led_slot_5)
+        self.led_slot = QtGui.QFrame(self.verticalLayoutWidget)
+        self.led_slot.setFrameShape(QtGui.QFrame.NoFrame)
+        self.led_slot.setFrameShadow(QtGui.QFrame.Raised)
+        self.led_slot.setObjectName(_fromUtf8("led_slot"))
+        self.led_slot_3.raise_()
+        self.led_slot_5.raise_()
+        self.verticalLayout.addWidget(self.led_slot)
+        self.verticalLayoutWidget_2 = QtGui.QWidget(self.widget)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(90, 60, 211, 491))
+        self.verticalLayoutWidget_2.setObjectName(_fromUtf8("verticalLayoutWidget_2"))
+        self.verticalLayout_2 = QtGui.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+        self.label_2 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet(_fromUtf8(""))
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.verticalLayout_2.addWidget(self.label_2)
+        self.label_3 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet(_fromUtf8(""))
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.verticalLayout_2.addWidget(self.label_3)
+        self.label_6 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet(_fromUtf8(""))
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.verticalLayout_2.addWidget(self.label_6)
+        self.label_10 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_10.setFont(font)
+        self.label_10.setObjectName(_fromUtf8("label_10"))
+        self.verticalLayout_2.addWidget(self.label_10)
+        self.label_5 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.verticalLayout_2.addWidget(self.label_5)
+        self.label_11 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_11.setFont(font)
+        self.label_11.setObjectName(_fromUtf8("label_11"))
+        self.verticalLayout_2.addWidget(self.label_11)
+        self.label_9 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName(_fromUtf8("label_9"))
+        self.verticalLayout_2.addWidget(self.label_9)
+        self.label_7 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName(_fromUtf8("label_7"))
+        self.verticalLayout_2.addWidget(self.label_7)
+        self.label_4 = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.verticalLayout_2.addWidget(self.label_4)
+        self.label = QtGui.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label.setFont(font)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.verticalLayout_2.addWidget(self.label)
+        self.close_btn = QtGui.QPushButton(self.widget)
+        self.close_btn.setGeometry(QtCore.QRect(10, 10, 291, 41))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.close_btn.setFont(font)
+        self.close_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.close_btn.setStyleSheet(_fromUtf8("/*background-color: qlineargradient(spread:pad, x1:0.522955, y1:0, x2:0.517, y2:1, stop:0 rgba(255, 164, 176, 255), stop:1 rgba(255, 0, 12, 255)); */\n"
+"color: white;\n"
+"border: 1px solid darkgrey;\n"
+"border-radius: 9px;\n"
+"background-color: qlineargradient(spread:pad, x1:0.522955, y1:0, x2:0.522682, y2:0.574, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(255, 0, 12, 255));\n"
+"background-image: none;"))
+        self.close_btn.setObjectName(_fromUtf8("close_btn"))
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        Form.setWindowTitle(_translate("Form", "Form", None))
+        self.label_2.setText(_translate("Form", "Identification error", None))
+        self.label_3.setText(_translate("Form", "Over voltage", None))
+        self.label_6.setText(_translate("Form", "Low voltage", None))
+        self.label_10.setText(_translate("Form", "motor provide speed feedback", None))
+        self.label_5.setText(_translate("Form", "Internal volts fault", None))
+        self.label_11.setText(_translate("Form", "Over temperature", None))
+        self.label_9.setText(_translate("Form", "Throttle error at power-up", None))
+        self.label_7.setText(_translate("Form", "internal reset", None))
+        self.label_4.setText(_translate("Form", "hall throttle open", None))
+        self.label.setText(_translate("Form", "angle sensor open", None))
+        self.close_btn.setText(_translate("Form", "Close", None))
+
