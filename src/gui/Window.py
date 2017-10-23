@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'window.ui'
+# Form implementation generated from reading ui file 'src\gui\window.ui'
 #
-# Created: Tue Sep 19 17:45:04 2017
-#      by: PyQt4 UI code generator 4.11.2
+# Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -241,6 +240,26 @@ class Ui_MainWindow(object):
         self.pushButton = QtGui.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(540, 430, 75, 23))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.frame.raise_()
+        self.rpm_widget.raise_()
+        self.progressBar.raise_()
+        self.label_23.raise_()
+        self.btnStart.raise_()
+        self.label_24.raise_()
+        self.timeEdit.raise_()
+        self.btnStopwatch.raise_()
+        self.btnNewLap.raise_()
+        self.listView.raise_()
+        self.voltageBar.raise_()
+        self.label_25.raise_()
+        self.currentBar.raise_()
+        self.label_26.raise_()
+        self.btnConnect.raise_()
+        self.label_27.raise_()
+        self.labelStatus.raise_()
+        self.framesLabel.raise_()
+        self.dial.raise_()
+        self.pushButton.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 960, 27))
