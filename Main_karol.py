@@ -7,12 +7,14 @@ from PyQt4.QtCore import pyqtSlot, QThreadPool
 from src.modules.utils import *
 import math
 from src.gui.widgets import RPM_Widget
+from src.gui.LedIndicatorWidget import *
 from src.modules.settings import *
 from functools import partial
 import random
 from src.gui.MainWindow2 import Ui_MainWindow
 #from src.gui.BmsWindow import Ui_Form
 from collections import deque
+from src.gui.alerts import Ui_Form as AlertsUI
 
 systemStatus = 0
 s = 0
@@ -30,6 +32,17 @@ lapTimesCounter = 0
 ##    def closeWindow(self):
 ##        self.close()
 
+class AlertsWindow(QtGui.QWidget, AlertsUI):
+    def __init__(self, parent=None):
+        super(AlertsWindow, self).__init__(parent, QtCore.Qt.FramelessWindowHint)
+        self.setupUi(self)
+        led_slots = self.findChildren(QtGui.QFrame)
+        for led_slot in led_slots:
+            if QtGui.QFrame == led_slot.__class__:
+                l = LedIndicator(led_slot)
+                l.setGeometry(0,0,30,30)
+        self.close_btn.clicked.connect(self.close)
+        
 
 class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -50,6 +63,7 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.proc.readyReadStandardOutput.connect(partial(self.updateScreen, self.proc))
         self.container_rpm = deque([], 4)
         self.container_current = deque([], 4)
+        self.alertsWindow = AlertsWindow()
 
     def initialiseCAN(self):
         if self.connectionStatus == 0:
@@ -245,8 +259,10 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.writeConsoleMessage(message)
 
     def openBmsWindow(self):
-        self.bmsWindow.setGeometry(1052, 250, 250, 408)
-        self.bmsWindow.show()
+##        self.bmsWindow.setGeometry(1052, 250, 250, 408)
+##        self.bmsWindow.show()
+        self.alertsWindow.setGeometry(self.x(), self.y(), 310, 560)
+        self.alertsWindow.show()
 
 
     def systemTime(self):

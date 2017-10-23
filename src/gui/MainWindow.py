@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'src/gui/black_window_test.ui'
+# Form implementation generated from reading ui file 'src\gui\black_window_test.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -25,7 +25,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1016, 634)
+        MainWindow.resize(1016, 652)
         MainWindow.setStyleSheet(_fromUtf8(""))
         MainWindow.setDockOptions(QtGui.QMainWindow.AllowNestedDocks|QtGui.QMainWindow.AllowTabbedDocks|QtGui.QMainWindow.AnimatedDocks|QtGui.QMainWindow.VerticalTabs)
         self.centralwidget = QtGui.QWidget(MainWindow)
@@ -457,7 +457,7 @@ class Ui_MainWindow(object):
         self.tab.setObjectName(_fromUtf8("tab"))
         self.lapTimes = QtGui.QTableWidget(self.tab)
         self.lapTimes.setGeometry(QtCore.QRect(0, 0, 161, 239))
-        self.lapTimes.setMinimumSize(QtCore.QSize(26, 0))
+        self.lapTimes.setMinimumSize(QtCore.QSize(14, 0))
         self.lapTimes.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.lapTimes.setStyleSheet(_fromUtf8("QTableWidget {\n"
 "border-image: url(\"img/tlo.png\");\n"
@@ -733,18 +733,12 @@ class Ui_MainWindow(object):
         self.line_6.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1016, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1016, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
-        self.toolBar = QtGui.QToolBar(MainWindow)
-        self.toolBar.setObjectName(_fromUtf8("toolBar"))
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
-        self.toolBar_2 = QtGui.QToolBar(MainWindow)
-        self.toolBar_2.setObjectName(_fromUtf8("toolBar_2"))
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar_2)
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -785,6 +779,4 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Connection", None))
         self.pushButton_3.setText(_translate("MainWindow", "Status", None))
         self.clearAlerts.setText(_translate("MainWindow", "Clear Alerts", None))
-        self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar", None))
-        self.toolBar_2.setWindowTitle(_translate("MainWindow", "toolBar_2", None))
 
