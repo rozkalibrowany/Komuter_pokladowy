@@ -85,10 +85,10 @@ QProgressBar::chunk {
 </string>
        </property>
        <property name="maximum">
-        <number>75</number>
+        <number>100</number>
        </property>
        <property name="value">
-        <number>23</number>
+        <number>0</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -168,7 +168,7 @@ QProgressBar::chunk {
         <number>400</number>
        </property>
        <property name="value">
-        <number>100</number>
+        <number>0</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -214,10 +214,10 @@ QProgressBar::chunk {
 }</string>
        </property>
        <property name="maximum">
-        <number>75</number>
+        <number>100</number>
        </property>
        <property name="value">
-        <number>30</number>
+        <number>0</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -292,16 +292,16 @@ QProgressBar::chunk {
 }</string>
        </property>
        <property name="maximum">
-        <number>5</number>
+        <number>100</number>
        </property>
        <property name="value">
-        <number>2</number>
+        <number>0</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="format">
-        <string>%v V</string>
+        <string>%v %</string>
        </property>
       </widget>
      </item>
@@ -441,10 +441,10 @@ QProgressBar::chunk {
 </string>
        </property>
        <property name="maximum">
-        <number>400</number>
+        <number>120</number>
        </property>
        <property name="value">
-        <number>100</number>
+        <number>0</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

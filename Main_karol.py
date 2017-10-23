@@ -10,7 +10,7 @@ from src.gui.widgets import RPM_Widget
 from src.modules.settings import *
 from functools import partial
 import random
-from src.gui.MainWindow import Ui_MainWindow
+from src.gui.MainWindow2 import Ui_MainWindow
 #from src.gui.BmsWindow import Ui_Form
 from collections import deque
 
