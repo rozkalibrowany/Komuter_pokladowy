@@ -32,17 +32,40 @@ lapTimesCounter = 0
 ##    def closeWindow(self):
 ##        self.close()
 
+ERR = {
+    0 : 'Identification error',
+    1 : 'Over voltage',
+    2 : 'Low voltage',
+    3 : 'RESERVED',
+    4 : 'Motor provide speed feedback',
+    5 : 'Internal volts fault',
+    6 : 'Over temperature',
+    7 : 'Throttle error at power-up',
+    8 : 'RESERVED',
+    9 : 'Internal reset',
+    10 : 'Hall throttle open',
+    11 : 'Angle sensor open',
+    12 : 'RESERVED',
+    13 : 'RESERVED',
+    14 : 'Motor over temperature',
+    15 : 'Hall Galvanometer sensor error',
+}
+
 class AlertsWindow(QtGui.QWidget, AlertsUI):
     def __init__(self, parent=None):
-        super(AlertsWindow, self).__init__(parent, QtCore.Qt.FramelessWindowHint)
+        super(AlertsWindow, self).__init__(parent, QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
         self.setupUi(self)
         led_slots = self.findChildren(QtGui.QFrame)
+        self.leds = {}
         for led_slot in led_slots:
             if QtGui.QFrame == led_slot.__class__:
                 l = LedIndicator(led_slot)
                 l.setGeometry(0,0,30,30)
+                self.leds[str(led_slot.objectName())] = l
+            if QtGui.QLabel == led_slot.__class__:
+                number = str(led_slot.objectName()).replace('label_err', '')
+                led_slot.setText(ERR[int(number)])
         self.close_btn.clicked.connect(self.close)
-        
 
 class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -105,6 +128,22 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             voltage_msb = int(line[6], base=16)
             voltage = (voltage_msb * 256 + voltage_lsb) / 10
             self.voltageBar.setValue(voltage)
+        ##### ERRORS #######################
+            errors_lsb = '{:08b}'.format(int(line[7], base=16))
+            errors_msb = '{:08b}'.format(int(line[8], base=16))
+
+            ### random, for testing only:
+            #k, m = random.randrange(0, len(errors_lsb)), random.randrange(0, len(errors_msb))
+            #errors_lsb = errors_lsb[:k] + '1' + errors_lsb[k+1:]
+            #errors_msb = errors_msb[:m] + '1' + errors_msb[m+1:]
+
+            ### all green
+            errors_lsb = '11111111'
+            errors_msb = '11111111'
+            
+            for i, bit in enumerate((errors_msb + errors_lsb)[::-1]):
+                if ERR[i] != 'RESERVED':
+                    self.alertsWindow.leds['led_err'+str(i)].setChecked(bit == '1')
         else:
             throttle = int(line[1], base=16)
             throttle = throttle / 51
@@ -230,6 +269,7 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.console.clear()
         message = ' Application is going to close now'
         self.writeConsoleMessage(message)
+        self.alertsWindow.close()
         try:
             self.close()
             self.bmsWindow.closeWindow()
@@ -261,8 +301,11 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def openBmsWindow(self):
 ##        self.bmsWindow.setGeometry(1052, 250, 250, 408)
 ##        self.bmsWindow.show()
-        self.alertsWindow.setGeometry(self.x(), self.y(), 310, 560)
-        self.alertsWindow.show()
+        if self.alertsWindow.isVisible():
+            self.alertsWindow.close()
+        else:
+            self.alertsWindow.setGeometry(self.x(), self.y(), 330, 581)
+            self.alertsWindow.show()
 
 
     def systemTime(self):
