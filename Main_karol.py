@@ -11,7 +11,7 @@ from src.gui.LedIndicatorWidget import *
 from src.modules.settings import *
 from functools import partial
 import random
-from src.gui.MainWindow2 import Ui_MainWindow
+from src.gui.MainWindow import Ui_MainWindow
 #from src.gui.BmsWindow import Ui_Form
 from collections import deque
 from src.gui.alerts import Ui_Form as AlertsUI
