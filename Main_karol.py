@@ -7,14 +7,13 @@ from PyQt4.QtCore import pyqtSlot, QThreadPool
 from src.modules.utils import *
 import math
 from src.gui.widgets import RPM_Widget
-from src.gui.LedIndicatorWidget import *
 from src.modules.settings import *
 from functools import partial
 import random
 from src.gui.MainWindow import Ui_MainWindow
 #from src.gui.BmsWindow import Ui_Form
 from collections import deque
-from src.gui.alerts import Ui_Form as AlertsUI
+from src.modules.AlertsWindow import AlertsWindow
 
 systemStatus = 0
 s = 0
@@ -31,41 +30,6 @@ lapTimesCounter = 0
 ##
 ##    def closeWindow(self):
 ##        self.close()
-
-ERR = {
-    0 : 'Identification error',
-    1 : 'Over voltage',
-    2 : 'Low voltage',
-    3 : 'RESERVED',
-    4 : 'Motor provide speed feedback',
-    5 : 'Internal volts fault',
-    6 : 'Over temperature',
-    7 : 'Throttle error at power-up',
-    8 : 'RESERVED',
-    9 : 'Internal reset',
-    10 : 'Hall throttle open',
-    11 : 'Angle sensor open',
-    12 : 'RESERVED',
-    13 : 'RESERVED',
-    14 : 'Motor over temperature',
-    15 : 'Hall Galvanometer sensor error',
-}
-
-class AlertsWindow(QtGui.QWidget, AlertsUI):
-    def __init__(self, parent=None):
-        super(AlertsWindow, self).__init__(parent, QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
-        self.setupUi(self)
-        led_slots = self.findChildren(QtGui.QFrame)
-        self.leds = {}
-        for led_slot in led_slots:
-            if QtGui.QFrame == led_slot.__class__:
-                l = LedIndicator(led_slot)
-                l.setGeometry(0,0,30,30)
-                self.leds[str(led_slot.objectName())] = l
-            if QtGui.QLabel == led_slot.__class__:
-                number = str(led_slot.objectName()).replace('label_err', '')
-                led_slot.setText(ERR[int(number)])
-        self.close_btn.clicked.connect(self.close)
 
 class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
