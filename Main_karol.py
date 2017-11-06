@@ -308,39 +308,6 @@ class GUI_MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         else:
             self.statusBar.setText("Unknown error.")
 
-    def portOpen(self):
-        try:
-            self.port = serial.Serial("/dev/ttyUSB0", 9600)
-            print("Serial port " + self.port.name + "opened")
-        except SerialException as e:
-            print("Could not open port")
-
-    def ReadData(self):
-        tablica_funkcji=np.zeros((16,2), float)
-        for i in range(0, 16):
-                print("Timer function")
-                dane = self.port.read(2)
-                window.Console_2.append(dane)
-                dane = list(dane)
-                dane1 = dane[0]
-                dane1 = ord(dane1)
-                dane2 = dane[1]
-                dane2 = ord(dane2)
-                funkcja = ((dane1 & 0xF0) >> 4)
-                wartosc = ((dane1 & 0x0F) << 8) + dane2
-                tablica_funkcji[i][0] = wartosc
-                tablica_funkcji[i][1] = funkcja
-                if (i == 15):
-                        tablica2 = tablica_funkcji[tablica_funkcji[:, 1].argsort()]
-                        SumVoltage = 0
-                        Current = 0
-                        for j in range(0, 13):
-                            tablica2[j + 3][0] = ((tablica2[j + 3][0] * 4.0)/4096.0) + 1
-                            SumVoltage = SumVoltage + tablica2[j + 3][0]
-                        Current = (0.394 * tablica2[0][0] - 683.87)
-                        window.voltageBar.setValue(SumVoltage)
-                        window.currentBar.setValue(Current)
-
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
