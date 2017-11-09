@@ -9,7 +9,7 @@ with open('log/gokart_log.txt') as f:
 i = 0
 length = len(lines)
 while True:
-    print lines[i%length]
+    print(lines[i%length])
     stdout.flush()
     time.sleep(0.05)
     i += 1

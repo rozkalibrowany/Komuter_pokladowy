@@ -1,7 +1,7 @@
 # @autor: Karol Siegieda, Michal Sut
 
 import sys
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 #from src.gui.MainWindow import Ui_MainWindow
 
@@ -59,7 +59,7 @@ class StopwatchThread(QtCore.QThread):
         super(StopwatchThread, self).start()
         self._isRunning = True
 
-class GUI_Window(QtGui.QMainWindow, Ui_Window):
+class GUI_Window(QtWidgets.QMainWindow, Ui_Window):
     def __init__(self, parent=None):
         super(GUI_Window, self).__init__(parent)
         self.setupUi(self)
@@ -83,7 +83,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
         self.stopwatch.setTime.connect(self.timeEdit.setTime)
         
     def init_temp_widget(self):
-        self.scene_temp = QtGui.QGraphicsScene()
+        self.scene_temp = QtWidgets.QGraphicsScene()
         self.tempBar.setScene(self.scene_temp)
         self.tempBar.setSceneRect(0,0,self.tempBar.frameSize().width(),self.tempBar.frameSize().height())
         self.tempBar.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
@@ -188,7 +188,7 @@ class GUI_Window(QtGui.QMainWindow, Ui_Window):
 
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     x = GUI_Window()
     x.show()
 
