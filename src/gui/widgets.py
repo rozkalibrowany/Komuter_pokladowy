@@ -1,24 +1,24 @@
-from PyQt4 import QtCore, QtGui
-from rpm_widget import Ui_rpm_widget
+from PyQt5 import QtCore, QtGui, QtWidgets
+from .rpm_widget import Ui_rpm_widget
 import math
 from src.modules.settings import *
 
-class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
+class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
     def __init__(self, parent):
-        super(QtGui.QWidget, self).__init__(parent)
+        super(QtWidgets.QWidget, self).__init__(parent)
         self.setupUi(self)
         self.setStyleSheet('QWidget {background: transparent;}')
         self.init_rpm_widget()
 
     def init_rpm_widget(self):
-        self.dots = self.dots_widget.findChildren(QtGui.QLabel)
+        self.dots = self.dots_widget.findChildren(QtWidgets.QLabel)
         
         for dot in self.dots:
             dot.setVisible(False)
             
 
         self.current_num_of_dots = 0
-        self.scene = QtGui.QGraphicsScene()
+        self.scene = QtWidgets.QGraphicsScene()
         self.graphicsView.setScene(self.scene)
         self.graphicsView.setSceneRect(0,0,self.graphicsView.frameSize().width(),self.graphicsView.frameSize().height())
         self.graphicsView.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff);
@@ -43,7 +43,8 @@ class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
         #print line_length, '|', value, '|', math.degrees(angle), '|', x2, y2
         
         line = QtCore.QLineF(x1, y1 ,x1-x2,y1-y2)
-        lineItem = QtGui.QGraphicsLineItem(line, scene=self.scene)
+        lineItem = QtWidgets.QGraphicsLineItem(line)
+        self.scene.addItem(lineItem)
         lineItem.setPen(pen)
 
 
@@ -51,8 +52,8 @@ class RPM_Widget(QtGui.QWidget, Ui_rpm_widget):
 ##        if self.activateDial:
 ##            rpm = self.dial.value()
 
-        number_of_dots = rpm/(MAX_RPM_VALUE/len(self.dots))
-        
+        number_of_dots = int(rpm/(MAX_RPM_VALUE/len(self.dots)))
+        print(number_of_dots)        
         if number_of_dots != self.current_num_of_dots:
             for dot in self.dots[:number_of_dots]:
                 if not dot.isVisible():
