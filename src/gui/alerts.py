@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from img import img_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -18,7 +19,7 @@ class Ui_Form(object):
         self.widget = QtWidgets.QWidget(Form)
         self.widget.setGeometry(QtCore.QRect(0, 0, 341, 581))
         self.widget.setStyleSheet("#widget {\n"
-"    background-image: url(\"img/tlo.png\");\n"
+"    background-image: url(\":general/general/tlo.png\");\n"
 "}")
         self.widget.setObjectName("widget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.widget)

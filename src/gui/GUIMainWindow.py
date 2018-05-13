@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
-import subprocess
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import pyqtSlot, QThreadPool
 from src.modules.utils import *
-import math
 from src.gui.widgets import RPM_Widget
 from src.modules.settings import *
 from functools import partial
-import random
-from src.gui.MainWindow2 import Ui_MainWindow
+from src.gui.PyMainWindow import Ui_MainWindow
 from collections import deque
 from src.modules.AlertsWindow import AlertsWindow
+from img import img_rc
 
 systemStatus = 0
 s = 0
@@ -145,7 +142,7 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             if timerStarted is False:
                 timerStarted = True
                 self.startLapTimer.setStyleSheet('QPushButton {'
-                    'border-image: url("img/start_lap_button_clicked.png");'
+                    'border-image: url(":general/general/start_lap_button_clicked.png");'
                     'font 75 italic 14 "Gill Sans MT";'
                     'color: rgb(216,216,216);}'
                 )
@@ -157,7 +154,7 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.sleepTimer.setSingleShot(True)
                 self.sleepTimer.start()
                 self.startLapTimer.setStyleSheet('QPushButton {'
-                    'border-image: url("img/start_lap_button.png");'
+                    'border-image: url(":general/general/start_lap_button.png");'
                     'font 75 italic 14 "Gill Sans MT";'
                     'color: rgb(216,216,216);}')
                 message = (' Stopping timer... \n     Transfering time: ' +
@@ -271,13 +268,13 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def setSystemStatus(self):
         if(systemStatus == 1):
             self.statusBar.setStyleSheet(
-                " border-image: url('img/green-03.jpg');"
+                " border-image: url(':general/general/green-03.jpg');"
                 " font: 75 italic 16pt 'Gill Sans MT' ; "
                 " color: rgb(49, 51, 49); ")
             self.statusBar.setText("OK!")
         elif (systemStatus == 0):
             self.statusBar.setStyleSheet(
-                " border-image: url('img/red-04.jpg');"
+                " border-image: url(':general/general/red-04.jpg');"
                 " font: 75 italic 14pt 'Gill Sans MT' ; "
                 " color: rgb(35, 44, 35); ")
             self.statusBar.setText("Error. Check Alerts")
@@ -287,13 +284,13 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def setConnectionStatus(self):
         if(self.connectionStatus == 1):
             self.connectionBar.setStyleSheet(
-                " border-image: url('img/green-03.jpg');"
+                " border-image: url(':general/general/green-03.jpg');"
                 " font: 75 italic 16pt 'Gill Sans MT' ; "
                 " color: rgb(49, 51, 49); ")
             self.statusBar.setText("Connected")
         elif (self.connectionStatus == 0):
             self.connectionBar.setStyleSheet(
-                " border-image: url('img/red-04.jpg');"
+                " border-image: url(':general/general/red-04.jpg');"
                 " font: 75 italic 14pt 'Gill Sans MT' ; "
                 " color: rgb(35, 44, 35); ")
             self.connectionBar.setText("Not connected")

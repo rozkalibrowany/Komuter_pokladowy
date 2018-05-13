@@ -1,0 +1,1247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1016</width>
+    <height>634</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::VerticalTabs</set>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">border-image: url(&quot;:general/general/tlo.png&quot;);</string>
+   </property>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>291</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;:general/general/transparent.png&quot;);</string>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>6</number>
+     </property>
+     <item row="2" column="1">
+      <widget class="QProgressBar" name="motorTempBar">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>24</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: center;
+	font: 75 italic 24pt &quot;Gill Sans MT&quot; ;
+	color: rgb(24, 112, 194);
+border-image: url(&quot;:general/general/gradient3.png&quot;);}
+
+QProgressBar::chunk {
+    background-color: #FFFF66;
+	border: 0,6px solid grey;
+    border-radius: 4px;
+    width: 8px;
+    margin:1px;
+
+}
+</string>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="format">
+        <string>%p *C</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>18</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);font: 75 italic 18pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Controller&lt;/p&gt;&lt;p&gt;Temp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QProgressBar" name="currentBar">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>24</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: center;
+font: 75 italic 24pt &quot;Gill Sans MT&quot; ;
+	color: rgb(255, 255, 255);
+border-image: url(&quot;:general/general/gradient3.png&quot;);}
+
+
+QProgressBar::chunk {
+    background-color:rgb(232, 77, 0) ;
+	border: 0,6px solid grey;
+    border-radius: 4px;
+    width: 8px;
+    margin:1px;
+
+}
+</string>
+       </property>
+       <property name="maximum">
+        <number>400</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="format">
+        <string>%v A</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QProgressBar" name="controllerTempBar">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>24</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: center;
+	font: 75 italic 24pt &quot;Gill Sans MT&quot; ;
+	color: rgb(24, 112, 194);
+border-image: url(&quot;:general/general/gradient3.png&quot;);}
+
+QProgressBar::chunk {
+    background-color: #FFFF00;
+	border: 0,6px solid grey;
+    border-radius: 4px;
+    width: 8px;
+    margin:1px;
+
+}</string>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="format">
+        <string>%p *C</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>18</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);font: 75 italic 18pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; Motor &lt;/p&gt;&lt;p&gt;Temp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QProgressBar" name="throttleBar">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>22</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: center;
+	font: 75 italic 22pt &quot;Gill Sans MT&quot; ;
+	color: rgb(255, 255, 255);
+border-image: url(&quot;:general/general/gradient3.png&quot;);}
+
+QProgressBar::chunk {
+    background-color: rgb(0, 68, 204);
+	border: 0,6px solid grey;
+    border-radius: 4px;
+    width: 8px;
+    margin:1px;
+
+}</string>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="format">
+        <string>%v %</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>18</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::NoContextMenu</enum>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 18pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+       </property>
+       <property name="lineWidth">
+        <number>3</number>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Battery&lt;br/&gt;Current &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>16</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Throttle&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;signal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>18</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::NoContextMenu</enum>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 18pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Battery&lt;br/&gt;Voltage &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QProgressBar" name="voltageBar">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Gill Sans MT</family>
+         <pointsize>24</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: center;
+font: 75 italic 24pt &quot;Gill Sans MT&quot; ;
+	color: rgb(255, 255, 255);
+border-image: url(&quot;:general/general/gradient3.png&quot;);}
+
+
+QProgressBar::chunk {
+    background-color: #66FF33;
+	border: 0,6px solid grey;
+    border-radius: 4px;
+    width: 8px;
+    margin:1px;
+
+}
+</string>
+       </property>
+       <property name="maximum">
+        <number>120</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="format">
+        <string>%v V</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+    <zorder>motorTempBar</zorder>
+    <zorder>label_4</zorder>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>label_5</zorder>
+    <zorder>controllerTempBar</zorder>
+    <zorder>throttleBar</zorder>
+    <zorder>label_3</zorder>
+    <zorder>currentBar</zorder>
+    <zorder>voltageBar</zorder>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>1</y>
+      <width>381</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border-radius: 10px;
+border-image: url(&quot;:general/general/transparent.png&quot;);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <widget class="QPushButton" name="closeApplication">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>20</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {border-image: url(&quot;:general/general/exit_button.png&quot;);
+font: 75 italic 20pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}
+QPushButton:pressed {border-image: url(&quot;general/general/exit_button_clicked.png&quot;);
+font: 75 italic 22pt &quot;Gill Sans MT&quot; ;
+color: rgb(36, 36, 36)}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>2500</number>
+     </property>
+     <property name="autoRepeatInterval">
+      <number>2100</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="batteryDetails">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>200</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {border-image: url(&quot;:general/general/battery_details_button.png&quot;);
+font: 75 italic 22pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}
+QPushButton:pressed {border-image: url(&quot;:general/general/battery_details_button_clicked.png&quot;);
+font: 75 italic 22pt &quot;Gill Sans MT&quot; ;
+color: rgb(36, 36, 36)}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="virtKeyboard">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>140</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {border-image: url(&quot;:general/general/keyboard_button.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}
+QPushButton:pressed {border-image: url(&quot;:general/general/keyboard_button_clicked.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(36, 36, 36)}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="connectBMS">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>80</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {border-image: url(&quot;:general/general/bms_connect_button.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}
+QPushButton:pressed {border-image: url(&quot;:general/general/bms_connect_button_clicked.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(36, 36, 36)}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="Line" name="line_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>150</y>
+       <width>341</width>
+       <height>3</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>161</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTabWidget { /* The tab widget frame */
+    border-top: 3px solid #C2C7CB;
+border-image: url(&quot;:general/general/gradient3.png&quot;);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 8px;
+}
+
+QTabWidget::tab-bar {
+    left: 3px; /* move to the right by 5px */
+border-image: url(&quot;:general/general/gradient3.png&quot;);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 6px;
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+    border: 3px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 6px;
+    min-width: 12ex;
+    padding: 4px;
+border-image: url(&quot;:general/general/gradient3.png&quot;);
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+border-image: url(&quot;:general/general/gradient3.png&quot;);
+
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: white; /* same as pane color */
+border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 10pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px; /* make non-selected tabs look smaller */
+border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 10pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Lap Times</string>
+      </attribute>
+      <widget class="QTableWidget" name="lapTimes">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>161</width>
+         <height>239</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>26</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+border-image: url(&quot;:general/general/tlo.png&quot;);
+    border: 2px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 2px;
+    border-top-right-radius: 4px;
+    min-width: 2ex;
+    padding: 1px;
+font: 75 italic 13pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+
+}
+QHeaderView::section {
+	border-image: url(&quot;:general/general/gradient3.png&quot;);
+    padding: 1px;
+    font-size: 11pt;
+    border-style: none;
+    border-bottom: 0.5px solid #fffff8;
+    border-right: 2px solid #fffff8;
+font: 75 10.5pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}
+
+QHeaderView {border-image: url(&quot;:general/general/tlo.png&quot;)
+
+;}
+
+QHeaderView::section:horizontal
+{
+    border-top: 1px solid #fffff8;
+}
+
+QHeaderView::section:vertical
+{
+    border-left: 1px solid #fffff8;
+}
+
+QTableCornerButton::section {border-image: url(&quot;:general/general/tlo.png&quot;);}</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="autoScrollMargin">
+        <number>10</number>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerItem</enum>
+       </property>
+       <property name="rowCount">
+        <number>0</number>
+       </property>
+       <property name="columnCount">
+        <number>1</number>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>138</number>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>29</number>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>30</number>
+       </attribute>
+       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderStretchLastSection">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Lap Times</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Best Lap Times</string>
+      </attribute>
+      <widget class="QTableWidget" name="bestLapTimes">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>161</width>
+         <height>241</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+border-image: url(&quot;:general/general/tlo.png&quot;);
+    border: 2px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 2px;
+    border-top-right-radius: 4px;
+    min-width: 2ex;
+    padding: 1px;
+
+}
+QHeaderView::section {
+	border-image: url(&quot;:general/general/gradient3.png&quot;);
+    padding: 1px;
+    font-size: 11pt;
+    border-style: none;
+    border-bottom: 0.5px solid #fffff8;
+    border-right: 2px solid #fffff8;
+font: 75 italic 11pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}
+
+QHeaderView {border-image: url(&quot;:general/general/tlo.png&quot;)
+
+;}
+
+QHeaderView::section:horizontal
+{
+    border-top: 1px solid #fffff8;
+}
+
+QHeaderView::section:vertical
+{
+    border-left: 1px solid #fffff8;
+}
+
+QTableCornerButton::section {border-image: url(&quot;:general/general/tlo.png&quot;);}</string>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>144</number>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>29</number>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Best Times</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="clearLapTimes">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>260</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {border-image: url(&quot;:general/general/clear_table.png&quot;);
+font: 75 italic 22pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);
+}
+QPushButton:pressed {border-image: url(&quot;:general/general/clear_table_clicked.png&quot;);
+font: 75 italic 22pt &quot;Gill Sans MT&quot; ;
+color: rgb(36, 36, 36)}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="adekLogo">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>450</y>
+       <width>263</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(&quot;:general/general/adek3.png&quot;);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>0</y>
+      <width>301</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="startLapTimer">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Gill Sans MT</family>
+             <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>true</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {border-image: url(&quot;:general/general/start_lap_button.png&quot;);
+font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);}
+
+QPushButton:pressed {border-image: url(&quot;:general/general/start_lap_button_clicked.png&quot;);
+font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216)
+}</string>
+           </property>
+           <property name="text">
+            <string>Start Lap Timer</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="font">
+            <font>
+             <family>Gill Sans MT</family>
+             <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>true</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+           </property>
+           <property name="text">
+            <string>Lap Time:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLCDNumber" name="lcdNumber">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>20</horstretch>
+             <verstretch>40</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="sizeIncrement">
+            <size>
+             <width>7</width>
+             <height>21</height>
+            </size>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>13</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="lineWidth">
+            <number>4</number>
+           </property>
+           <property name="midLineWidth">
+            <number>10</number>
+           </property>
+           <property name="segmentStyle">
+            <enum>QLCDNumber::Filled</enum>
+           </property>
+           <property name="value" stdset="0">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="intValue" stdset="0">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+    </property>
+    <property name="text">
+     <string>Connection</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>0</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+    </property>
+    <property name="text">
+     <string>Status</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="statusBar">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>0</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="connectionBar">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>30</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;:general/general/gradient3.png&quot;);
+font: 75 italic 16pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="Line" name="line_5">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>0</y>
+      <width>3</width>
+      <height>582</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clearAlerts">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>550</y>
+      <width>301</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>256</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Gill Sans MT</family>
+      <pointsize>14</pointsize>
+      <weight>9</weight>
+      <italic>true</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {border-image: url(&quot;:general/general/start_lap_button.png&quot;);
+font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216);}
+
+QPushButton:pressed {border-image: url(&quot;:general/general/start_lap_button_clicked.png&quot;);
+font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
+color: rgb(216, 216, 216)
+}</string>
+    </property>
+    <property name="text">
+     <string>Clear Alerts</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="console">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>420</y>
+      <width>301</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>380</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic 11pt;
+border: 5px solid grey;
+border-radius: 10px;
+color: rgb(216, 216, 216);</string>
+    </property>
+    <property name="autoFormatting">
+     <set>QTextEdit::AutoNone</set>
+    </property>
+    <property name="tabStopWidth">
+     <number>73</number>
+    </property>
+   </widget>
+   <widget class="QWidget" name="rpm_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>122</y>
+      <width>301</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0;
+background: transparent;
+border-image: none;</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_6">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>0</y>
+      <width>3</width>
+      <height>582</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <zorder>rpm_widget</zorder>
+   <zorder>frame</zorder>
+   <zorder>frame_2</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>statusBar</zorder>
+   <zorder>connectionBar</zorder>
+   <zorder>line_5</zorder>
+   <zorder>clearAlerts</zorder>
+   <zorder>console</zorder>
+   <zorder>line_6</zorder>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>batteryDetails</tabstop>
+  <tabstop>closeApplication</tabstop>
+  <tabstop>virtKeyboard</tabstop>
+  <tabstop>connectBMS</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>lapTimes</tabstop>
+  <tabstop>bestLapTimes</tabstop>
+  <tabstop>clearLapTimes</tabstop>
+  <tabstop>startLapTimer</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>statusBar</tabstop>
+  <tabstop>connectionBar</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../img/img.qrc"/>
+ </resources>
+ <connections/>
+</ui>
