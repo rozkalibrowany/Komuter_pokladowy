@@ -24,6 +24,17 @@
     <file>circles/circle22.png</file>
     <file>circles/circle23.png</file>
   </qresource>
+  <qresource prefix="44x44">
+    <file>44x44/air-con.png</file>
+    <file>44x44/command.png</file>
+    <file>44x44/message.png</file>
+    <file>44x44/music.png</file>
+    <file>44x44/navigation.png</file>
+    <file>44x44/seats.png</file>
+    <file>44x44/settings.png</file>
+    <file>44x44/statistics.png</file>
+    <file>44x44/windows.png</file>
+  </qresource>
   <qresource prefix="colorized_circles">
     <file>colorized_circles/circle1.png</file>
     <file>colorized_circles/circle2.png</file>

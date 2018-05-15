@@ -12,10 +12,10 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
 
     def init_rpm_widget(self):
         self.dots = self.dots_widget.findChildren(QtWidgets.QLabel)
-        
+
         for dot in self.dots:
             dot.setVisible(False)
-            
+
 
         self.current_num_of_dots = 0
         self.scene = QtWidgets.QGraphicsScene()
@@ -26,7 +26,7 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         self.updateLine(0)
 
     def updateLine(self, value):
-            
+
         self.scene.clear()
 
         pen = QtGui.QPen(QtCore.Qt.red, 5, QtCore.Qt.SolidLine, QtCore.Qt.RoundCap)
@@ -41,7 +41,7 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         y2 = -1 * line_length * math.cos(angle + math.radians(angle_offset))
 
         #print line_length, '|', value, '|', math.degrees(angle), '|', x2, y2
-        
+
         line = QtCore.QLineF(x1, y1 ,x1-x2,y1-y2)
         lineItem = QtWidgets.QGraphicsLineItem(line)
         self.scene.addItem(lineItem)
@@ -53,7 +53,7 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
 ##            rpm = self.dial.value()
 
         number_of_dots = int(rpm/(MAX_RPM_VALUE/len(self.dots)))
-        print(number_of_dots)        
+        print(number_of_dots)
         if number_of_dots != self.current_num_of_dots:
             for dot in self.dots[:number_of_dots]:
                 if not dot.isVisible():
@@ -66,4 +66,4 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         self.current_num_of_dots = number_of_dots
 
         self.updateLine(rpm)
-    
+
