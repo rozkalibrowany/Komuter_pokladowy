@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>779</width>
+    <width>800</width>
     <height>480</height>
    </rect>
   </property>
@@ -535,9 +535,6 @@ color:  #6affcd;</string>
        <property name="currentIndex">
         <number>3</number>
        </property>
-       <widget class="QWidget" name="setting"/>
-       <widget class="QWidget" name="alerts"/>
-       <widget class="QWidget" name="stats"/>
        <widget class="QWidget" name="drive">
         <widget class="Line" name="line">
          <property name="geometry">
@@ -558,7 +555,7 @@ color:  #6affcd;</string>
         <widget class="Line" name="line_2">
          <property name="geometry">
           <rect>
-           <x>440</x>
+           <x>430</x>
            <y>20</y>
            <width>2</width>
            <height>430</height>
@@ -572,6 +569,9 @@ color:  #6affcd;</string>
          </property>
         </widget>
        </widget>
+       <widget class="QWidget" name="alerts"/>
+       <widget class="QWidget" name="stats"/>
+       <widget class="QWidget" name="settings"/>
       </widget>
      </item>
     </layout>
