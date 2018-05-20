@@ -1,8 +1,7 @@
 from PyQt5 import QtWidgets
 from src.gui.newGui import Ui_MainWindow
-clicked = False
-
-
+from src.gui.widgets import RPM_Widget
+from collections import deque
 
 class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -12,6 +11,10 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.lastButtonObject = QtWidgets.QFrame()         # przechowuje obiekt poprzedniego przycisku menu
         self.objectList = []
         self.pageMap = {'vfMain': 0, 'vfAlerts': 1, 'vfStats': 2, 'vfSettings': 3}
+        self.rpmWidget = RPM_Widget(self.rpm_widget)
+        self.container_rpm = deque([], 4)
+        self.container_current = deque([], 4)
+        self.menuButtonChanged(self.vfMain)
 
     def functionButtons(self):
         self.driveButton.pressed.connect(lambda: self.menuButtonChanged(self.vfMain))
@@ -30,7 +33,6 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         if not self.lastButtonObject.objectName():
             self.lastButtonObject = widget
-            print(widget.objectName())
             self.setNewPage(self.pageMap[widget.objectName()])         # zmien stronę
             self.menuButtonAreaStyleUpdate(objectListCopy, True)
         else:

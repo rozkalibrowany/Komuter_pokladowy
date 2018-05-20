@@ -289,17 +289,23 @@ class Ui_MainWindow(object):
         self.drive = QtWidgets.QWidget()
         self.drive.setObjectName("drive")
         self.line = QtWidgets.QFrame(self.drive)
-        self.line.setGeometry(QtCore.QRect(140, 20, 2, 430))
+        self.line.setGeometry(QtCore.QRect(130, 20, 2, 430))
         self.line.setStyleSheet("background-color: #6affcd")
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.line_2 = QtWidgets.QFrame(self.drive)
-        self.line_2.setGeometry(QtCore.QRect(430, 20, 2, 430))
+        self.line_2.setGeometry(QtCore.QRect(450, 20, 2, 430))
         self.line_2.setStyleSheet("background-color: #6affcd")
         self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
+        self.rpm_widget = QtWidgets.QWidget(self.drive)
+        self.rpm_widget.setGeometry(QtCore.QRect(140, 100, 301, 301))
+        self.rpm_widget.setStyleSheet("border: 0;\n"
+"background: transparent;\n"
+"border-image: none;")
+        self.rpm_widget.setObjectName("rpm_widget")
         self.stackedWidget.addWidget(self.drive)
         self.alerts = QtWidgets.QWidget()
         self.alerts.setObjectName("alerts")
@@ -314,7 +320,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -324,3 +330,4 @@ class Ui_MainWindow(object):
         self.alertsLabel.setText(_translate("MainWindow", "Alerts"))
         self.statsLabel.setText(_translate("MainWindow", "Stats"))
         self.settingsLabel.setText(_translate("MainWindow", "Setting"))
+

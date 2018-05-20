@@ -38,7 +38,7 @@
     <string notr="true">color: white; 
 background:none;
 font: 75 italic 14pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+color: #6affcd;</string>
    </property>
    <property name="text">
     <string>km/h</string>
@@ -70,7 +70,7 @@ color: rgb(216, 216, 216);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: yellow;
+    <string notr="true">color: #6affcd;
 background-color: rgba(255, 255, 255, 20)</string>
    </property>
    <property name="frameShape">
@@ -1070,7 +1070,7 @@ background-color: rgba(255, 255, 255, 20)</string>
     <string notr="true">color: white; 
 background:none;
 font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+color: #6affcd;</string>
    </property>
    <property name="text">
     <string>1</string>
@@ -1101,7 +1101,7 @@ color: rgb(216, 216, 216);</string>
     <string notr="true">color: white; 
 background:none;
 font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+color: #6affcd;</string>
    </property>
    <property name="text">
     <string>2</string>
@@ -1132,7 +1132,7 @@ color: rgb(216, 216, 216);</string>
     <string notr="true">color: white; 
 background:none;
 font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+color: #6affcd;</string>
    </property>
    <property name="text">
     <string>3</string>
@@ -1163,7 +1163,7 @@ color: rgb(216, 216, 216);</string>
     <string notr="true">color: white; 
 background:none;
 font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+color: #6affcd;</string>
    </property>
    <property name="text">
     <string>4</string>
@@ -1194,7 +1194,7 @@ color: rgb(216, 216, 216);</string>
     <string notr="true">color: white; 
 background:none;
 font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+color: #6affcd;</string>
    </property>
    <property name="text">
     <string>5</string>
@@ -1225,7 +1225,7 @@ color: rgb(216, 216, 216);</string>
     <string notr="true">color: white; 
 background:none;
 font: 75 italic 12pt &quot;Gill Sans MT&quot; ;
-color: rgb(216, 216, 216);</string>
+color: #6affcd;</string>
    </property>
    <property name="text">
     <string>6</string>
@@ -1257,7 +1257,7 @@ color: rgb(216, 216, 216);</string>
 font: 14pt &quot;Ubuntu Mono&quot;;
 background:none;
 font: 63 italic 14pt &quot;Ubuntu&quot;;
-color: rgb(216, 216, 216);
+color: #6affcd;
 font: italic 14pt &quot;Ubuntu&quot;;</string>
    </property>
    <property name="text">
