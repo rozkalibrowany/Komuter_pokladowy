@@ -20,7 +20,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(&quot;:general/general/gradient3.png&quot;);
+   <string notr="true">background-color: rgb(24,24,24);
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -53,7 +53,8 @@
     </property>
     <property name="styleSheet">
      <string notr="true">/*background-image: url(&quot;:general/general/gradient3.png&quot;); */
-background-color: black;</string>
+background-color: rgb(24,24,24);
+</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -526,20 +527,23 @@ color:  #6affcd;</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(&quot;:general/general/gradient3.png&quot;);
+     <string notr="true">background-color: rgb(24,24,24);
 </string>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
+     <item row="1" column="0">
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
         <number>0</number>
        </property>
        <widget class="QWidget" name="drive">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <widget class="Line" name="line">
          <property name="geometry">
           <rect>
-           <x>130</x>
+           <x>180</x>
            <y>20</y>
            <width>2</width>
            <height>430</height>
@@ -555,7 +559,7 @@ color:  #6affcd;</string>
         <widget class="Line" name="line_2">
          <property name="geometry">
           <rect>
-           <x>450</x>
+           <x>500</x>
            <y>20</y>
            <width>2</width>
            <height>430</height>
@@ -571,7 +575,7 @@ color:  #6affcd;</string>
         <widget class="QWidget" name="rpm_widget" native="true">
          <property name="geometry">
           <rect>
-           <x>140</x>
+           <x>190</x>
            <y>100</y>
            <width>301</width>
            <height>301</height>
@@ -581,6 +585,67 @@ color:  #6affcd;</string>
           <string notr="true">border: 0;
 background: transparent;
 border-image: none;</string>
+         </property>
+        </widget>
+        <widget class="QQuickWidget" name="batteryVWidget">
+         <property name="geometry">
+          <rect>
+           <x>520</x>
+           <y>290</y>
+           <width>160</width>
+           <height>145</height>
+          </rect>
+         </property>
+         <property name="resizeMode">
+          <enum>QQuickWidget::SizeRootObjectToView</enum>
+         </property>
+        </widget>
+        <widget class="QQuickWidget" name="batteryCWidget">
+         <property name="geometry">
+          <rect>
+           <x>520</x>
+           <y>130</y>
+           <width>160</width>
+           <height>145</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="resizeMode">
+          <enum>QQuickWidget::SizeRootObjectToView</enum>
+         </property>
+        </widget>
+        <widget class="QQuickWidget" name="contrTWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>140</y>
+           <width>160</width>
+           <height>145</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="resizeMode">
+          <enum>QQuickWidget::SizeRootObjectToView</enum>
+         </property>
+        </widget>
+        <widget class="QQuickWidget" name="batteryTWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>300</y>
+           <width>160</width>
+           <height>145</height>
+          </rect>
+         </property>
+         <property name="resizeMode">
+          <enum>QQuickWidget::SizeRootObjectToView</enum>
          </property>
         </widget>
        </widget>
@@ -593,6 +658,13 @@ border-image: none;</string>
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header>QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../../../img/img.qrc"/>
  </resources>

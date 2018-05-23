@@ -10,12 +10,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys, os
 sys.path.insert(2, os.path.join(sys.path[0], '../..'))
 import img.img_rc
+from PyQt5 import QtQuickWidgets
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 480)
         MainWindow.setMaximumSize(QtCore.QSize(800, 480))
-        MainWindow.setStyleSheet("background-image: url(\":general/general/gradient3.png\");\n"
+        MainWindow.setStyleSheet("background-color: rgb(24,24,24);\n"
 "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -29,7 +31,8 @@ class Ui_MainWindow(object):
         self.menuButtonsGroup.setMinimumSize(QtCore.QSize(70, 0))
         self.menuButtonsGroup.setMaximumSize(QtCore.QSize(16777215, 480))
         self.menuButtonsGroup.setStyleSheet("/*background-image: url(\":general/general/gradient3.png\"); */\n"
-"background-color: black;")
+"background-color: rgb(24,24,24);\n"
+"")
         self.menuButtonsGroup.setAlignment(QtCore.Qt.AlignCenter)
         self.menuButtonsGroup.setObjectName("menuButtonsGroup")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.menuButtonsGroup)
@@ -279,7 +282,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.gridFrame.sizePolicy().hasHeightForWidth())
         self.gridFrame.setSizePolicy(sizePolicy)
         self.gridFrame.setMaximumSize(QtCore.QSize(720, 480))
-        self.gridFrame.setStyleSheet("background-image: url(\":general/general/gradient3.png\");\n"
+        self.gridFrame.setStyleSheet("background-color: rgb(24,24,24);\n"
 "")
         self.gridFrame.setObjectName("gridFrame")
         self.gridLayout = QtWidgets.QGridLayout(self.gridFrame)
@@ -289,23 +292,42 @@ class Ui_MainWindow(object):
         self.drive = QtWidgets.QWidget()
         self.drive.setObjectName("drive")
         self.line = QtWidgets.QFrame(self.drive)
-        self.line.setGeometry(QtCore.QRect(130, 20, 2, 430))
+        self.line.setGeometry(QtCore.QRect(180, 20, 2, 430))
         self.line.setStyleSheet("background-color: #6affcd")
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.line_2 = QtWidgets.QFrame(self.drive)
-        self.line_2.setGeometry(QtCore.QRect(450, 20, 2, 430))
+        self.line_2.setGeometry(QtCore.QRect(500, 20, 2, 430))
         self.line_2.setStyleSheet("background-color: #6affcd")
         self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.rpm_widget = QtWidgets.QWidget(self.drive)
-        self.rpm_widget.setGeometry(QtCore.QRect(140, 100, 301, 301))
+        self.rpm_widget.setGeometry(QtCore.QRect(190, 100, 301, 301))
         self.rpm_widget.setStyleSheet("border: 0;\n"
 "background: transparent;\n"
 "border-image: none;")
         self.rpm_widget.setObjectName("rpm_widget")
+        self.batteryVWidget = QtQuickWidgets.QQuickWidget(self.drive)
+        self.batteryVWidget.setGeometry(QtCore.QRect(520, 290, 160, 145))
+        self.batteryVWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.batteryVWidget.setObjectName("batteryVWidget")
+        self.batteryCWidget = QtQuickWidgets.QQuickWidget(self.drive)
+        self.batteryCWidget.setGeometry(QtCore.QRect(520, 130, 160, 145))
+        self.batteryCWidget.setAutoFillBackground(False)
+        self.batteryCWidget.setStyleSheet("")
+        self.batteryCWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.batteryCWidget.setObjectName("batteryCWidget")
+        self.contrTWidget = QtQuickWidgets.QQuickWidget(self.drive)
+        self.contrTWidget.setGeometry(QtCore.QRect(0, 140, 160, 145))
+        self.contrTWidget.setStyleSheet("")
+        self.contrTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.contrTWidget.setObjectName("contrTWidget")
+        self.batteryTWidget = QtQuickWidgets.QQuickWidget(self.drive)
+        self.batteryTWidget.setGeometry(QtCore.QRect(0, 300, 160, 145))
+        self.batteryTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.batteryTWidget.setObjectName("batteryTWidget")
         self.stackedWidget.addWidget(self.drive)
         self.alerts = QtWidgets.QWidget()
         self.alerts.setObjectName("alerts")
@@ -316,7 +338,7 @@ class Ui_MainWindow(object):
         self.settings = QtWidgets.QWidget()
         self.settings.setObjectName("settings")
         self.stackedWidget.addWidget(self.settings)
-        self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.stackedWidget, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -330,4 +352,5 @@ class Ui_MainWindow(object):
         self.alertsLabel.setText(_translate("MainWindow", "Alerts"))
         self.statsLabel.setText(_translate("MainWindow", "Stats"))
         self.settingsLabel.setText(_translate("MainWindow", "Setting"))
+
 

@@ -1,12 +1,23 @@
-from PyQt5 import QtWidgets
+import sys, os
+import subprocess
+from PyQt5 import QtWidgets, QtCore, QtGui, QtQuickWidgets
 from src.gui.newGui import Ui_MainWindow
 from src.gui.widgets import RPM_Widget
 from collections import deque
+from PyQt5.QtCore import QUrl, Qt, QObject, pyqtSignal, pyqtSlot, pyqtProperty, QTimer
+from PyQt5.QtQml import qmlRegisterType, QQmlComponent, QQmlApplicationEngine
+from OpenGL import GLU
+from src.gui.RadialBar import RadialBar
 
 class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(GUI_MainWindow, self).__init__(parent)       #QtCore.Qt.FramelessWindowHint
         self.setupUi(self)
+        qmlRegisterType(RadialBar, "SDK", 1,0, "RadialBar")
+
+        self.batteryCWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.batteryTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+
         self.functionButtons()
         self.lastButtonObject = QtWidgets.QFrame()         # przechowuje obiekt poprzedniego przycisku menu
         self.objectList = []
