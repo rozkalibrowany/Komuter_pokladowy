@@ -40,7 +40,7 @@ def temp_to_rgb_blue(temperature):
     else:
         r = 255
         g = 255 - (temperature - 192)*4
-    
+
     return (r,g,b)
 
 def format_temp_with_color(temperature):

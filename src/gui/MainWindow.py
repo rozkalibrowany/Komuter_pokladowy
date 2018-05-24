@@ -1,12 +1,17 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
 from src.gui.newGui import Ui_MainWindow
-from src.gui.widgets import RPM_Widget
-from collections import deque
 from PyQt5.QtQml import qmlRegisterType
 from src.gui.RadialBar import RadialBar
 from src.modules.settings import *
 import datetime
+
+from src.gui.widgets import RPM_Widget
+from PyQt5.QtCore import QProcess
+from collections import deque
+from functools import partial
+from src.modules.settings import *
+from src.modules.utils import *
 
 s = 0
 m = 0
@@ -19,13 +24,21 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         qmlRegisterType(RadialBar, "SDK", 1,0, "RadialBar")
 
+        self.gg = RPM_Widget(self.rpm_widget)
+        self.proc = QProcess()
+        self.gg.updateRPM(1355)
+        self.proc.readyReadStandardOutput.connect(partial(self.updateData, self.proc))
+        self.container_rpm = deque([], 4)
+        self.container_current = deque([], 4)
+        self.gg.rpmNumber.display(33)
+
         self.laptimer = QTimer(self)
         self.laptimer.timeout.connect(self.Timer)
         self.functionButtons()
         self.lastButtonObject = QtWidgets.QFrame()         # przechowuje obiekt poprzedniego przycisku menu
         self.objectList = []
+
         self.pageMap = {'vfMain': 0, 'vfAlerts': 1, 'vfStats': 2, 'vfSettings': 3}
-        self.rpmWidget = RPM_Widget(self.rpm_widget)
         self.container_rpm = deque([], 4)
         self.container_current = deque([], 4)
         self.menuButtonChanged(self.vfMain)
@@ -33,6 +46,21 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setAlertStatus(False)
         self.setSystemTime()
         self.timerButton.setText('Start Timer')
+
+    def updateData(self, proc):
+        lineunsplitted = str(proc.readAllStandardOutput()).strip()
+        line = lineunsplitted.split()[1:]
+        line[-1] = line[-1].replace("\\r\\n'", '') if "\\r\\n'" in line[-1] else line[-1]
+        print(line)
+        line = line[1:2] + line [3:]
+        ##### RPM ##################
+        if (line[0] == "0CF11E05"):
+            rpm_lsb = int(line[1], base=16)
+            rpm_msb = int(line[2], base=16)
+            rpm = rpm_msb * 256 + rpm_lsb
+            self.container_rpm.append(rpm)
+            avg = sum(self.container_rpm) / len(self.container_rpm)
+            self.gg.updateRPM(avg)
 
     def initialiseCAN(self):
         #if self.connectionStatus == 0:
@@ -43,7 +71,6 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #    except Exception:
         #        message = "CAN couldn't be initialised. Check configuration"
         #        systemStatus = 0
-        self.setSystemStatus()
         self.proc.kill()
         self.proc.setProcessChannelMode(self.proc.MergedChannels)
         self.proc.start(TEST_COMMAND)
@@ -54,6 +81,7 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.statsButton.pressed.connect(lambda: self.menuButtonChanged(self.vfStats))
         self.settingsButton.pressed.connect(lambda: self.menuButtonChanged(self.vfSettings))
         self.timerButton.clicked.connect(self.startTimer)
+        self.timerButton.clicked.connect(self.initialiseCAN)
 
     def menuButtonChanged(self, widget):
         self.objectList.append(widget)

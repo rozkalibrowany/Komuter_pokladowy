@@ -16,7 +16,6 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         for dot in self.dots:
             dot.setVisible(False)
 
-
         self.current_num_of_dots = 0
         self.scene = QtWidgets.QGraphicsScene()
         self.graphicsView.setScene(self.scene)
@@ -28,6 +27,7 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
     def updateLine(self, value):
 
         self.scene.clear()
+
         colorName = '#6affcd'
         dotColorName = '#22e2a2'
         color = QtGui.QColor(0,0,0)
@@ -35,6 +35,7 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         themeBrush = QtGui.QBrush(color)
         pen = QtGui.QPen(themeBrush, 4, QtCore.Qt.SolidLine, QtCore.Qt.FlatCap)
         pintopPen = QtGui.QPen(themeBrush, 11, QtCore.Qt.SolidLine, QtCore.Qt.FlatCap)
+
         x1 = self.graphicsView.width()/2
         y1 = self.graphicsView.height()/2
 
@@ -44,7 +45,8 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         x2 = line_length * math.sin(angle + math.radians(angle_offset))
         y2 = -1 * line_length * math.cos(angle + math.radians(angle_offset))
 
-        #print line_length, '|', value, '|', math.degrees(angle), '|', x2, y2
+        print (line_length, '|', value, '|', math.degrees(angle), '|', x2, y2)
+
         # draw pintop
         pintop = QtCore.QRectF(x1-2, y1-3 ,10, 10)
         pintopItem = QtWidgets.QGraphicsEllipseItem(pintop)
@@ -56,8 +58,6 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         lineItem = QtWidgets.QGraphicsLineItem(line)
         self.scene.addItem(lineItem)
         lineItem.setPen(pen)
-        pintop = QtCore.QRectF(x1, y1 ,4, 4)
-
         # draw dot
         color.setNamedColor(dotColorName)
         themeBrush = QtGui.QBrush(color)
@@ -83,10 +83,11 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         self.scene.addItem(dotItem)
         dotItem.setPen(dotPen)
 
+
     def updateRPM(self, rpm):
 ##        if self.activateDial:
 ##            rpm = self.dial.value()
-
+        self.rpmNumber.display(int(rpm/100))
         number_of_dots = int(rpm/(MAX_RPM_VALUE/len(self.dots)))
         print(number_of_dots)
         if number_of_dots != self.current_num_of_dots:
@@ -96,9 +97,8 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
             for dot in self.dots[number_of_dots:]:
                 if dot.isVisible():
                     dot.setVisible(False)
-        self.v_gokart=int(rpm*0.02827) # Wzor na predkosc gokarta od predkosci obrotowej
-        self.rpmNumber.display(self.v_gokart)
+        v_gokart=int(rpm*0.02827) # Wzor na predkosc gokarta od predkosci obrotowej
+        self.rpmNumber.display(v_gokart)
         self.current_num_of_dots = number_of_dots
-
         self.updateLine(rpm)
 
