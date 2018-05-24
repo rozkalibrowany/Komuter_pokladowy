@@ -405,3 +405,49 @@ class ContrTempWidget(RadialBar, QObject):
     def random_value(self):
         v = float(randrange(41, 65))
         self.randomValue = v
+
+
+class AvrPowerWidget(RadialBar, QObject):
+    randomValueChanged = QtCore.pyqtSignal(float)
+
+    def __init__(self, parent=None):
+        super(AvrPowerWidget, self).__init__(parent)
+        self.m_randomValue = 0
+
+    @QtCore.pyqtProperty(float, notify=randomValueChanged)
+    def randomValue(self):
+        return self.m_randomValue
+
+    @randomValue.setter
+    def randomValue(self, v):
+        if self.m_randomValue == v:
+            return
+        self.m_randomValue = v
+        self.randomValueChanged.emit(v)
+
+    def random_value(self):
+        v = float(randrange(0, 10))
+        self.randomValue = v
+
+
+class ThrottleWidget(RadialBar, QObject):
+    randomValueChanged = QtCore.pyqtSignal(float)
+
+    def __init__(self, parent=None):
+        super(ThrottleWidget, self).__init__(parent)
+        self.m_randomValue = 0
+
+    @QtCore.pyqtProperty(float, notify=randomValueChanged)
+    def randomValue(self):
+        return self.m_randomValue
+
+    @randomValue.setter
+    def randomValue(self, v):
+        if self.m_randomValue == v:
+            return
+        self.m_randomValue = v
+        self.randomValueChanged.emit(v)
+
+    def random_value(self):
+        v = float(randrange(41, 65))
+        self.randomValue = v

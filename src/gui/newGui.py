@@ -11,7 +11,6 @@ import sys, os
 sys.path.insert(2, os.path.join(sys.path[0], '../..'))
 import img.img_rc
 from PyQt5 import QtQuickWidgets
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -290,6 +289,7 @@ class Ui_MainWindow(object):
         self.stackedWidget = QtWidgets.QStackedWidget(self.gridFrame)
         self.stackedWidget.setObjectName("stackedWidget")
         self.drive = QtWidgets.QWidget()
+        self.drive.setStyleSheet("")
         self.drive.setObjectName("drive")
         self.line = QtWidgets.QFrame(self.drive)
         self.line.setGeometry(QtCore.QRect(180, 20, 2, 430))
@@ -303,31 +303,246 @@ class Ui_MainWindow(object):
         self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
-        self.rpm_widget = QtWidgets.QWidget(self.drive)
-        self.rpm_widget.setGeometry(QtCore.QRect(190, 100, 301, 301))
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.drive)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 171, 485))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.dvl1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.dvl1.setContentsMargins(0, 0, 0, 0)
+        self.dvl1.setObjectName("dvl1")
+        self.dhl13 = QtWidgets.QHBoxLayout()
+        self.dhl13.setObjectName("dhl13")
+        self.throttle = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget)
+        self.throttle.setMinimumSize(QtCore.QSize(0, 155))
+        self.throttle.setMaximumSize(QtCore.QSize(167, 16777215))
+        self.throttle.setStyleSheet("")
+        self.throttle.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.throttle.setObjectName("throttle")
+        self.dhl13.addWidget(self.throttle)
+        self.dvl1.addLayout(self.dhl13)
+        self.dhl12 = QtWidgets.QHBoxLayout()
+        self.dhl12.setObjectName("dhl12")
+        self.contrTWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget)
+        self.contrTWidget.setMinimumSize(QtCore.QSize(0, 155))
+        self.contrTWidget.setMaximumSize(QtCore.QSize(167, 16777215))
+        self.contrTWidget.setStyleSheet("")
+        self.contrTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.contrTWidget.setObjectName("contrTWidget")
+        self.dhl12.addWidget(self.contrTWidget)
+        self.dvl1.addLayout(self.dhl12)
+        self.dhl11 = QtWidgets.QHBoxLayout()
+        self.dhl11.setObjectName("dhl11")
+        self.batteryTWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget)
+        self.batteryTWidget.setMinimumSize(QtCore.QSize(0, 155))
+        self.batteryTWidget.setMaximumSize(QtCore.QSize(167, 16777215))
+        self.batteryTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.batteryTWidget.setObjectName("batteryTWidget")
+        self.dhl11.addWidget(self.batteryTWidget)
+        self.dvl1.addLayout(self.dhl11)
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.drive)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(190, 0, 304, 467))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.dvl2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.dvl2.setContentsMargins(0, 0, 0, 0)
+        self.dvl2.setObjectName("dvl2")
+        self.dhl23 = QtWidgets.QHBoxLayout()
+        self.dhl23.setObjectName("dhl23")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.timeLabel = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.timeLabel.setStyleSheet("font: 26pt \"Halvetica\" ;\n"
+"color: #f2f2f2;\n"
+"background: transparent;")
+        self.timeLabel.setText("")
+        self.timeLabel.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.timeLabel.setObjectName("timeLabel")
+        self.horizontalLayout.addWidget(self.timeLabel)
+        self.verticalLayout_6.addLayout(self.horizontalLayout)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.dateLabel = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.dateLabel.setStyleSheet("font: 75 italic 15pt \"Halvetica\" ;\n"
+"color: #a6a6a6;\n"
+"background: transparent;")
+        self.dateLabel.setText("")
+        self.dateLabel.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.dateLabel.setObjectName("dateLabel")
+        self.horizontalLayout_4.addWidget(self.dateLabel)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_4)
+        self.horizontalLayout_2.addLayout(self.verticalLayout_6)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.timerButton = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.timerButton.setMinimumSize(QtCore.QSize(0, 45))
+        self.timerButton.setMaximumSize(QtCore.QSize(16777215, 45))
+        self.timerButton.setStyleSheet("QPushButton{\n"
+"border: 1.4px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"}\n"
+"\n"
+"QPushButton[clicked=\"true\"] {\n"
+"border: 4px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"}")
+        self.timerButton.setText("")
+        self.timerButton.setObjectName("timerButton")
+        self.verticalLayout_4.addWidget(self.timerButton)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_4)
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.lcdNumber = QtWidgets.QLCDNumber(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(20)
+        sizePolicy.setVerticalStretch(40)
+        sizePolicy.setHeightForWidth(self.lcdNumber.sizePolicy().hasHeightForWidth())
+        self.lcdNumber.setSizePolicy(sizePolicy)
+        self.lcdNumber.setMinimumSize(QtCore.QSize(0, 45))
+        self.lcdNumber.setMaximumSize(QtCore.QSize(150, 45))
+        self.lcdNumber.setSizeIncrement(QtCore.QSize(7, 21))
+        self.lcdNumber.setBaseSize(QtCore.QSize(13, 0))
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(50)
+        self.lcdNumber.setFont(font)
+        self.lcdNumber.setStyleSheet("color: #f2f2f2;\n"
+"border: 1.4px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"background: transparent;\n"
+"color: #cccccc;")
+        self.lcdNumber.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.lcdNumber.setLineWidth(4)
+        self.lcdNumber.setMidLineWidth(20)
+        self.lcdNumber.setSmallDecimalPoint(False)
+        self.lcdNumber.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.lcdNumber.setProperty("value", 0.0)
+        self.lcdNumber.setProperty("intValue", 0)
+        self.lcdNumber.setObjectName("lcdNumber")
+        self.verticalLayout_3.addWidget(self.lcdNumber)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_3)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+        self.dhl23.addLayout(self.verticalLayout_2)
+        self.dvl2.addLayout(self.dhl23)
+        self.dhl22 = QtWidgets.QHBoxLayout()
+        self.dhl22.setObjectName("dhl22")
+        self.rpm_widget = QtWidgets.QWidget(self.verticalLayoutWidget_2)
+        self.rpm_widget.setMinimumSize(QtCore.QSize(300, 270))
         self.rpm_widget.setStyleSheet("border: 0;\n"
 "background: transparent;\n"
 "border-image: none;")
         self.rpm_widget.setObjectName("rpm_widget")
-        self.batteryVWidget = QtQuickWidgets.QQuickWidget(self.drive)
-        self.batteryVWidget.setGeometry(QtCore.QRect(520, 290, 160, 145))
-        self.batteryVWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.batteryVWidget.setObjectName("batteryVWidget")
-        self.batteryCWidget = QtQuickWidgets.QQuickWidget(self.drive)
-        self.batteryCWidget.setGeometry(QtCore.QRect(520, 130, 160, 145))
+        self.dhl22.addWidget(self.rpm_widget)
+        self.dvl2.addLayout(self.dhl22)
+        self.horizontalFrame_4 = QtWidgets.QFrame(self.verticalLayoutWidget_2)
+        self.horizontalFrame_4.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.horizontalFrame_4.setObjectName("horizontalFrame_4")
+        self.dhl21 = QtWidgets.QHBoxLayout(self.horizontalFrame_4)
+        self.dhl21.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
+        self.dhl21.setObjectName("dhl21")
+        self.dvl22 = QtWidgets.QVBoxLayout()
+        self.dvl22.setObjectName("dvl22")
+        self.canStatus = QtWidgets.QLabel(self.horizontalFrame_4)
+        self.canStatus.setMinimumSize(QtCore.QSize(0, 35))
+        self.canStatus.setStyleSheet("QLabel {\n"
+"border: 1.5px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #ff4d4d;\n"
+"}\n"
+"\n"
+"QLabel[connected=\"true\"] {\n"
+"border: 1.5px solid #99ff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #99ff99;\n"
+"}")
+        self.canStatus.setText("")
+        self.canStatus.setAlignment(QtCore.Qt.AlignCenter)
+        self.canStatus.setObjectName("canStatus")
+        self.dvl22.addWidget(self.canStatus)
+        self.dhl21.addLayout(self.dvl22)
+        self.dvl21 = QtWidgets.QVBoxLayout()
+        self.dvl21.setObjectName("dvl21")
+        self.alertStatus = QtWidgets.QLabel(self.horizontalFrame_4)
+        self.alertStatus.setMinimumSize(QtCore.QSize(145, 35))
+        self.alertStatus.setMaximumSize(QtCore.QSize(145, 16777215))
+        self.alertStatus.setStyleSheet("QLabel {\n"
+"border: 1.5px solid #99ff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #99ff99;\n"
+"}\n"
+"\n"
+"QLabel[isAlert=\"true\"] {\n"
+"border: 1.5px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #ff4d4d;\n"
+"}")
+        self.alertStatus.setText("")
+        self.alertStatus.setAlignment(QtCore.Qt.AlignCenter)
+        self.alertStatus.setObjectName("alertStatus")
+        self.dvl21.addWidget(self.alertStatus)
+        self.dhl21.addLayout(self.dvl21)
+        self.dvl2.addWidget(self.horizontalFrame_4)
+        self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.drive)
+        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(510, 0, 172, 485))
+        self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
+        self.dvl3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_5)
+        self.dvl3.setContentsMargins(0, 0, 0, 0)
+        self.dvl3.setObjectName("dvl3")
+        self.dhl33 = QtWidgets.QHBoxLayout()
+        self.dhl33.setObjectName("dhl33")
+        self.avrPower = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget_5)
+        self.avrPower.setMinimumSize(QtCore.QSize(0, 155))
+        self.avrPower.setMaximumSize(QtCore.QSize(167, 16777215))
+        self.avrPower.setAutoFillBackground(False)
+        self.avrPower.setStyleSheet("")
+        self.avrPower.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.avrPower.setObjectName("avrPower")
+        self.dhl33.addWidget(self.avrPower)
+        self.dvl3.addLayout(self.dhl33)
+        self.dhl32 = QtWidgets.QHBoxLayout()
+        self.dhl32.setObjectName("dhl32")
+        self.batteryCWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget_5)
+        self.batteryCWidget.setMinimumSize(QtCore.QSize(0, 155))
+        self.batteryCWidget.setMaximumSize(QtCore.QSize(167, 16777215))
         self.batteryCWidget.setAutoFillBackground(False)
         self.batteryCWidget.setStyleSheet("")
         self.batteryCWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
         self.batteryCWidget.setObjectName("batteryCWidget")
-        self.contrTWidget = QtQuickWidgets.QQuickWidget(self.drive)
-        self.contrTWidget.setGeometry(QtCore.QRect(0, 140, 160, 145))
-        self.contrTWidget.setStyleSheet("")
-        self.contrTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.contrTWidget.setObjectName("contrTWidget")
-        self.batteryTWidget = QtQuickWidgets.QQuickWidget(self.drive)
-        self.batteryTWidget.setGeometry(QtCore.QRect(0, 300, 160, 145))
-        self.batteryTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.batteryTWidget.setObjectName("batteryTWidget")
+        self.dhl32.addWidget(self.batteryCWidget)
+        self.dvl3.addLayout(self.dhl32)
+        self.dhl31 = QtWidgets.QHBoxLayout()
+        self.dhl31.setObjectName("dhl31")
+        self.batteryVWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget_5)
+        self.batteryVWidget.setMinimumSize(QtCore.QSize(0, 155))
+        self.batteryVWidget.setMaximumSize(QtCore.QSize(167, 16777215))
+        self.batteryVWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.batteryVWidget.setObjectName("batteryVWidget")
+        self.dhl31.addWidget(self.batteryVWidget)
+        self.dvl3.addLayout(self.dhl31)
         self.stackedWidget.addWidget(self.drive)
         self.alerts = QtWidgets.QWidget()
         self.alerts.setObjectName("alerts")
@@ -352,5 +567,3 @@ class Ui_MainWindow(object):
         self.alertsLabel.setText(_translate("MainWindow", "Alerts"))
         self.statsLabel.setText(_translate("MainWindow", "Stats"))
         self.settingsLabel.setText(_translate("MainWindow", "Setting"))
-
-

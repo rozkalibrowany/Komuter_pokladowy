@@ -1,13 +1,17 @@
-import sys, os
-import subprocess
-from PyQt5 import QtWidgets, QtCore, QtGui, QtQuickWidgets
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import QTimer
 from src.gui.newGui import Ui_MainWindow
 from src.gui.widgets import RPM_Widget
 from collections import deque
-from PyQt5.QtCore import QUrl, Qt, QObject, pyqtSignal, pyqtSlot, pyqtProperty, QTimer
-from PyQt5.QtQml import qmlRegisterType, QQmlComponent, QQmlApplicationEngine
-from OpenGL import GLU
+from PyQt5.QtQml import qmlRegisterType
 from src.gui.RadialBar import RadialBar
+from src.modules.settings import *
+import datetime
+
+s = 0
+m = 0
+ms = 0
+timerStarted = False
 
 class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -15,9 +19,8 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         qmlRegisterType(RadialBar, "SDK", 1,0, "RadialBar")
 
-        self.batteryCWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.batteryTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-
+        self.laptimer = QTimer(self)
+        self.laptimer.timeout.connect(self.Timer)
         self.functionButtons()
         self.lastButtonObject = QtWidgets.QFrame()         # przechowuje obiekt poprzedniego przycisku menu
         self.objectList = []
@@ -26,13 +29,31 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.container_rpm = deque([], 4)
         self.container_current = deque([], 4)
         self.menuButtonChanged(self.vfMain)
+        self.setConnectionStatus(True)
+        self.setAlertStatus(False)
+        self.setSystemTime()
+        self.timerButton.setText('Start Timer')
+
+    def initialiseCAN(self):
+        #if self.connectionStatus == 0:
+        #    try:
+        #        system.os("sudo ip link set can0 up type can bitrate 250000")
+        #        message = "CAN initialized. Bitrate = 250kh/s."
+        #        self.writeConsoleMessage(message)
+        #    except Exception:
+        #        message = "CAN couldn't be initialised. Check configuration"
+        #        systemStatus = 0
+        self.setSystemStatus()
+        self.proc.kill()
+        self.proc.setProcessChannelMode(self.proc.MergedChannels)
+        self.proc.start(TEST_COMMAND)
 
     def functionButtons(self):
         self.driveButton.pressed.connect(lambda: self.menuButtonChanged(self.vfMain))
         self.alertsButton.pressed.connect(lambda: self.menuButtonChanged(self.vfAlerts))
         self.statsButton.pressed.connect(lambda: self.menuButtonChanged(self.vfStats))
         self.settingsButton.pressed.connect(lambda: self.menuButtonChanged(self.vfSettings))
-
+        self.timerButton.clicked.connect(self.startTimer)
 
     def menuButtonChanged(self, widget):
         self.objectList.append(widget)
@@ -72,6 +93,97 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             widget.style().polish(widget)
             widget.update()
 
+    def setConnectionStatus(self, isConnected):
+        if (isConnected):
+            self.canStatus.setText("Connected")
+            self.canStatus.setProperty('connected', True)
+            self.canStatus.style().unpolish(self.canStatus)
+            self.canStatus.style().polish(self.canStatus)
+            self.canStatus.update()
+        else:
+            self.canStatus.setText("Not connected")
+            self.canStatus.setProperty('connected', False)
+            self.canStatus.style().unpolish(self.canStatus)
+            self.canStatus.style().polish(self.canStatus)
+            self.canStatus.update()
+
+    def setAlertStatus(self, isAlert):
+        if (isAlert):
+            self.alertStatus.setText("1 alert")
+            self.alertStatus.setProperty('isAlert', True)
+            self.alertStatus.style().unpolish(self.canStatus)
+            self.alertStatus.style().polish(self.canStatus)
+            self.alertStatus.update()
+        else:
+            self.alertStatus.setText("No alerts")
+            self.alertStatus.setProperty('isAlert', False)
+            self.alertStatus.style().unpolish(self.canStatus)
+            self.alertStatus.style().polish(self.canStatus)
+            self.alertStatus.update()
+
+    def setSystemTime(self):
+        now = datetime.datetime.now()
+        self.timeLabel.setText(now.strftime("%H:%M"))
+        self.dateLabel.setText(now.strftime("%Y-%m-%d"))
 
     def setNewPage(self, index):
         self.stackedWidget.setCurrentIndex(index)    # ustaw stronę
+
+
+    def Timer(self):
+        global s, m, ms
+        if ms < 100:
+            ms = ms + 1
+        else:
+            if s < 59:
+                ms = 0
+                s = s + 1
+            elif s == 59 and m < 59:
+                m = m + 1
+                ms = 0
+                s = 0
+            else:
+                self.laptimer.stop()
+        self.time = "{0}:{1}:{2}".format(m, s, ms)
+        self.lcdNumber.setDigitCount(len(self.time))
+        self.lcdNumber.display(self.time)
+
+
+    def startTimer(self):
+        global s, m, ms
+        global timerStarted
+        if timerStarted is False:
+            timerStarted = True
+            self.timerButton.setProperty('clicked', True)
+            self.timerButton.style().unpolish(self.timerButton)
+            self.timerButton.style().polish(self.timerButton)
+            self.timerButton.update()
+            self.timerButton.setText('Stop Timer')
+            self.laptimer.start(10)
+        elif timerStarted is True:
+            self.sleepTimer = QTimer()
+            self.sleepTimer.setInterval(2500)
+            self.sleepTimer.setSingleShot(True)
+            self.timerButton.setProperty('clicked', False)
+            self.timerButton.style().unpolish(self.timerButton)
+            self.timerButton.style().polish(self.timerButton)
+            self.timerButton.update()
+            self.timerButton.setText('Start Timer')
+            self.sleepTimer.start()
+            self.laptimer.stop()
+            s = 0
+            m = 0
+            ms = 0
+            self.sleepTimer.timeout.connect(self.resetTimer)
+            timerStarted = False
+        else:
+            message = 'Unknown Timer Error. Check log.'
+            print(message)
+
+    def resetTimer(self):
+        s = 0
+        m = 0
+        ms = 0
+        self.time = "{0}:{1}:{2}".format(m, s, ms)
+        self.lcdNumber.setDigitCount(len(self.time))
+        self.lcdNumber.display(self.time)

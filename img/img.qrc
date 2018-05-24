@@ -86,6 +86,7 @@
     <file>dark_colorized_circles/circle23.png</file>
   </qresource>
   <qresource prefix="general">
+    <file>general/znak_ADek_skrot_sloneczny.png</file>
     <file>general/adek2.png</file>
     <file>general/adek3.png</file>
     <file>general/battery_details_button_clicked.png</file>

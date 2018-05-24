@@ -572,81 +572,485 @@ color:  #6affcd;</string>
           <enum>Qt::Vertical</enum>
          </property>
         </widget>
-        <widget class="QWidget" name="rpm_widget" native="true">
+        <widget class="QWidget" name="verticalLayoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>171</width>
+           <height>485</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="dvl1">
+          <item>
+           <layout class="QHBoxLayout" name="dhl13">
+            <item>
+             <widget class="QQuickWidget" name="throttle">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>155</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>167</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="resizeMode">
+               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="dhl12">
+            <item>
+             <widget class="QQuickWidget" name="contrTWidget">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>155</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>167</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="resizeMode">
+               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="dhl11">
+            <item>
+             <widget class="QQuickWidget" name="batteryTWidget">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>155</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>167</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="resizeMode">
+               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget_2">
          <property name="geometry">
           <rect>
            <x>190</x>
-           <y>100</y>
-           <width>301</width>
-           <height>301</height>
+           <y>0</y>
+           <width>304</width>
+           <height>467</height>
           </rect>
          </property>
-         <property name="styleSheet">
-          <string notr="true">border: 0;
+         <layout class="QVBoxLayout" name="dvl2">
+          <item>
+           <layout class="QHBoxLayout" name="dhl23">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item>
+                     <widget class="QLabel" name="timeLabel">
+                      <property name="styleSheet">
+                       <string notr="true">font: 26pt &quot;Halvetica&quot; ;
+color: #f2f2f2;
+background: transparent;</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_4">
+                    <item>
+                     <widget class="QLabel" name="dateLabel">
+                      <property name="styleSheet">
+                       <string notr="true">font: 75 italic 15pt &quot;Halvetica&quot; ;
+color: #a6a6a6;
+background: transparent;</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <item>
+                   <widget class="QPushButton" name="timerButton">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>45</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>45</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+border: 1.4px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+}
+
+QPushButton[clicked=&quot;true&quot;] {
+border: 4px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <item>
+                   <widget class="QLCDNumber" name="lcdNumber">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>20</horstretch>
+                      <verstretch>40</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>45</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>45</height>
+                     </size>
+                    </property>
+                    <property name="sizeIncrement">
+                     <size>
+                      <width>7</width>
+                      <height>21</height>
+                     </size>
+                    </property>
+                    <property name="baseSize">
+                     <size>
+                      <width>13</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Ubuntu</family>
+                      <pointsize>16</pointsize>
+                      <weight>50</weight>
+                      <italic>true</italic>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: #f2f2f2;
+border: 1.4px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+background: transparent;
+color: #cccccc;</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="lineWidth">
+                     <number>4</number>
+                    </property>
+                    <property name="midLineWidth">
+                     <number>20</number>
+                    </property>
+                    <property name="smallDecimalPoint">
+                     <bool>false</bool>
+                    </property>
+                    <property name="segmentStyle">
+                     <enum>QLCDNumber::Flat</enum>
+                    </property>
+                    <property name="value" stdset="0">
+                     <double>0.000000000000000</double>
+                    </property>
+                    <property name="intValue" stdset="0">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="dhl22">
+            <item>
+             <widget class="QWidget" name="rpm_widget" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>270</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border: 0;
 background: transparent;
 border-image: none;</string>
-         </property>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="horizontalFrame_4">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <layout class="QHBoxLayout" name="dhl21">
+             <property name="sizeConstraint">
+              <enum>QLayout::SetMinimumSize</enum>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="dvl22">
+               <item>
+                <widget class="QLabel" name="canStatus">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+border: 1.5px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #ff4d4d;
+}
+
+QLabel[connected=&quot;true&quot;] {
+border: 1.5px solid #99ff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #99ff99;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="dvl21">
+               <item>
+                <widget class="QLabel" name="alertStatus">
+                 <property name="minimumSize">
+                  <size>
+                   <width>145</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>145</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+border: 1.5px solid #99ff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #99ff99;
+}
+
+QLabel[isAlert=&quot;true&quot;] {
+border: 1.5px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #ff4d4d;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QQuickWidget" name="batteryVWidget">
+        <widget class="QWidget" name="verticalLayoutWidget_5">
          <property name="geometry">
           <rect>
-           <x>520</x>
-           <y>290</y>
-           <width>160</width>
-           <height>145</height>
+           <x>510</x>
+           <y>0</y>
+           <width>172</width>
+           <height>485</height>
           </rect>
          </property>
-         <property name="resizeMode">
-          <enum>QQuickWidget::SizeRootObjectToView</enum>
-         </property>
-        </widget>
-        <widget class="QQuickWidget" name="batteryCWidget">
-         <property name="geometry">
-          <rect>
-           <x>520</x>
-           <y>130</y>
-           <width>160</width>
-           <height>145</height>
-          </rect>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="resizeMode">
-          <enum>QQuickWidget::SizeRootObjectToView</enum>
-         </property>
-        </widget>
-        <widget class="QQuickWidget" name="contrTWidget">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>140</y>
-           <width>160</width>
-           <height>145</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="resizeMode">
-          <enum>QQuickWidget::SizeRootObjectToView</enum>
-         </property>
-        </widget>
-        <widget class="QQuickWidget" name="batteryTWidget">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>300</y>
-           <width>160</width>
-           <height>145</height>
-          </rect>
-         </property>
-         <property name="resizeMode">
-          <enum>QQuickWidget::SizeRootObjectToView</enum>
-         </property>
+         <layout class="QVBoxLayout" name="dvl3">
+          <item>
+           <layout class="QHBoxLayout" name="dhl33">
+            <item>
+             <widget class="QQuickWidget" name="avrPower">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>155</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>167</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="resizeMode">
+               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="dhl32">
+            <item>
+             <widget class="QQuickWidget" name="batteryCWidget">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>155</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>167</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="resizeMode">
+               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="dhl31">
+            <item>
+             <widget class="QQuickWidget" name="batteryVWidget">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>155</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>167</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="resizeMode">
+               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </widget>
        <widget class="QWidget" name="alerts"/>

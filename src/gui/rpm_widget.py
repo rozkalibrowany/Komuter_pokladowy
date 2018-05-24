@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_rpm_widget(object):
     def setupUi(self, rpm_widget):
         rpm_widget.setObjectName("rpm_widget")
-        rpm_widget.resize(301, 301)
+        rpm_widget.resize(301, 272)
         rpm_widget.setStyleSheet("background: none;")
         self.rpmCaption = QtWidgets.QLabel(rpm_widget)
         self.rpmCaption.setGeometry(QtCore.QRect(120, 240, 51, 21))
@@ -29,7 +29,7 @@ class Ui_rpm_widget(object):
         self.rpmCaption.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.rpmCaption.setObjectName("rpmCaption")
         self.graphicsView = QtWidgets.QGraphicsView(rpm_widget)
-        self.graphicsView.setGeometry(QtCore.QRect(0, 0, 301, 301))
+        self.graphicsView.setGeometry(QtCore.QRect(0, 0, 301, 270))
         self.graphicsView.setStyleSheet("background: transparent; ")
         self.graphicsView.setObjectName("graphicsView")
         self.rpmNumber = QtWidgets.QLCDNumber(rpm_widget)

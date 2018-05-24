@@ -96,7 +96,7 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
             for dot in self.dots[number_of_dots:]:
                 if dot.isVisible():
                     dot.setVisible(False)
-        self.v_gokart=int(rpm*2.754/216) # Wzor na predkosc gokarta od predkosci obrotowej
+        self.v_gokart=int(rpm*0.02827) # Wzor na predkosc gokarta od predkosci obrotowej
         self.rpmNumber.display(self.v_gokart)
         self.current_num_of_dots = number_of_dots
 
