@@ -1,7 +1,6 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-##from PyQt4.QtWidgets import *
 
 
 class LedIndicator(QAbstractButton):
@@ -10,20 +9,20 @@ class LedIndicator(QAbstractButton):
     def __init__(self, parent=None):
         QAbstractButton.__init__(self, parent)
 
-        self.setMinimumSize(24, 24)
+        self.setMinimumSize(22, 22)
         self.setCheckable(True)
         self.setStyleSheet("border: 1px solid red;")
         # Green
-        self.on_color_1 = QColor(0, 255, 0)
-        self.on_color_2 = QColor(0, 192, 0)
+        self.off_color_1 = QColor(153, 255, 153)
+        self.off_color_2 = QColor(153, 255, 153)
 
         # # Dark green
         # self.off_color_1 = QColor(0, 28, 0)
         # self.off_color_2 = QColor(0, 128, 0)
 
         # Red
-        self.off_color_1 = QColor(255, 0, 0)
-        self.off_color_2 = QColor(192, 0, 0)
+        self.on_color_1 = QColor(255, 77, 77)
+        self.on_color_2 = QColor(255, 49, 49)
 
     def resizeEvent(self, QResizeEvent):
         self.update()

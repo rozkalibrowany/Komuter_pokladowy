@@ -13,6 +13,9 @@ from functools import partial
 from src.modules.settings import *
 from src.modules.utils import *
 
+from src.gui.LedIndicatorWidget import *
+import re
+import random
 s = 0
 m = 0
 ms = 0
@@ -22,6 +25,12 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(GUI_MainWindow, self).__init__(parent, Qt.FramelessWindowHint)       #QtCore.Qt.FramelessWindowHint
         self.setupUi(self)
+        #### Set resolution and center window ###
+        self.setGeometry(0, 0, 800, 480)
+        self.setWindowTitle("ADek GUI Window v0.1")
+        self.centerOnScreen()
+
+        #########################################
         qmlRegisterType(RadialBar, "SDK", 1,0, "RadialBar")
         self.connected = False
         self.gg = RPM_Widget(self.rpm_widget)
@@ -35,6 +44,10 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.functionButtons()
         self.lastButtonObject = QtWidgets.QFrame()         # przechowuje obiekt poprzedniego przycisku menu
         self.objectList = []
+
+        self.leds = {}
+        self.Alerts()
+
 
         self.pageMap = {'vfMain': 0, 'vfAlerts': 1, 'vfStats': 2, 'vfSettings': 3}
         self.container_rpm = deque([], 4)
@@ -75,12 +88,18 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         context.setContextProperty("throttleWidget",self.throttleWidget)
         self.throttle.setSource(QUrl.fromLocalFile('src/gui/throttleRadialBar.qml'))
 
+    def centerOnScreen (self):
+        resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
+                  (resolution.height() / 2) - (self.frameSize().height() / 2))
+
     def updateData(self, proc):
         lineunsplitted = str(proc.readAllStandardOutput()).strip()
         line = lineunsplitted.split()[1:]
         line[-1] = line[-1].replace("\\r\\n'", '') if "\\r\\n'" in line[-1] else line[-1]
         #print(line)
         line = line[1:2] + line [3:]
+
         ##### RPM ##################
         if (line[0] == "0CF11E05"):
             rpm_lsb = int(line[1], base=16)
@@ -89,6 +108,7 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.container_rpm.append(rpm)
             avg = sum(self.container_rpm) / len(self.container_rpm)
             self.gg.updateRPM(avg)
+
         ##### CURRENT ###############
             current_lsb = int(line[3], base=16)
             current_msb = int(line[4], base=16)
@@ -96,25 +116,50 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.container_current.append(current)
             avgCurrent = sum(self.container_current) / len(self.container_current)
             self.batteryCurrentWidget.setValue(int(avgCurrent))
+
         ##### VOLTAGE ####################
             voltage_lsb = int(line[5], base=16)
             voltage_msb = int(line[6], base=16)
             avgVoltage = (voltage_msb * 256 + voltage_lsb) / 10
             self.batteryVoltageWidget.setValue(int(avgVoltage))
+
         ##### POWER ####################
             avrPower = avgCurrent * avgVoltage
             self.avrPowerWidget.setValue(int(avrPower)/1000)
+
+        ##### ERRORS #######################
+            line[8] = line[8].replace("\\n'", "")
+            print(line[8])
+            print ("\n")
+            errors_lsb = '{:08b}'.format(int(line[7], base=16))
+            errors_msb = '{:08b}'.format(int(line[8], base=16))
+
+            for i, bit in enumerate((errors_msb + errors_lsb)[::-1]):
+                if ERR[i] != 'RESERVED':
+                    self.leds['led_err'+str(i)].setChecked(bit == '1')
+
         else:
         ##### THROTTLE ####################
             throttle = int(line[1], base=16)
             throttle = throttle / 2.55
             self.throttleWidget.setValue(int(throttle))
-            print("throttle:", throttle)
+
         ##### CONTROLLER ##################
             contrTemp = int(line[2], base=16)
             contrTemp = contrTemp - 40
             self.contrTempWidget.setValue(int(contrTemp))
 
+    def Alerts(self):
+        led_slots = self.findChildren(QtWidgets.QFrame)
+
+        for led_slot in led_slots:
+            if re.match('led_err', led_slot.objectName()):
+                l = LedIndicator(led_slot)
+                l.setGeometry(0,0,30,30)
+                self.leds[str(led_slot.objectName())] = l
+            elif re.match('label_err', led_slot.objectName()):
+                number = str(led_slot.objectName()).replace('label_err', '')
+                led_slot.setText(ERR[int(number)])
 
     def initialiseCAN(self):
         #if self.connectionStatus == 0:
