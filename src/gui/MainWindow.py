@@ -6,6 +6,7 @@ from src.gui.RadialBar import *
 from src.modules.settings import *
 import datetime
 
+from PyQt5.QtWidgets import QAbstractButton
 from src.gui.widgets import RPM_Widget
 from PyQt5.QtCore import QProcess, Qt
 from collections import deque
@@ -48,13 +49,12 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.leds = {}
         self.Alerts()
 
-
         self.pageMap = {'vfMain': 0, 'vfAlerts': 1, 'vfStats': 2, 'vfSettings': 3}
         self.container_rpm = deque([], 4)
         self.container_current = deque([], 4)
         self.menuButtonChanged(self.vfMain)
         self.setConnectionStatus(False)
-        self.setAlertStatus(False)
+        self.setAlertStatus(False, "")
         self.setSystemTime()
         self.timerButton.setText('Start Timer')
 
@@ -129,14 +129,15 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         ##### ERRORS #######################
             line[8] = line[8].replace("\\n'", "")
-            print(line[8])
-            print ("\n")
             errors_lsb = '{:08b}'.format(int(line[7], base=16))
             errors_msb = '{:08b}'.format(int(line[8], base=16))
 
             for i, bit in enumerate((errors_msb + errors_lsb)[::-1]):
                 if ERR[i] != 'RESERVED':
                     self.leds['led_err'+str(i)].setChecked(bit == '1')
+                    self.leds['led_err'+str(i)].setDown(bit == '1')
+                    if (self.leds['led_err'+str(i)].isDown() == True):
+                        self.setAlertStatus(True, i)
 
         else:
         ##### THROTTLE ####################
@@ -149,9 +150,13 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             contrTemp = contrTemp - 40
             self.contrTempWidget.setValue(int(contrTemp))
 
+        ##### MOTOR TEMP #######################
+            motorTemp = int(line[3], base=16)
+            motorTemp = motorTemp - 30
+            self.batteryTempWidget.setValue(int(motorTemp))
+
     def Alerts(self):
         led_slots = self.findChildren(QtWidgets.QFrame)
-
         for led_slot in led_slots:
             if re.match('led_err', led_slot.objectName()):
                 l = LedIndicator(led_slot)
@@ -160,6 +165,7 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             elif re.match('label_err', led_slot.objectName()):
                 number = str(led_slot.objectName()).replace('label_err', '')
                 led_slot.setText(ERR[int(number)])
+
 
     def initialiseCAN(self):
         #if self.connectionStatus == 0:
@@ -244,9 +250,10 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.canButton.style().polish(self.canButton)
             self.canButton.update()
 
-    def setAlertStatus(self, isAlert):
+    def setAlertStatus(self, isAlert, alarmNr):
         if (isAlert):
-            self.alertStatus.setText("1 alert")
+            alert = "ALERT NR " + str(alarmNr)
+            self.alertStatus.setText(alert)
             self.alertStatus.setProperty('isAlert', True)
             self.alertStatus.style().unpolish(self.alertStatus)
             self.alertStatus.style().polish(self.alertStatus)

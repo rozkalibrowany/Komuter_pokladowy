@@ -63,7 +63,7 @@ Rectangle {
             color: "#181818"
     Text {
         id: name
-        text: "Battery Temp"
+        text: "Motor Temp"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 5
