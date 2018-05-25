@@ -293,13 +293,13 @@ class RadialBar(QQuickPaintedItem):
 
 
 class BatteryCurrentWidget(RadialBar, QObject):
-    randomValueChanged = QtCore.pyqtSignal(float)
+    randomValueChanged = QtCore.pyqtSignal(int)
 
     def __init__(self, parent=None):
         super(BatteryCurrentWidget, self).__init__(parent)
         self.m_randomValue = 0
 
-    @QtCore.pyqtProperty(float, notify=randomValueChanged)
+    @QtCore.pyqtProperty(int, notify=randomValueChanged)
     def randomValue(self):
         return self.m_randomValue
 
@@ -310,19 +310,18 @@ class BatteryCurrentWidget(RadialBar, QObject):
         self.m_randomValue = v
         self.randomValueChanged.emit(v)
 
-    def random_value(self):
-        v = float(randrange(80, 100))
-        self.randomValue = v
+    def setValue(self, value):
+        self.randomValue = value
 
 
 class BatteryVoltageWidget(RadialBar, QObject):
-    randomValueChanged = QtCore.pyqtSignal(float)
+    randomValueChanged = QtCore.pyqtSignal(int)
 
     def __init__(self, parent=None):
         super(BatteryVoltageWidget, self).__init__(parent)
         self.m_randomValue = 0
 
-    @QtCore.pyqtProperty(float, notify=randomValueChanged)
+    @QtCore.pyqtProperty(int, notify=randomValueChanged)
     def randomValue(self):
         return self.m_randomValue
 
@@ -333,9 +332,9 @@ class BatteryVoltageWidget(RadialBar, QObject):
         self.m_randomValue = v
         self.randomValueChanged.emit(v)
 
-    def random_value(self):
+    def setValue(self, value):
         v = float(randrange(94, 100))
-        self.randomValue = v
+        self.randomValue = value
 
 
 class BatteryTempWidget(RadialBar, QObject):
@@ -379,19 +378,18 @@ class BatteryTempWidget(RadialBar, QObject):
         self.m_randomValue = v
         self.randomValueChanged.emit(v)
 
-    def random_value(self):
-        v = float(randrange(1, 100))
-        self.randomValue = v
+    def setValue(self, value):
+        self.randomValue = value
 
 
 class ContrTempWidget(RadialBar, QObject):
-    randomValueChanged = QtCore.pyqtSignal(float)
+    randomValueChanged = QtCore.pyqtSignal(int)
 
     def __init__(self, parent=None):
         super(ContrTempWidget, self).__init__(parent)
         self.m_randomValue = 0
 
-    @QtCore.pyqtProperty(float, notify=randomValueChanged)
+    @QtCore.pyqtProperty(int, notify=randomValueChanged)
     def randomValue(self):
         return self.m_randomValue
 
@@ -402,19 +400,18 @@ class ContrTempWidget(RadialBar, QObject):
         self.m_randomValue = v
         self.randomValueChanged.emit(v)
 
-    def random_value(self):
-        v = float(randrange(41, 65))
-        self.randomValue = v
+    def setValue(self, value):
+        self.randomValue = value
 
 
 class AvrPowerWidget(RadialBar, QObject):
-    randomValueChanged = QtCore.pyqtSignal(float)
+    randomValueChanged = QtCore.pyqtSignal(int)
 
     def __init__(self, parent=None):
         super(AvrPowerWidget, self).__init__(parent)
         self.m_randomValue = 0
 
-    @QtCore.pyqtProperty(float, notify=randomValueChanged)
+    @QtCore.pyqtProperty(int, notify=randomValueChanged)
     def randomValue(self):
         return self.m_randomValue
 
@@ -425,19 +422,18 @@ class AvrPowerWidget(RadialBar, QObject):
         self.m_randomValue = v
         self.randomValueChanged.emit(v)
 
-    def random_value(self):
-        v = float(randrange(0, 10))
-        self.randomValue = v
+    def setValue(self, value):
+        self.randomValue = value
 
 
 class ThrottleWidget(RadialBar, QObject):
-    randomValueChanged = QtCore.pyqtSignal(float)
+    randomValueChanged = QtCore.pyqtSignal(int)
 
     def __init__(self, parent=None):
         super(ThrottleWidget, self).__init__(parent)
         self.m_randomValue = 0
 
-    @QtCore.pyqtProperty(float, notify=randomValueChanged)
+    @QtCore.pyqtProperty(int, notify=randomValueChanged)
     def randomValue(self):
         return self.m_randomValue
 
@@ -448,6 +444,5 @@ class ThrottleWidget(RadialBar, QObject):
         self.m_randomValue = v
         self.randomValueChanged.emit(v)
 
-    def random_value(self):
-        v = float(randrange(41, 65))
-        self.randomValue = v
+    def setValue(self, value):
+        self.randomValue = value

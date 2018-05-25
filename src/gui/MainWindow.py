@@ -2,12 +2,12 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
 from src.gui.newGui import Ui_MainWindow
 from PyQt5.QtQml import qmlRegisterType
-from src.gui.RadialBar import RadialBar
+from src.gui.RadialBar import *
 from src.modules.settings import *
 import datetime
 
 from src.gui.widgets import RPM_Widget
-from PyQt5.QtCore import QProcess
+from PyQt5.QtCore import QProcess, Qt
 from collections import deque
 from functools import partial
 from src.modules.settings import *
@@ -20,17 +20,15 @@ timerStarted = False
 
 class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
-        super(GUI_MainWindow, self).__init__(parent)       #QtCore.Qt.FramelessWindowHint
+        super(GUI_MainWindow, self).__init__(parent, Qt.FramelessWindowHint)       #QtCore.Qt.FramelessWindowHint
         self.setupUi(self)
         qmlRegisterType(RadialBar, "SDK", 1,0, "RadialBar")
-
+        self.connected = False
         self.gg = RPM_Widget(self.rpm_widget)
         self.proc = QProcess()
-        self.gg.updateRPM(1355)
         self.proc.readyReadStandardOutput.connect(partial(self.updateData, self.proc))
-        self.container_rpm = deque([], 4)
-        self.container_current = deque([], 4)
-        self.gg.rpmNumber.display(33)
+        self.container_rpm = deque([], 4)        # ile probek do obrotów
+        self.container_current = deque([], 4)    # ile próbek do prądu
 
         self.laptimer = QTimer(self)
         self.laptimer.timeout.connect(self.Timer)
@@ -42,16 +40,46 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.container_rpm = deque([], 4)
         self.container_current = deque([], 4)
         self.menuButtonChanged(self.vfMain)
-        self.setConnectionStatus(True)
+        self.setConnectionStatus(False)
         self.setAlertStatus(False)
         self.setSystemTime()
         self.timerButton.setText('Start Timer')
+
+        self.batteryCurrentWidget = BatteryCurrentWidget()
+        context = self.batteryCWidget.rootContext()
+        context.setContextProperty("batteryCurrentWidget", self.batteryCurrentWidget)
+        self.batteryCWidget.setSource(QUrl.fromLocalFile('src/gui/batteryCurrentRadialBar.qml'))
+
+        self.batteryVoltageWidget = BatteryVoltageWidget()
+        context = self.batteryVWidget.rootContext()
+        context.setContextProperty("batteryVoltageWidget",self.batteryVoltageWidget)
+        self.batteryVWidget.setSource(QUrl.fromLocalFile('src/gui/batteryVoltageRadialBar.qml'))
+
+        self.batteryTempWidget = BatteryTempWidget()
+        context = self.batteryTWidget.rootContext()
+        context.setContextProperty("batteryTempWidget",self.batteryTempWidget)
+        self.batteryTWidget.setSource(QUrl.fromLocalFile('src/gui/batteryTempRadialBar.qml'))
+
+        self.contrTempWidget = ContrTempWidget()
+        context = self.contrTWidget.rootContext()
+        context.setContextProperty("contrTempWidget",self.contrTempWidget)
+        self.contrTWidget.setSource(QUrl.fromLocalFile('src/gui/contrTempRadialBar.qml'))
+
+        self.avrPowerWidget = AvrPowerWidget()
+        context = self.avrPower.rootContext()
+        context.setContextProperty("avrPowerWidget",self.avrPowerWidget)
+        self.avrPower.setSource(QUrl.fromLocalFile('src/gui/avrPowerRadialBar.qml'))
+
+        self.throttleWidget = ThrottleWidget()
+        context = self.throttle.rootContext()
+        context.setContextProperty("throttleWidget",self.throttleWidget)
+        self.throttle.setSource(QUrl.fromLocalFile('src/gui/throttleRadialBar.qml'))
 
     def updateData(self, proc):
         lineunsplitted = str(proc.readAllStandardOutput()).strip()
         line = lineunsplitted.split()[1:]
         line[-1] = line[-1].replace("\\r\\n'", '') if "\\r\\n'" in line[-1] else line[-1]
-        print(line)
+        #print(line)
         line = line[1:2] + line [3:]
         ##### RPM ##################
         if (line[0] == "0CF11E05"):
@@ -61,6 +89,32 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.container_rpm.append(rpm)
             avg = sum(self.container_rpm) / len(self.container_rpm)
             self.gg.updateRPM(avg)
+        ##### CURRENT ###############
+            current_lsb = int(line[3], base=16)
+            current_msb = int(line[4], base=16)
+            current = (current_msb * 256 + current_lsb) / 10
+            self.container_current.append(current)
+            avgCurrent = sum(self.container_current) / len(self.container_current)
+            self.batteryCurrentWidget.setValue(int(avgCurrent))
+        ##### VOLTAGE ####################
+            voltage_lsb = int(line[5], base=16)
+            voltage_msb = int(line[6], base=16)
+            avgVoltage = (voltage_msb * 256 + voltage_lsb) / 10
+            self.batteryVoltageWidget.setValue(int(avgVoltage))
+        ##### POWER ####################
+            avrPower = avgCurrent * avgVoltage
+            self.avrPowerWidget.setValue(int(avrPower)/1000)
+        else:
+        ##### THROTTLE ####################
+            throttle = int(line[1], base=16)
+            throttle = throttle / 2.55
+            self.throttleWidget.setValue(int(throttle))
+            print("throttle:", throttle)
+        ##### CONTROLLER ##################
+            contrTemp = int(line[2], base=16)
+            contrTemp = contrTemp - 40
+            self.contrTempWidget.setValue(int(contrTemp))
+
 
     def initialiseCAN(self):
         #if self.connectionStatus == 0:
@@ -71,9 +125,19 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #    except Exception:
         #        message = "CAN couldn't be initialised. Check configuration"
         #        systemStatus = 0
-        self.proc.kill()
-        self.proc.setProcessChannelMode(self.proc.MergedChannels)
-        self.proc.start(TEST_COMMAND)
+        try:
+            self.proc.kill()
+            self.proc.setProcessChannelMode(self.proc.MergedChannels)
+            self.proc.start(TEST_COMMAND)
+            if (self.connected):
+                self.setConnectionStatus(False)
+                self.connected = False
+            else:
+                self.setConnectionStatus(True)
+                self.connected = True
+        except Exception as e:
+            print("CAN connection error!")
+            self.setConnectionStatus(False)
 
     def functionButtons(self):
         self.driveButton.pressed.connect(lambda: self.menuButtonChanged(self.vfMain))
@@ -81,7 +145,7 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.statsButton.pressed.connect(lambda: self.menuButtonChanged(self.vfStats))
         self.settingsButton.pressed.connect(lambda: self.menuButtonChanged(self.vfSettings))
         self.timerButton.clicked.connect(self.startTimer)
-        self.timerButton.clicked.connect(self.initialiseCAN)
+        self.canButton.clicked.connect(self.initialiseCAN)
 
     def menuButtonChanged(self, widget):
         self.objectList.append(widget)
@@ -123,30 +187,30 @@ class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def setConnectionStatus(self, isConnected):
         if (isConnected):
-            self.canStatus.setText("Connected")
-            self.canStatus.setProperty('connected', True)
-            self.canStatus.style().unpolish(self.canStatus)
-            self.canStatus.style().polish(self.canStatus)
-            self.canStatus.update()
+            self.canButton.setText("Connected")
+            self.canButton.setProperty('connected', True)
+            self.canButton.style().unpolish(self.canButton)
+            self.canButton.style().polish(self.canButton)
+            self.canButton.update()
         else:
-            self.canStatus.setText("Not connected")
-            self.canStatus.setProperty('connected', False)
-            self.canStatus.style().unpolish(self.canStatus)
-            self.canStatus.style().polish(self.canStatus)
-            self.canStatus.update()
+            self.canButton.setText("CAN Connect")
+            self.canButton.setProperty('connected', False)
+            self.canButton.style().unpolish(self.canButton)
+            self.canButton.style().polish(self.canButton)
+            self.canButton.update()
 
     def setAlertStatus(self, isAlert):
         if (isAlert):
             self.alertStatus.setText("1 alert")
             self.alertStatus.setProperty('isAlert', True)
-            self.alertStatus.style().unpolish(self.canStatus)
-            self.alertStatus.style().polish(self.canStatus)
+            self.alertStatus.style().unpolish(self.alertStatus)
+            self.alertStatus.style().polish(self.alertStatus)
             self.alertStatus.update()
         else:
             self.alertStatus.setText("No alerts")
             self.alertStatus.setProperty('isAlert', False)
-            self.alertStatus.style().unpolish(self.canStatus)
-            self.alertStatus.style().polish(self.canStatus)
+            self.alertStatus.style().unpolish(self.alertStatus)
+            self.alertStatus.style().polish(self.alertStatus)
             self.alertStatus.update()
 
     def setSystemTime(self):

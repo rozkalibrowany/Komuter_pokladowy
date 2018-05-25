@@ -298,7 +298,7 @@ class Ui_MainWindow(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.line_2 = QtWidgets.QFrame(self.drive)
-        self.line_2.setGeometry(QtCore.QRect(500, 20, 2, 430))
+        self.line_2.setGeometry(QtCore.QRect(520, 20, 2, 430))
         self.line_2.setStyleSheet("background-color: #6affcd")
         self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -339,7 +339,7 @@ class Ui_MainWindow(object):
         self.dhl11.addWidget(self.batteryTWidget)
         self.dvl1.addLayout(self.dhl11)
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.drive)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(190, 0, 304, 461))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(190, 0, 320, 461))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.dvl2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.dvl2.setContentsMargins(0, 0, 0, 0)
@@ -467,27 +467,26 @@ class Ui_MainWindow(object):
         self.dvl22 = QtWidgets.QVBoxLayout()
         self.dvl22.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
         self.dvl22.setObjectName("dvl22")
-        self.canStatus = QtWidgets.QLabel(self.horizontalFrame_4)
-        self.canStatus.setMinimumSize(QtCore.QSize(0, 35))
-        self.canStatus.setStyleSheet("QLabel {\n"
-"border: 1.5px solid #ff4d4d;\n"
+        self.canButton = QtWidgets.QPushButton(self.horizontalFrame_4)
+        self.canButton.setMinimumSize(QtCore.QSize(145, 35))
+        self.canButton.setStyleSheet("QPushButton {\n"
+"border: 1.5px solid #00ffc1;\n"
 "border-radius: 4px;\n"
 "padding: 2px;\n"
 "font: 75 italic 11pt \"Halvetica\" ;\n"
-"color: #ff4d4d;\n"
+"color: #00ffc1;\n"
 "}\n"
 "\n"
-"QLabel[connected=\"true\"] {\n"
+"QPushButton[connected=\"true\"] {\n"
 "border: 1.5px solid #99ff99;\n"
 "border-radius: 4px;\n"
 "padding: 2px;\n"
 "font: 75 italic 11pt \"Halvetica\" ;\n"
 "color: #99ff99;\n"
 "}")
-        self.canStatus.setText("")
-        self.canStatus.setAlignment(QtCore.Qt.AlignCenter)
-        self.canStatus.setObjectName("canStatus")
-        self.dvl22.addWidget(self.canStatus)
+        self.canButton.setText("")
+        self.canButton.setObjectName("canButton")
+        self.dvl22.addWidget(self.canButton)
         self.dhl21.addLayout(self.dvl22)
         self.dvl21 = QtWidgets.QVBoxLayout()
         self.dvl21.setObjectName("dvl21")
@@ -516,7 +515,7 @@ class Ui_MainWindow(object):
         self.dhl21.addLayout(self.dvl21)
         self.dvl2.addWidget(self.horizontalFrame_4)
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.drive)
-        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(510, 0, 172, 485))
+        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(530, 0, 172, 485))
         self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
         self.dvl3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_5)
         self.dvl3.setContentsMargins(0, 0, 0, 0)
@@ -552,6 +551,11 @@ class Ui_MainWindow(object):
         self.batteryVWidget.setObjectName("batteryVWidget")
         self.dhl31.addWidget(self.batteryVWidget)
         self.dvl3.addLayout(self.dhl31)
+        self.line.raise_()
+        self.verticalLayoutWidget.raise_()
+        self.verticalLayoutWidget_2.raise_()
+        self.verticalLayoutWidget_5.raise_()
+        self.line_2.raise_()
         self.stackedWidget.addWidget(self.drive)
         self.alerts = QtWidgets.QWidget()
         self.alerts.setObjectName("alerts")

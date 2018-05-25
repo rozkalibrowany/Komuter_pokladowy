@@ -559,7 +559,7 @@ color:  #6affcd;</string>
         <widget class="Line" name="line_2">
          <property name="geometry">
           <rect>
-           <x>500</x>
+           <x>520</x>
            <y>20</y>
            <width>2</width>
            <height>430</height>
@@ -664,7 +664,7 @@ color:  #6affcd;</string>
           <rect>
            <x>190</x>
            <y>0</y>
-           <width>304</width>
+           <width>320</width>
            <height>461</height>
           </rect>
          </property>
@@ -904,23 +904,23 @@ border-image: none;</string>
                 <enum>QLayout::SetMaximumSize</enum>
                </property>
                <item>
-                <widget class="QLabel" name="canStatus">
+                <widget class="QPushButton" name="canButton">
                  <property name="minimumSize">
                   <size>
-                   <width>0</width>
+                   <width>145</width>
                    <height>35</height>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QLabel {
-border: 1.5px solid #ff4d4d;
+                  <string notr="true">QPushButton {
+border: 1.5px solid #00ffc1;
 border-radius: 4px;
 padding: 2px;
 font: 75 italic 11pt &quot;Halvetica&quot; ;
-color: #ff4d4d;
+color: #00ffc1;
 }
 
-QLabel[connected=&quot;true&quot;] {
+QPushButton[connected=&quot;true&quot;] {
 border: 1.5px solid #99ff99;
 border-radius: 4px;
 padding: 2px;
@@ -930,9 +930,6 @@ color: #99ff99;
                  </property>
                  <property name="text">
                   <string/>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -989,7 +986,7 @@ color: #ff4d4d;
         <widget class="QWidget" name="verticalLayoutWidget_5">
          <property name="geometry">
           <rect>
-           <x>510</x>
+           <x>530</x>
            <y>0</y>
            <width>172</width>
            <height>485</height>
@@ -1079,6 +1076,11 @@ color: #ff4d4d;
           </item>
          </layout>
         </widget>
+        <zorder>line</zorder>
+        <zorder>verticalLayoutWidget</zorder>
+        <zorder>verticalLayoutWidget_2</zorder>
+        <zorder>verticalLayoutWidget_5</zorder>
+        <zorder>line_2</zorder>
        </widget>
        <widget class="QWidget" name="alerts"/>
        <widget class="QWidget" name="stats"/>

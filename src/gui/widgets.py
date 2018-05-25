@@ -45,8 +45,6 @@ class RPM_Widget(QtWidgets.QWidget, Ui_rpm_widget):
         x2 = line_length * math.sin(angle + math.radians(angle_offset))
         y2 = -1 * line_length * math.cos(angle + math.radians(angle_offset))
 
-        print (line_length, '|', value, '|', math.degrees(angle), '|', x2, y2)
-
         # draw pintop
         pintop = QtCore.QRectF(x1-2, y1-3 ,10, 10)
         pintopItem = QtWidgets.QGraphicsEllipseItem(pintop)
