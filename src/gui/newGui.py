@@ -7,11 +7,9 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets
 import sys, os
 sys.path.insert(2, os.path.join(sys.path[0], '../..'))
 import img.img_rc
-from PyQt5 import QtQuickWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -124,6 +122,13 @@ class Ui_MainWindow(object):
 "\n"
 "QLabel[chosen=\"true\"] {\n"
 "background: #365546; \n"
+"}\n"
+"\n"
+"QFrame[alert=\"true\"] {\n"
+"border: 3.5px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"background: transparent;\n"
 "}")
         self.vfAlerts.setObjectName("vfAlerts")
         self.vlMain_2 = QtWidgets.QVBoxLayout(self.vfAlerts)
@@ -293,54 +298,286 @@ class Ui_MainWindow(object):
         self.drive.setStyleSheet("")
         self.drive.setObjectName("drive")
         self.line = QtWidgets.QFrame(self.drive)
-        self.line.setGeometry(QtCore.QRect(180, 20, 2, 430))
+        self.line.setGeometry(QtCore.QRect(170, 20, 2, 430))
         self.line.setStyleSheet("background-color: #6affcd")
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.line_2 = QtWidgets.QFrame(self.drive)
-        self.line_2.setGeometry(QtCore.QRect(520, 20, 2, 430))
+        self.line_2.setGeometry(QtCore.QRect(510, 20, 2, 430))
         self.line_2.setStyleSheet("background-color: #6affcd")
         self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.drive)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 171, 485))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 161, 451))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.dvl1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.dvl1.setContentsMargins(0, 0, 0, 0)
         self.dvl1.setObjectName("dvl1")
         self.dhl13 = QtWidgets.QHBoxLayout()
         self.dhl13.setObjectName("dhl13")
-        self.throttle = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget)
-        self.throttle.setMinimumSize(QtCore.QSize(0, 155))
-        self.throttle.setMaximumSize(QtCore.QSize(167, 16777215))
-        self.throttle.setStyleSheet("")
-        self.throttle.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.throttle = QtWidgets.QFrame(self.verticalLayoutWidget)
+        self.throttle.setStyleSheet("QFrame{\n"
+"border: 1.5px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning=\"true\"] {\n"
+"border: 4px solid #ffff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning2=\"true\"] {\n"
+"border: 4px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"")
+        self.throttle.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.throttle.setFrameShadow(QtWidgets.QFrame.Raised)
         self.throttle.setObjectName("throttle")
+        self.label_4 = QtWidgets.QLabel(self.throttle)
+        self.label_4.setGeometry(QtCore.QRect(0, 0, 151, 31))
+        self.label_4.setStyleSheet("border: none;\n"
+"font: 14pt \"Ubuntu\";\n"
+"color:  #6affcd;")
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+        self.throttleLcd = QtWidgets.QLCDNumber(self.throttle)
+        self.throttleLcd.setGeometry(QtCore.QRect(0, 30, 121, 111))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.throttleLcd.sizePolicy().hasHeightForWidth())
+        self.throttleLcd.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.throttleLcd.setFont(font)
+        self.throttleLcd.setStyleSheet("QLCDNumber{\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ffff99\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning2=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ff4d4d\";\n"
+"}")
+        self.throttleLcd.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.throttleLcd.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.throttleLcd.setLineWidth(5)
+        self.throttleLcd.setSmallDecimalPoint(False)
+        self.throttleLcd.setDigitCount(3)
+        self.throttleLcd.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.throttleLcd.setProperty("value", 0.0)
+        self.throttleLcd.setProperty("intValue", 0)
+        self.throttleLcd.setObjectName("throttleLcd")
+        self.label_5 = QtWidgets.QLabel(self.throttle)
+        self.label_5.setGeometry(QtCore.QRect(120, 40, 41, 101))
+        self.label_5.setStyleSheet("border: none;\n"
+"font: 22pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";")
+        self.label_5.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignVCenter)
+        self.label_5.setObjectName("label_5")
         self.dhl13.addWidget(self.throttle)
         self.dvl1.addLayout(self.dhl13)
         self.dhl12 = QtWidgets.QHBoxLayout()
         self.dhl12.setObjectName("dhl12")
-        self.contrTWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget)
-        self.contrTWidget.setMinimumSize(QtCore.QSize(0, 155))
-        self.contrTWidget.setMaximumSize(QtCore.QSize(167, 16777215))
-        self.contrTWidget.setStyleSheet("")
-        self.contrTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.contrTWidget.setObjectName("contrTWidget")
-        self.dhl12.addWidget(self.contrTWidget)
+        self.contrTemp = QtWidgets.QFrame(self.verticalLayoutWidget)
+        self.contrTemp.setStyleSheet("QFrame{\n"
+"border: 1.5px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning=\"true\"] {\n"
+"border: 4px solid #ffff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning2=\"true\"] {\n"
+"border: 4px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"")
+        self.contrTemp.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.contrTemp.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.contrTemp.setObjectName("contrTemp")
+        self.label_6 = QtWidgets.QLabel(self.contrTemp)
+        self.label_6.setGeometry(QtCore.QRect(0, 0, 151, 31))
+        self.label_6.setStyleSheet("border: none;\n"
+"font: 12pt \"Ubuntu\";\n"
+"color:  #6affcd;")
+        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_6.setObjectName("label_6")
+        self.contrTempLcd = QtWidgets.QLCDNumber(self.contrTemp)
+        self.contrTempLcd.setGeometry(QtCore.QRect(0, 30, 121, 111))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.contrTempLcd.sizePolicy().hasHeightForWidth())
+        self.contrTempLcd.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.contrTempLcd.setFont(font)
+        self.contrTempLcd.setStyleSheet("QLCDNumber{\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ffff99\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning2=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ff4d4d\";\n"
+"}")
+        self.contrTempLcd.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.contrTempLcd.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.contrTempLcd.setLineWidth(5)
+        self.contrTempLcd.setDigitCount(3)
+        self.contrTempLcd.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.contrTempLcd.setObjectName("contrTempLcd")
+        self.label_7 = QtWidgets.QLabel(self.contrTemp)
+        self.label_7.setGeometry(QtCore.QRect(110, 50, 41, 91))
+        self.label_7.setStyleSheet("border: none;\n"
+"font: 26pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";")
+        self.label_7.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.label_7.setObjectName("label_7")
+        self.dhl12.addWidget(self.contrTemp)
         self.dvl1.addLayout(self.dhl12)
         self.dhl11 = QtWidgets.QHBoxLayout()
         self.dhl11.setObjectName("dhl11")
-        self.batteryTWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget)
-        self.batteryTWidget.setMinimumSize(QtCore.QSize(0, 155))
-        self.batteryTWidget.setMaximumSize(QtCore.QSize(167, 16777215))
-        self.batteryTWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.batteryTWidget.setObjectName("batteryTWidget")
-        self.dhl11.addWidget(self.batteryTWidget)
+        self.motorTemp = QtWidgets.QFrame(self.verticalLayoutWidget)
+        self.motorTemp.setStyleSheet("QFrame{\n"
+"border: 1.5px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning=\"true\"] {\n"
+"border: 4px solid #ffff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning2=\"true\"] {\n"
+"border: 4px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"")
+        self.motorTemp.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.motorTemp.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.motorTemp.setObjectName("motorTemp")
+        self.label_9 = QtWidgets.QLabel(self.motorTemp)
+        self.label_9.setGeometry(QtCore.QRect(0, 0, 151, 31))
+        self.label_9.setStyleSheet("border: none;\n"
+"font: 12pt \"Ubuntu\";\n"
+"color:  #6affcd;")
+        self.label_9.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_9.setObjectName("label_9")
+        self.motorTempLcd = QtWidgets.QLCDNumber(self.motorTemp)
+        self.motorTempLcd.setGeometry(QtCore.QRect(0, 30, 121, 111))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.motorTempLcd.sizePolicy().hasHeightForWidth())
+        self.motorTempLcd.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.motorTempLcd.setFont(font)
+        self.motorTempLcd.setStyleSheet("QLCDNumber{\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ffff99\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning2=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ff4d4d\";\n"
+"}")
+        self.motorTempLcd.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.motorTempLcd.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.motorTempLcd.setLineWidth(5)
+        self.motorTempLcd.setDigitCount(3)
+        self.motorTempLcd.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.motorTempLcd.setObjectName("motorTempLcd")
+        self.label_8 = QtWidgets.QLabel(self.motorTemp)
+        self.label_8.setGeometry(QtCore.QRect(110, 50, 41, 91))
+        self.label_8.setStyleSheet("border: none;\n"
+"font: 26pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";")
+        self.label_8.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.label_8.setObjectName("label_8")
+        self.dhl11.addWidget(self.motorTemp)
         self.dvl1.addLayout(self.dhl11)
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.drive)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(190, 0, 320, 461))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(180, 0, 320, 461))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.dvl2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.dvl2.setContentsMargins(0, 0, 0, 0)
@@ -428,7 +665,7 @@ class Ui_MainWindow(object):
 "border-radius: 4px;\n"
 "padding: 2px;\n"
 "background: transparent;\n"
-"color: #cccccc;")
+"color:  \"#00ffc1\";")
         self.lcdNumber.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.lcdNumber.setLineWidth(4)
         self.lcdNumber.setMidLineWidth(20)
@@ -516,41 +753,271 @@ class Ui_MainWindow(object):
         self.dhl21.addLayout(self.dvl21)
         self.dvl2.addWidget(self.horizontalFrame_4)
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.drive)
-        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(530, 0, 172, 485))
+        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(520, 0, 161, 451))
         self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
         self.dvl3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_5)
         self.dvl3.setContentsMargins(0, 0, 0, 0)
         self.dvl3.setObjectName("dvl3")
         self.dhl33 = QtWidgets.QHBoxLayout()
         self.dhl33.setObjectName("dhl33")
-        self.avrPower = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget_5)
-        self.avrPower.setMinimumSize(QtCore.QSize(0, 155))
-        self.avrPower.setMaximumSize(QtCore.QSize(167, 16777215))
-        self.avrPower.setAutoFillBackground(False)
-        self.avrPower.setStyleSheet("")
-        self.avrPower.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.avrPower = QtWidgets.QFrame(self.verticalLayoutWidget_5)
+        self.avrPower.setMaximumSize(QtCore.QSize(16777215, 160))
+        self.avrPower.setStyleSheet("QFrame{\n"
+"border: 1.5px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning=\"true\"] {\n"
+"border: 4px solid #ffff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning2=\"true\"] {\n"
+"border: 4px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"")
+        self.avrPower.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.avrPower.setFrameShadow(QtWidgets.QFrame.Raised)
         self.avrPower.setObjectName("avrPower")
+        self.label_11 = QtWidgets.QLabel(self.avrPower)
+        self.label_11.setGeometry(QtCore.QRect(0, 0, 151, 31))
+        self.label_11.setStyleSheet("border: none;\n"
+"font: 12pt \"Ubuntu\";\n"
+"color:  #6affcd;")
+        self.label_11.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_11.setObjectName("label_11")
+        self.avrPowerLcd = QtWidgets.QLCDNumber(self.avrPower)
+        self.avrPowerLcd.setGeometry(QtCore.QRect(0, 30, 121, 111))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.avrPowerLcd.sizePolicy().hasHeightForWidth())
+        self.avrPowerLcd.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.avrPowerLcd.setFont(font)
+        self.avrPowerLcd.setStyleSheet("QLCDNumber{\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ffff99\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning2=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ff4d4d\";\n"
+"}")
+        self.avrPowerLcd.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.avrPowerLcd.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.avrPowerLcd.setLineWidth(5)
+        self.avrPowerLcd.setDigitCount(3)
+        self.avrPowerLcd.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.avrPowerLcd.setObjectName("avrPowerLcd")
+        self.label_10 = QtWidgets.QLabel(self.avrPower)
+        self.label_10.setGeometry(QtCore.QRect(110, 50, 41, 91))
+        self.label_10.setStyleSheet("border: none;\n"
+"font: 17pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";")
+        self.label_10.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_10.setObjectName("label_10")
         self.dhl33.addWidget(self.avrPower)
         self.dvl3.addLayout(self.dhl33)
         self.dhl32 = QtWidgets.QHBoxLayout()
         self.dhl32.setObjectName("dhl32")
-        self.batteryCWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget_5)
-        self.batteryCWidget.setMinimumSize(QtCore.QSize(0, 155))
-        self.batteryCWidget.setMaximumSize(QtCore.QSize(167, 16777215))
-        self.batteryCWidget.setAutoFillBackground(False)
-        self.batteryCWidget.setStyleSheet("")
-        self.batteryCWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.batteryCWidget.setObjectName("batteryCWidget")
-        self.dhl32.addWidget(self.batteryCWidget)
+        self.batteryCurrent = QtWidgets.QFrame(self.verticalLayoutWidget_5)
+        self.batteryCurrent.setMaximumSize(QtCore.QSize(16777215, 160))
+        self.batteryCurrent.setStyleSheet("QFrame{\n"
+"border: 1.5px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning=\"true\"] {\n"
+"border: 4px solid #ffff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning2=\"true\"] {\n"
+"border: 4px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"")
+        self.batteryCurrent.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.batteryCurrent.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.batteryCurrent.setObjectName("batteryCurrent")
+        self.label_13 = QtWidgets.QLabel(self.batteryCurrent)
+        self.label_13.setGeometry(QtCore.QRect(0, 0, 151, 31))
+        self.label_13.setStyleSheet("border: none;\n"
+"font: 12pt \"Ubuntu\";\n"
+"color:  #6affcd;")
+        self.label_13.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_13.setObjectName("label_13")
+        self.batteryCurrentLcd = QtWidgets.QLCDNumber(self.batteryCurrent)
+        self.batteryCurrentLcd.setGeometry(QtCore.QRect(0, 30, 121, 111))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.batteryCurrentLcd.sizePolicy().hasHeightForWidth())
+        self.batteryCurrentLcd.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.batteryCurrentLcd.setFont(font)
+        self.batteryCurrentLcd.setStyleSheet("QLCDNumber{\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ffff99\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning2=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ff4d4d\";\n"
+"}")
+        self.batteryCurrentLcd.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.batteryCurrentLcd.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.batteryCurrentLcd.setLineWidth(5)
+        self.batteryCurrentLcd.setDigitCount(3)
+        self.batteryCurrentLcd.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.batteryCurrentLcd.setObjectName("batteryCurrentLcd")
+        self.label_12 = QtWidgets.QLabel(self.batteryCurrent)
+        self.label_12.setGeometry(QtCore.QRect(110, 50, 41, 91))
+        self.label_12.setStyleSheet("border: none;\n"
+"font: 21pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";")
+        self.label_12.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_12.setObjectName("label_12")
+        self.dhl32.addWidget(self.batteryCurrent)
         self.dvl3.addLayout(self.dhl32)
         self.dhl31 = QtWidgets.QHBoxLayout()
         self.dhl31.setObjectName("dhl31")
-        self.batteryVWidget = QtQuickWidgets.QQuickWidget(self.verticalLayoutWidget_5)
-        self.batteryVWidget.setMinimumSize(QtCore.QSize(0, 155))
-        self.batteryVWidget.setMaximumSize(QtCore.QSize(167, 16777215))
-        self.batteryVWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.batteryVWidget.setObjectName("batteryVWidget")
-        self.dhl31.addWidget(self.batteryVWidget)
+        self.batteryVoltage = QtWidgets.QFrame(self.verticalLayoutWidget_5)
+        self.batteryVoltage.setMaximumSize(QtCore.QSize(16777215, 160))
+        self.batteryVoltage.setStyleSheet("QFrame{\n"
+"border: 1.5px solid #00ffc1;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning=\"true\"] {\n"
+"border: 4px solid #ffff99;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"\n"
+"QFrame[warning2=\"true\"] {\n"
+"border: 4px solid #ff4d4d;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"font: 75 italic 11pt \"Halvetica\" ;\n"
+"color: #00ffc1;\n"
+"background: transparent;\n"
+"}\n"
+"")
+        self.batteryVoltage.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.batteryVoltage.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.batteryVoltage.setObjectName("batteryVoltage")
+        self.label_15 = QtWidgets.QLabel(self.batteryVoltage)
+        self.label_15.setGeometry(QtCore.QRect(0, 0, 151, 31))
+        self.label_15.setStyleSheet("border: none;\n"
+"font: 12pt \"Ubuntu\";\n"
+"color:  #6affcd;")
+        self.label_15.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_15.setObjectName("label_15")
+        self.batteryVoltageLcd = QtWidgets.QLCDNumber(self.batteryVoltage)
+        self.batteryVoltageLcd.setGeometry(QtCore.QRect(0, 30, 121, 111))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.batteryVoltageLcd.sizePolicy().hasHeightForWidth())
+        self.batteryVoltageLcd.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Ubuntu")
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.batteryVoltageLcd.setFont(font)
+        self.batteryVoltageLcd.setStyleSheet("QLCDNumber{\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ffff99\";\n"
+"}\n"
+"\n"
+"QLCDNumber[warning2=\"true\"] {\n"
+"border: none;\n"
+"font: 16pt \"Ubuntu\";\n"
+"color:  \"#ff4d4d\";\n"
+"}")
+        self.batteryVoltageLcd.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.batteryVoltageLcd.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.batteryVoltageLcd.setLineWidth(5)
+        self.batteryVoltageLcd.setDigitCount(3)
+        self.batteryVoltageLcd.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.batteryVoltageLcd.setObjectName("batteryVoltageLcd")
+        self.label_14 = QtWidgets.QLabel(self.batteryVoltage)
+        self.label_14.setGeometry(QtCore.QRect(110, 50, 41, 91))
+        self.label_14.setStyleSheet("border: none;\n"
+"font: 21pt \"Ubuntu\";\n"
+"color:  \"#00ffc1\";")
+        self.label_14.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_14.setObjectName("label_14")
+        self.dhl31.addWidget(self.batteryVoltage)
         self.dvl3.addLayout(self.dhl31)
         self.line.raise_()
         self.verticalLayoutWidget.raise_()
@@ -916,7 +1383,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -926,6 +1393,18 @@ class Ui_MainWindow(object):
         self.alertsLabel.setText(_translate("MainWindow", "Alerts"))
         self.statsLabel.setText(_translate("MainWindow", "Stats"))
         self.settingsLabel.setText(_translate("MainWindow", "Setting"))
+        self.label_4.setText(_translate("MainWindow", "Throttle"))
+        self.label_5.setText(_translate("MainWindow", "%"))
+        self.label_6.setText(_translate("MainWindow", "Controller Temp"))
+        self.label_7.setText(_translate("MainWindow", "°"))
+        self.label_9.setText(_translate("MainWindow", "Motor Temp"))
+        self.label_8.setText(_translate("MainWindow", "°"))
+        self.label_11.setText(_translate("MainWindow", "Avr Power"))
+        self.label_10.setText(_translate("MainWindow", "kW"))
+        self.label_13.setText(_translate("MainWindow", "Battery Current"))
+        self.label_12.setText(_translate("MainWindow", "A"))
+        self.label_15.setText(_translate("MainWindow", "Battery Voltage"))
+        self.label_14.setText(_translate("MainWindow", "V"))
         self.label.setText(_translate("MainWindow", "Controller Status"))
         self.label_err0.setText(_translate("MainWindow", "Identification error"))
         self.label_err1.setText(_translate("MainWindow", "Over voltage"))
@@ -940,3 +1419,4 @@ class Ui_MainWindow(object):
         self.label_err14.setText(_translate("MainWindow", "Motor over temperature"))
         self.label_err15.setText(_translate("MainWindow", "Hall Galvanometer sensor error"))
         self.label_3.setText(_translate("MainWindow", "Battery Status"))
+

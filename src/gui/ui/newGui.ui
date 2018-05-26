@@ -217,6 +217,13 @@ background: #365546;
 
 QLabel[chosen=&quot;true&quot;] {
 background: #365546; 
+}
+
+QFrame[alert=&quot;true&quot;] {
+border: 3.5px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+background: transparent;
 }</string>
          </property>
          <layout class="QVBoxLayout" name="vlMain_2">
@@ -534,7 +541,7 @@ color:  #6affcd;</string>
      <item row="0" column="0" rowspan="2">
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="drive">
         <property name="styleSheet">
@@ -543,7 +550,7 @@ color:  #6affcd;</string>
         <widget class="Line" name="line">
          <property name="geometry">
           <rect>
-           <x>180</x>
+           <x>170</x>
            <y>20</y>
            <width>2</width>
            <height>430</height>
@@ -559,7 +566,7 @@ color:  #6affcd;</string>
         <widget class="Line" name="line_2">
          <property name="geometry">
           <rect>
-           <x>520</x>
+           <x>510</x>
            <y>20</y>
            <width>2</width>
            <height>430</height>
@@ -577,33 +584,160 @@ color:  #6affcd;</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>171</width>
-           <height>485</height>
+           <width>161</width>
+           <height>451</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="dvl1">
           <item>
            <layout class="QHBoxLayout" name="dhl13">
             <item>
-             <widget class="QQuickWidget" name="throttle">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>155</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>167</width>
-                <height>16777215</height>
-               </size>
-              </property>
+             <widget class="QFrame" name="throttle">
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">QFrame{
+border: 1.5px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning=&quot;true&quot;] {
+border: 4px solid #ffff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning2=&quot;true&quot;] {
+border: 4px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+</string>
               </property>
-              <property name="resizeMode">
-               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QLabel" name="label_4">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 14pt &quot;Ubuntu&quot;;
+color:  #6affcd;</string>
+               </property>
+               <property name="text">
+                <string>Throttle</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLCDNumber" name="throttleLcd">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>30</y>
+                 <width>121</width>
+                 <height>111</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Ubuntu</family>
+                 <pointsize>16</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLCDNumber{
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;
+}
+
+QLCDNumber[warning=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ffff99&quot;;
+}
+
+QLCDNumber[warning2=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ff4d4d&quot;;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="lineWidth">
+                <number>5</number>
+               </property>
+               <property name="smallDecimalPoint">
+                <bool>false</bool>
+               </property>
+               <property name="digitCount">
+                <number>3</number>
+               </property>
+               <property name="segmentStyle">
+                <enum>QLCDNumber::Flat</enum>
+               </property>
+               <property name="value" stdset="0">
+                <double>0.000000000000000</double>
+               </property>
+               <property name="intValue" stdset="0">
+                <number>0</number>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_5">
+               <property name="geometry">
+                <rect>
+                 <x>120</x>
+                 <y>40</y>
+                 <width>41</width>
+                 <height>101</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 22pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;</string>
+               </property>
+               <property name="text">
+                <string>%</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+               </property>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -611,25 +745,143 @@ color:  #6affcd;</string>
           <item>
            <layout class="QHBoxLayout" name="dhl12">
             <item>
-             <widget class="QQuickWidget" name="contrTWidget">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>155</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>167</width>
-                <height>16777215</height>
-               </size>
-              </property>
+             <widget class="QFrame" name="contrTemp">
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">QFrame{
+border: 1.5px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning=&quot;true&quot;] {
+border: 4px solid #ffff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning2=&quot;true&quot;] {
+border: 4px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+</string>
               </property>
-              <property name="resizeMode">
-               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QLabel" name="label_6">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 12pt &quot;Ubuntu&quot;;
+color:  #6affcd;</string>
+               </property>
+               <property name="text">
+                <string>Controller Temp</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLCDNumber" name="contrTempLcd">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>30</y>
+                 <width>121</width>
+                 <height>111</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Ubuntu</family>
+                 <pointsize>16</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLCDNumber{
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;
+}
+
+QLCDNumber[warning=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ffff99&quot;;
+}
+
+QLCDNumber[warning2=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ff4d4d&quot;;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="lineWidth">
+                <number>5</number>
+               </property>
+               <property name="digitCount">
+                <number>3</number>
+               </property>
+               <property name="segmentStyle">
+                <enum>QLCDNumber::Flat</enum>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_7">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>50</y>
+                 <width>41</width>
+                 <height>91</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 26pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;</string>
+               </property>
+               <property name="text">
+                <string>°</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignHCenter|Qt::AlignTop</set>
+               </property>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -637,22 +889,143 @@ color:  #6affcd;</string>
           <item>
            <layout class="QHBoxLayout" name="dhl11">
             <item>
-             <widget class="QQuickWidget" name="batteryTWidget">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>155</height>
-               </size>
+             <widget class="QFrame" name="motorTemp">
+              <property name="styleSheet">
+               <string notr="true">QFrame{
+border: 1.5px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning=&quot;true&quot;] {
+border: 4px solid #ffff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning2=&quot;true&quot;] {
+border: 4px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+</string>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>167</width>
-                <height>16777215</height>
-               </size>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
-              <property name="resizeMode">
-               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
               </property>
+              <widget class="QLabel" name="label_9">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 12pt &quot;Ubuntu&quot;;
+color:  #6affcd;</string>
+               </property>
+               <property name="text">
+                <string>Motor Temp</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLCDNumber" name="motorTempLcd">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>30</y>
+                 <width>121</width>
+                 <height>111</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Ubuntu</family>
+                 <pointsize>16</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLCDNumber{
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;
+}
+
+QLCDNumber[warning=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ffff99&quot;;
+}
+
+QLCDNumber[warning2=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ff4d4d&quot;;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="lineWidth">
+                <number>5</number>
+               </property>
+               <property name="digitCount">
+                <number>3</number>
+               </property>
+               <property name="segmentStyle">
+                <enum>QLCDNumber::Flat</enum>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_8">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>50</y>
+                 <width>41</width>
+                 <height>91</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 26pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;</string>
+               </property>
+               <property name="text">
+                <string>°</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignHCenter|Qt::AlignTop</set>
+               </property>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -662,7 +1035,7 @@ color:  #6affcd;</string>
         <widget class="QWidget" name="verticalLayoutWidget_2">
          <property name="geometry">
           <rect>
-           <x>190</x>
+           <x>180</x>
            <y>0</y>
            <width>320</width>
            <height>461</height>
@@ -816,7 +1189,7 @@ border: 1.4px solid #00ffc1;
 border-radius: 4px;
 padding: 2px;
 background: transparent;
-color: #cccccc;</string>
+color:  &quot;#00ffc1&quot;;</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -986,38 +1359,162 @@ color: #ff4d4d;
         <widget class="QWidget" name="verticalLayoutWidget_5">
          <property name="geometry">
           <rect>
-           <x>530</x>
+           <x>520</x>
            <y>0</y>
-           <width>172</width>
-           <height>485</height>
+           <width>161</width>
+           <height>451</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="dvl3">
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
           <item>
            <layout class="QHBoxLayout" name="dhl33">
             <item>
-             <widget class="QQuickWidget" name="avrPower">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>155</height>
-               </size>
-              </property>
+             <widget class="QFrame" name="avrPower">
               <property name="maximumSize">
                <size>
-                <width>167</width>
-                <height>16777215</height>
+                <width>16777215</width>
+                <height>160</height>
                </size>
               </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">QFrame{
+border: 1.5px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning=&quot;true&quot;] {
+border: 4px solid #ffff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning2=&quot;true&quot;] {
+border: 4px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+</string>
               </property>
-              <property name="resizeMode">
-               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QLabel" name="label_11">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 12pt &quot;Ubuntu&quot;;
+color:  #6affcd;</string>
+               </property>
+               <property name="text">
+                <string>Avr Power</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLCDNumber" name="avrPowerLcd">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>30</y>
+                 <width>121</width>
+                 <height>111</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Ubuntu</family>
+                 <pointsize>16</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLCDNumber{
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;
+}
+
+QLCDNumber[warning=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ffff99&quot;;
+}
+
+QLCDNumber[warning2=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ff4d4d&quot;;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="lineWidth">
+                <number>5</number>
+               </property>
+               <property name="digitCount">
+                <number>3</number>
+               </property>
+               <property name="segmentStyle">
+                <enum>QLCDNumber::Flat</enum>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_10">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>50</y>
+                 <width>41</width>
+                 <height>91</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 17pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;</string>
+               </property>
+               <property name="text">
+                <string>kW</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -1025,28 +1522,149 @@ color: #ff4d4d;
           <item>
            <layout class="QHBoxLayout" name="dhl32">
             <item>
-             <widget class="QQuickWidget" name="batteryCWidget">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>155</height>
-               </size>
-              </property>
+             <widget class="QFrame" name="batteryCurrent">
               <property name="maximumSize">
                <size>
-                <width>167</width>
-                <height>16777215</height>
+                <width>16777215</width>
+                <height>160</height>
                </size>
               </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">QFrame{
+border: 1.5px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning=&quot;true&quot;] {
+border: 4px solid #ffff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning2=&quot;true&quot;] {
+border: 4px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+</string>
               </property>
-              <property name="resizeMode">
-               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QLabel" name="label_13">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 12pt &quot;Ubuntu&quot;;
+color:  #6affcd;</string>
+               </property>
+               <property name="text">
+                <string>Battery Current</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLCDNumber" name="batteryCurrentLcd">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>30</y>
+                 <width>121</width>
+                 <height>111</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Ubuntu</family>
+                 <pointsize>16</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLCDNumber{
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;
+}
+
+QLCDNumber[warning=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ffff99&quot;;
+}
+
+QLCDNumber[warning2=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ff4d4d&quot;;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="lineWidth">
+                <number>5</number>
+               </property>
+               <property name="digitCount">
+                <number>3</number>
+               </property>
+               <property name="segmentStyle">
+                <enum>QLCDNumber::Flat</enum>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_12">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>50</y>
+                 <width>41</width>
+                 <height>91</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 21pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;</string>
+               </property>
+               <property name="text">
+                <string>A</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -1054,22 +1672,149 @@ color: #ff4d4d;
           <item>
            <layout class="QHBoxLayout" name="dhl31">
             <item>
-             <widget class="QQuickWidget" name="batteryVWidget">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>155</height>
-               </size>
-              </property>
+             <widget class="QFrame" name="batteryVoltage">
               <property name="maximumSize">
                <size>
-                <width>167</width>
-                <height>16777215</height>
+                <width>16777215</width>
+                <height>160</height>
                </size>
               </property>
-              <property name="resizeMode">
-               <enum>QQuickWidget::SizeRootObjectToView</enum>
+              <property name="styleSheet">
+               <string notr="true">QFrame{
+border: 1.5px solid #00ffc1;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning=&quot;true&quot;] {
+border: 4px solid #ffff99;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+
+QFrame[warning2=&quot;true&quot;] {
+border: 4px solid #ff4d4d;
+border-radius: 4px;
+padding: 2px;
+font: 75 italic 11pt &quot;Halvetica&quot; ;
+color: #00ffc1;
+background: transparent;
+}
+</string>
               </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QLabel" name="label_15">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 12pt &quot;Ubuntu&quot;;
+color:  #6affcd;</string>
+               </property>
+               <property name="text">
+                <string>Battery Voltage</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLCDNumber" name="batteryVoltageLcd">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>30</y>
+                 <width>121</width>
+                 <height>111</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Ubuntu</family>
+                 <pointsize>16</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLCDNumber{
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;
+}
+
+QLCDNumber[warning=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ffff99&quot;;
+}
+
+QLCDNumber[warning2=&quot;true&quot;] {
+border: none;
+font: 16pt &quot;Ubuntu&quot;;
+color:  &quot;#ff4d4d&quot;;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="lineWidth">
+                <number>5</number>
+               </property>
+               <property name="digitCount">
+                <number>3</number>
+               </property>
+               <property name="segmentStyle">
+                <enum>QLCDNumber::Flat</enum>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_14">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>50</y>
+                 <width>41</width>
+                 <height>91</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;
+font: 21pt &quot;Ubuntu&quot;;
+color:  &quot;#00ffc1&quot;;</string>
+               </property>
+               <property name="text">
+                <string>V</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -1804,13 +2549,6 @@ color: #e6e6e6;
    </widget>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../../img/img.qrc"/>
  </resources>

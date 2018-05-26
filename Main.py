@@ -6,9 +6,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtQuickWidgets import QQuickWidget
 from PyQt5.QtWidgets import QApplication
 from src.gui.MainWindow import GUI_MainWindow
-from PyQt5.QtQml import *
-from OpenGL import GLU
-#from src.modules.can import Can
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
