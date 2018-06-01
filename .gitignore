@@ -2,3 +2,4 @@
 *.lnk
 *.qmlc
 *.nja
+src/gui/*pyc
