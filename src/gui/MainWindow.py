@@ -24,7 +24,7 @@ timerStarted = False
 
 class GUI_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
-        super(GUI_MainWindow, self).__init__(parent, Qt.FramelessWindowHint)       #QtCore.Qt.FramelessWindowHint
+        super(GUI_MainWindow, self).__init__(parent)       #QtCore.Qt.FramelessWindowHint
         self.setupUi(self)
         #### Set resolution and center window ###
         self.setGeometry(0, 0, 800, 480)
